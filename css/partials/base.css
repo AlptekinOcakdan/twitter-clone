@@ -1,23 +1,55 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap");
 @import "theme.css";
+
+@font-face {
+    font-family: 'TwitterChirp';
+    src: url('../../assets/font/Chirp-Regular.80fda27a.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TwitterChirp';
+    src: url('../../assets/font/Chirp-Medium.f8e2739a.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TwitterChirp';
+    src: url('../../assets/font/Chirp-Bold.ebb56aba.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TwitterChirp';
+    src: url('../../assets/font/Chirp-Heavy.f44ae4ea.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 html {
     height: 100%;
     scroll-behavior: smooth;
 }
 body {
-    font-family: Roboto, Arial, sans-serif;
-    line-height: 1.5;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
-    background-color: var(--bg);
-    color: var(--text-bright);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
 }
 img, picture, video, canvas, svg {
     display: block;
-    max-width: 100%;
 }
 input, button, textarea, select {
     font: inherit;
@@ -35,5 +67,5 @@ a {
 
 svg{
     fill: currentColor;
-    color: var(--text);
+    color: var(--text-primary);
 }

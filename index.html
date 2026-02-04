@@ -9,6 +9,150 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<div class="w-full h-screen flex justify-center">
+    <header>
+        <div id="header-container" class="flex flex-col items-start">
+            <a id="header-logo" href="index.html">
+                <svg id="logo" width="40" height="40">
+                    <use href="assets/images/brand/logo.svg#icon-x-logo"></use>
+                </svg>
+            </a>
+            <ul id="header-navigation" class="flex flex-col">
+                <li>
+                    <a class="header-button active" href="index.html">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-home-filled.svg#icon-home-filled"></use>
+                        </svg>
+                        <span>Anasayfa</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-explore.svg#icon-explore"/>
+                        </svg>
+                        <span>Keşfet</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-notifications.svg#icon-notifications"/>
+                        </svg>
+                        <span>Bildirimler</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-follow.svg#icon-follow"/>
+                        </svg>
+                        <span>Takip et</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-chat.svg#icon-chat"/>
+                        </svg>
+                        <span>Sohbet</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-grok.svg#icon-grok"/>
+                        </svg>
+                        <span>Grok</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-bookmark.svg#icon-bookmark"/>
+                        </svg>
+                        <span>Yer İşaretleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-creator.svg#icon-creator"/>
+                        </svg>
+                        <span>İçerik Üreticisi Stüdyosu</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-x.svg#icon-x"/>
+                        </svg>
+                        <span>Premium</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="header-button" href="#">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-user.svg#icon-user"/>
+                        </svg>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <button class="header-button">
+                        <svg viewBox="0 0 24 24">
+                            <use href="assets/images/header/icons/icon-more.svg#icon-more"/>
+                        </svg>
+                        <span>Daha Fazla</span>
+                    </button>
+                </li>
+            </ul>
+            <a id="publish" class="flex items-center justify-center" href="#">
+                <div>
+                    <button>Gönderi yayınla</button>
+                </div>
+            </a>
+            <div id="user-profile" class="flex flex-row items-center">
+                <img src="assets/images/header/users/user-avatar.jpg" alt="User Avatar">
+                <div class="user-info">
+                    <span class="user-name">Alptekin OCAKDAN</span>
+                    <span class="user-handle">@AlptekinOc23031</span>
+                </div>
+                <svg>
+                    <use href="./assets/images/header/icons/icon-dropdown.svg#icon-dropdown"/>
+                </svg>
 
+            </div>
+        </div>
+    </header>
+    <main class="flex">
+        <section id="feed" class="w-full h-full">
+            <div id="tabs">
+                <button class="tab active">
+                    Sana özel
+                </button>
+                <button class="tab">
+                    Takip ediliyor
+                    <svg width="40" height="40" fill="black">
+                        <use href="assets/images/main/feed/arrow-down#arrow-down"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="create-post" class="flex">
+                <img src="assets/images/header/users/user-avatar.jpg" alt="User Avatar">
+                <div id="post-textarea">
+                    <label for="post-input" hidden></label>
+                    <textarea id="post-input" placeholder="Neler oluyor?"></textarea>
+                </div>
+                <div id="post-actions">
+
+                </div>
+            </div>
+        </section>
+        <section id="sidebar" class="h-full">
+            side feed
+        </section>
+    </main>
+</div>
 </body>
 </html>

@@ -1,100 +1,27 @@
 :root {
-    --bg: #0f0f0f;
+    --bg-main: #FFFFFF;           /* Ana sayfa arkaplanı */
+    --bg-secondary: #F7F9F9;      /* Sağ panel kartları ve arama çubuğu */
+    --bg-hover: #E7E7E8;          /* Gri alanlar üzerindeki hover (Takip et butonu vb.) */
+    --bg-blue-hover: #E8F5FD;     /* Mavi linkler veya butonlar üzerindeki hafif mavi hover */
 
-    --text: #f1f1f1;
-    --text-bright: #ffffff;
+    --text-primary: rgba(15, 20, 25, 1.00);     /* Ana metinler, başlıklar ve kullanıcı adları */
+    --text-secondary: #536471;    /* Gri renkli alt metinler, @kullanıcıadı ve tarih */
+    --text-link: #1D9BF0;         /* Linkler ve etkileşimli mavi metinler */
+    --text-white: #FFFFFF;        /* Koyu renkli butonların üzerindeki beyaz metin */
 
-    --muted: #aaaaaa;
-    --muted-strong: #dddddd;
-    --border: #434141;
+    /* Birincil Aksiyon (Mavi - Gönderi Yayınla) */
+    --btn-primary-bg: #1D9BF0;
+    --btn-primary-hover: #1A8CD8;
 
-    --accent: #326dee;
-    --link: #3ea6ff;
+    /* İkincil Aksiyon (Siyah - Takip Et) */
+    --btn-black-bg: #0F1419;
+    --btn-black-hover: #272C30;
 
-    --surface-hover: rgb(59,59,59);
-    --hover-light: rgb(229,229,229);
+    /* Yan Menü (Sidebar) İkon Hover */
+    --sidebar-hover: #E7E7E8;
 
-}
-
-body:has(#theme-light:checked) {
-    --bg: #ffffff;
-    --black: #000000;
-    --black-rgb: 0,0,0;
-
-    --white: #0a0a0a;
-    --white-rgb: 10,10,10;
-
-    --text: #111111;
-    --text-bright: #000000;
-
-    --muted: #666666;
-    --muted-strong: #444444;
-
-    --surface-1: #f3f4f6;
-    --surface-2: #ffffff;
-    --border: #e6e6e6;
-
-    --accent: #1a73e8;
-    --link: #1a73e8;
-
-    --surface-hover: rgb(245,245,245);
-    --hover-light: rgb(50,50,50);
-
-    --icon-filter: invert(1);
-}
-
-body:has(#theme-dark:checked) {
-    --bg: #0f0f0f;
-    --black: #000000;
-    --black-rgb: 0,0,0;
-
-    --white: #ffffff;
-    --white-rgb: 255,255,255;
-
-    --text: #f1f1f1;
-    --text-bright: #ffffff;
-
-    --muted: #aaaaaa;
-    --muted-strong: #dddddd;
-
-    --surface-1: #212121;
-    --surface-2: #282828;
-    --border: #434141;
-
-    --accent: #326dee;
-    --link: #3ea6ff;
-
-    --surface-hover: rgb(59,59,59);
-    --hover-light: rgb(229,229,229);
-
-    --icon-filter: none;
-}
-
-@media (prefers-color-scheme: light) {
-    body:has(#theme-device:checked) {
-        --bg: #ffffff;
-        --black: #000000;
-        --black-rgb: 0,0,0;
-
-        --white: #0a0a0a;
-        --white-rgb: 10,10,10;
-
-        --text: #111111;
-        --text-bright: #000000;
-
-        --muted: #666666;
-        --muted-strong: #444444;
-
-        --surface-1: #f3f4f6;
-        --surface-2: #ffffff;
-        --border: #e6e6e6;
-
-        --accent: #1a73e8;
-        --link: #1a73e8;
-
-        --surface-hover: rgb(245,245,245);
-        --hover-light: rgb(50,50,50);
-
-        --icon-filter: invert(1);
-    }
+    --border-color: #EFF3F4;      /* Tweetler arası çizgiler ve kenarlıklar */
+    --search-icon: #536471;       /* Arama çubuğu içindeki ikon rengi */
+    --verified-blue: #1D9BF0;     /* Doğrulanmış hesap rozeti rengi */
+    --input-bg: #EFF3F4;          /* Giriş alanlarının iç arkaplanı */
 }
