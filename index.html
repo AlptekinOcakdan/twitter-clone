@@ -127,30 +127,317 @@
     </header>
     <main class="flex">
         <section id="feed" class="w-full h-full">
-            <div id="tabs">
-                <button class="tab active">
-                    Sana özel
-                </button>
+            <div id="tabs" class="flex">
                 <button class="tab">
-                    Takip ediliyor
-                    <svg width="40" height="40" fill="black">
-                        <use href="assets/images/main/feed/arrow-down#arrow-down"/>
-                    </svg>
+                    <div class="tab-label">Sana özel</div>
+                </button>
+                <button class="tab active">
+                    <div class="tab-label">
+                        Takip ediliyor
+                        <svg class="tab-arrow">
+                            <use href="assets/images/main/feed/arrow-down.svg#arrow-down"/>
+                        </svg>
+                    </div>
                 </button>
             </div>
             <div id="create-post" class="flex">
-                <img src="assets/images/header/users/user-avatar.jpg" alt="User Avatar">
-                <div id="post-textarea">
-                    <label for="post-input" hidden></label>
-                    <textarea id="post-input" placeholder="Neler oluyor?"></textarea>
+                <div class="post-avatar-container">
+                    <img src="assets/images/header/users/user-avatar.jpg" alt="User Avatar" class="user-avatar">
                 </div>
-                <div id="post-actions">
+                <div id="post-content-area" class="flex flex-col grow">
+                    <div id="post-textarea-container">
+                        <label for="post-input" hidden></label>
+                        <textarea id="post-input" placeholder="Neler oluyor?"></textarea>
+                    </div>
 
+                    <div id="reply-permission" class="flex items-center">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+                        </svg>
+                        <span>Herkes yanıtlayabilir</span>
+                    </div>
+
+                    <div id="post-actions" class="flex items-center justify-between">
+                        <div class="action-icons flex items-center">
+                            <button class="action-btn" title="Görsel">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/upload-image.svg#upload-image"/></svg>
+                            </button>
+                            <button class="action-btn" title="GIF">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/upload-gif.svg#upload-gif"/></svg>
+                            </button>
+                            <button class="action-btn" title="Grok">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/generate-image-grok.svg#generate-image-grok"/></svg>
+                            </button>
+                            <button class="action-btn" title="Anket">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/create-poll.svg#create-poll"/></svg>
+                            </button>
+                            <button class="action-btn" title="Emoji">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/emoji.svg#emoji"/></svg>
+                            </button>
+                            <button class="action-btn" title="Planla">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/calendar-plan.svg#calendar-plan"/></svg>
+                            </button>
+                            <button class="action-btn disabled" title="Konum">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/feed/location.svg#location"/></svg>
+                            </button>
+                        </div>
+                        <div class="submit-post">
+                            <button id="btn-submit-post" disabled>Gönderi yayınla</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div id="posts-container">
+                <!-- Sample Post 1 (Image Post) -->
+                <article class="post flex">
+                    <div class="post-avatar-col">
+                        <img src="assets/images/header/users/user-avatar.jpg" alt="Hava Forum" class="user-avatar">
+                    </div>
+                    <div class="post-content-col grow">
+                        <div class="post-header flex items-center justify-between">
+                            <div class="post-user-info flex items-center">
+                                <span class="post-display-name">Hava Forum</span>
+                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path></svg>
+                                <span class="post-handle">@HavaForum</span>
+                                <span class="post-dot">·</span>
+                                <span class="post-time">13s</span>
+                            </div>
+                            <div class="post-more-btn flex gap-2">
+                                <button>
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/grok.svg#grok"/></svg>
+                                </button>
+                                <button>
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/more.svg#more"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="post-text">
+                            Anlık İstanbul Boğazı
+                        </div>
+                        <div class="post-media">
+                            <img src="assets/images/header/users/user-avatar.jpg" alt="İstanbul Boğazı" class="post-image">
+                        </div>
+                        <div class="post-interactions flex items-center justify-between">
+                            <div class="interaction-group comment">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/comment.svg#comment"/></svg>
+                                </button>
+                                <span class="interaction-count">143</span>
+                            </div>
+                            <div class="interaction-group retweet">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/retweet.svg#retweet"/></svg>
+                                </button>
+                                <span class="interaction-count">56</span>
+                            </div>
+                            <div class="interaction-group like">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/like.svg#like"/></svg>
+                                </button>
+                                <span class="interaction-count">1 B</span>
+                            </div>
+                            <div class="interaction-group views">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/statics.svg#statics"/></svg>
+                                </button>
+                                <span class="interaction-count">893 B</span>
+                            </div>
+                            <div class="interaction-icons-right flex items-center">
+                                <button class="interaction-btn save" title="Kaydet">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/save.svg#save"/></svg>
+                                </button>
+                                <button class="interaction-btn share" title="Paylaş">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/share.svg#share"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sample Post 2 (Text Only) -->
+                <article class="post flex">
+                    <div class="post-avatar-col">
+                        <img src="assets/images/header/users/user-avatar.jpg" alt="Elon Musk" class="user-avatar">
+                    </div>
+                    <div class="post-content-col grow">
+                        <div class="post-header flex items-center justify-between">
+                            <div class="post-user-info flex items-center">
+                                <span class="post-display-name">Elon Musk</span>
+                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path></svg>
+                                <span class="post-handle">@elonmusk</span>
+                                <span class="post-dot">·</span>
+                                <span class="post-time">2s</span>
+                            </div>
+                            <div class="post-more-btn flex gap-2">
+                                <button>
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/grok.svg#grok"/></svg>
+                                </button>
+                                <button>
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/more.svg#more"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="post-text">
+                            💯
+                        </div>
+                        <div class="post-interactions flex items-center justify-between">
+                            <div class="interaction-group comment">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/comment.svg#comment"/></svg>
+                                </button>
+                                <span class="interaction-count">149</span>
+                            </div>
+                            <div class="interaction-group retweet">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/retweet.svg#retweet"/></svg>
+                                </button>
+                                <span class="interaction-count">68</span>
+                            </div>
+                            <div class="interaction-group like">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/like.svg#like"/></svg>
+                                </button>
+                                <span class="interaction-count">1 B</span>
+                            </div>
+                            <div class="interaction-group views">
+                                <button class="interaction-btn">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/statics.svg#statics"/></svg>
+                                </button>
+                                <span class="interaction-count">47 B</span>
+                            </div>
+                            <div class="interaction-icons-right flex items-center">
+                                <button class="interaction-btn save" title="Kaydet">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/save.svg#save"/></svg>
+                                </button>
+                                <button class="interaction-btn share" title="Paylaş">
+                                    <svg viewBox="0 0 24 24"><use href="assets/images/main/post/share.svg#share"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
         <section id="sidebar" class="h-full">
-            side feed
+            <div id="sidebar-content">
+                <div class="sidebar-search sticky">
+                    <div class="search-container flex items-center">
+                        <svg>
+                            <use href="assets/images/main/sidebar/search.svg#search"/>
+                        </svg>
+                        <label for="search-input" hidden></label>
+                        <input type="text" placeholder="Ara" id="search-input">
+                    </div>
+                </div>
+
+                <div class="sidebar-card premium-card">
+                    <h2>Premium'a Abone Ol</h2>
+                    <p>Yeni özellikleri açmak için abone ol ve uygun olman durumunda içerik üreticisi gelir payı kazan.</p>
+                    <button class="subscribe-btn">Abone ol</button>
+                </div>
+
+                <div class="sidebar-card trends-card">
+                    <h2>Neler oluyor?</h2>
+                    <div class="trend-list">
+                        <div class="trend-item flex justify-between">
+                            <div class="trend-info">
+                                <span class="trend-meta">İş dünyası ve finans · Gündemdekiler</span>
+                                <span class="trend-name">#altın</span>
+                            </div>
+                            <button class="trend-more">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/sidebar/more.svg#more"/></svg>
+                            </button>
+                        </div>
+                        <div class="trend-item flex justify-between">
+                            <div class="trend-info">
+                                <span class="trend-meta">Spor · Gündemdekiler</span>
+                                <span class="trend-name">Cerny</span>
+                            </div>
+                            <button class="trend-more">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/sidebar/more.svg#more"/></svg>
+                            </button>
+                        </div>
+                        <div class="trend-item flex justify-between">
+                            <div class="trend-info">
+                                <span class="trend-meta">Türkiye tarihinde gündem</span>
+                                <span class="trend-name">#TürkiyeminGücüneBak</span>
+                            </div>
+                            <button class="trend-more">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/sidebar/more.svg#more"/></svg>
+                            </button>
+                        </div>
+                        <div class="trend-item flex justify-between">
+                            <div class="trend-info">
+                                <span class="trend-meta">Türkiye tarihinde gündem</span>
+                                <span class="trend-name">Maydonoz Döner</span>
+                            </div>
+                            <button class="trend-more">
+                                <svg viewBox="0 0 24 24"><use href="assets/images/main/sidebar/more.svg#more"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="#" class="show-more">Daha fazla göster</a>
+                </div>
+
+                <div class="sidebar-card who-to-follow">
+                    <h2>Kimi takip etmeli</h2>
+                    <div class="follow-list">
+                        <div class="follow-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="assets/images/header/users/user-avatar.jpg" alt="Emre" class="follow-avatar">
+                                <div class="follow-user-info">
+                                    <div class="flex items-center">
+                                        <span class="display-name">Emre Kocadag</span>
+                                        <svg class="verified-icon" viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path></svg>
+                                    </div>
+                                    <span class="handle">@kocadagemre</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn">Takip et</button>
+                        </div>
+                        <div class="follow-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="assets/images/header/users/user-avatar.jpg" alt="Merih" class="follow-avatar">
+                                <div class="follow-user-info">
+                                    <div class="flex items-center">
+                                        <span class="display-name">Merih Demiral</span>
+                                        <svg class="verified-icon" viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path></svg>
+                                    </div>
+                                    <span class="handle">@Merihdemiral</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn">Takip et</button>
+                        </div>
+                        <div class="follow-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="assets/images/header/users/user-avatar.jpg" alt="NASA" class="follow-avatar">
+                                <div class="follow-user-info">
+                                    <div class="flex items-center">
+                                        <span class="display-name">NASA Events</span>
+                                        <svg class="verified-icon" style="fill: #536471;" viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path></svg>
+                                    </div>
+                                    <span class="handle">@NASA_Events</span>
+                                </div>
+                            </div>
+                            <button class="follow-btn">Takip et</button>
+                        </div>
+                    </div>
+                    <a href="#" class="show-more">Daha fazla göster</a>
+                </div>
+
+                <footer class="sidebar-footer">
+                    <nav class="flex flex-wrap">
+                        <a href="#">Hizmet Şartları</a>
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Çerez Politikası</a>
+                        <a href="#">Imprint</a>
+                        <a href="#">Erişilebilirlik</a>
+                        <a href="#">Reklam bilgisi</a>
+                        <a href="#">Daha fazla ...</a>
+                    </nav>
+                    <div class="copyright">© 2026 X Corp.</div>
+                </footer>
+            </div>
         </section>
     </main>
 </div>

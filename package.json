@@ -1,0 +1,22 @@
+{
+  "name": "twitter-clone",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AlptekinOcakdan/twitter-clone#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlptekinOcakdan/twitter-clone.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "style": "gulp"
+  },
+  "dependencies": {
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1",
+    "sass": "^1.97.3"
+  }
+}

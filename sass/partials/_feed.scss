@@ -1,0 +1,149 @@
+// ==========================================================================
+// FEED COMPONENT
+// ==========================================================================
+@use 'variables' as *;
+@use '../mixins/mixins' as *;
+
+#feed {
+    max-width: $feed-max-width;
+    @include border-sides;
+}
+
+// --------------------------------------------------------------------------
+// Create Post Box
+// --------------------------------------------------------------------------
+#create-post {
+    padding: 0 $spacing-4;
+    @include border-bottom;
+}
+
+.post-avatar-container {
+    padding-top: $spacing-3;
+    margin-right: $spacing-3;
+}
+
+.user-avatar {
+    @include avatar(40px);
+}
+
+#post-content-area {
+    padding-top: 4px;
+}
+
+#post-textarea-container {
+    padding: $spacing-3 0 0 0;
+    min-height: 52px;
+    max-height: 60px;
+}
+
+#post-input {
+    @include input-reset;
+    width: 100%;
+    resize: none;
+    font-size: $font-size-lg;
+    color: var(--text-primary);
+    height: 100%;
+
+    &::placeholder {
+        color: var(--text-secondary);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Reply Permission
+// --------------------------------------------------------------------------
+#reply-permission {
+    display: none;
+    padding: 4px $spacing-3;
+    margin-left: -12px;
+    width: fit-content;
+    color: var(--text-link);
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    border-radius: $border-radius-full;
+    transition: background-color $transition-fast;
+    margin-bottom: $spacing-3;
+
+    &:hover {
+        background-color: var(--bg-blue-hover);
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        margin-right: $spacing-2;
+        fill: var(--text-link);
+    }
+
+    // Show on focus
+    #post-content-area:focus-within & {
+        display: flex;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Post Actions
+// --------------------------------------------------------------------------
+#post-actions {
+    margin-bottom: $spacing-2;
+    padding-top: $spacing-3;
+
+    // Border appears on focus
+    #post-content-area:focus-within & {
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+.action-icons {
+    margin-left: -8px;
+}
+
+.action-btn {
+    @include button-icon;
+    padding: $spacing-2;
+
+    &:hover {
+        background-color: var(--bg-blue-hover);
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        color: var(--btn-primary-bg);
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Submit Button
+// --------------------------------------------------------------------------
+#btn-submit-post {
+    background-color: #919497;
+    color: var(--text-white);
+    border: none;
+    padding: $spacing-2 $spacing-4;
+    border-radius: $border-radius-full;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    line-height: 20px;
+    transition: background-color $transition-fast;
+
+    &:not(:disabled) {
+        background-color: var(--btn-black-bg);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--btn-black-hover);
+        }
+    }
+}
+

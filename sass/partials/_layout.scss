@@ -1,0 +1,16 @@
+// ==========================================================================
+// LAYOUT
+// ==========================================================================
+@use 'variables' as *;
+
+main {
+    width: $main-width;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+svg {
+    color: var(--text-primary);
+}
+
+

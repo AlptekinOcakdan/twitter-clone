@@ -1,0 +1,171 @@
+// ==========================================================================
+// HEADER COMPONENT
+// ==========================================================================
+@use 'variables' as *;
+@use '../mixins/mixins' as *;
+
+header {
+    align-items: flex-end;
+    width: $header-width;
+    margin-left: 60px;
+}
+
+#header-container {
+    padding: 0 $spacing-2;
+    height: 100%;
+}
+
+// --------------------------------------------------------------------------
+// Logo
+// --------------------------------------------------------------------------
+#header-logo {
+    margin: 2px 0;
+    height: 52px;
+    min-width: 52px;
+    @include flex-center;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 50%;
+    @include hover-bg(var(--bg-hover));
+}
+
+#logo {
+    width: 24px;
+    height: 2rem;
+    color: var(--text-primary);
+    display: block;
+    stroke: var(--text-primary);
+}
+
+// --------------------------------------------------------------------------
+// Navigation
+// --------------------------------------------------------------------------
+#header-navigation {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    width: 100%;
+
+    li {
+        padding: 4px 0;
+        width: 100%;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Header Button
+// --------------------------------------------------------------------------
+.header-button {
+    display: flex;
+    flex-direction: row;
+    line-height: 24px;
+    align-items: center;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-regular;
+    max-width: 100%;
+    padding: $spacing-3;
+    background: transparent;
+    border: none;
+    border-radius: $border-radius-full;
+    cursor: pointer;
+    width: fit-content;
+    @include text-ellipsis;
+    @include hover-bg(var(--sidebar-hover));
+
+    svg {
+        width: 26.25px;
+        height: 26.25px;
+        flex-shrink: 0;
+    }
+
+    span {
+        @include text-ellipsis;
+        min-width: 0;
+        margin-left: 20px;
+        margin-right: 16px;
+    }
+}
+
+// Active state (genel sınıf - hem header-button hem tab için kullanılıyor)
+.active {
+    font-weight: $font-weight-bold;
+}
+
+// --------------------------------------------------------------------------
+// Publish Button
+// --------------------------------------------------------------------------
+#publish {
+    margin: 16px 0;
+    width: 90%;
+    border: 1px solid transparent;
+    background-color: var(--btn-black-bg);
+    min-width: 52px;
+    min-height: 52px;
+    padding: 0 32px;
+    cursor: pointer;
+    border-radius: $border-radius-full;
+    transition: background-color $transition-fast;
+
+    button {
+        @include button-reset;
+        color: var(--text-white);
+        font-size: $font-size-md;
+        font-weight: $font-weight-bold;
+        line-height: 20px;
+        @include text-ellipsis;
+        min-width: 0;
+    }
+
+    &:hover {
+        background-color: var(--btn-black-hover);
+        cursor: pointer;
+    }
+}
+
+// --------------------------------------------------------------------------
+// User Profile
+// --------------------------------------------------------------------------
+#user-profile {
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    margin-top: auto;
+    margin-bottom: $spacing-3;
+    padding: $spacing-3;
+    border-radius: $border-radius-full;
+    background: transparent;
+
+    img {
+        @include avatar(40px);
+    }
+
+    .user-info {
+        max-width: 100%;
+        margin: 0 $spacing-3;
+        flex-shrink: 1;
+
+        .user-name {
+            line-height: 20px;
+            font-weight: $font-weight-bold;
+            font-size: $font-size-base;
+            @include text-ellipsis;
+        }
+
+        .user-handle {
+            line-height: 20px;
+            font-size: $font-size-base;
+            font-weight: $font-weight-regular;
+            font-feature-settings: 'ss01' on;
+            color: var(--text-secondary);
+            @include text-ellipsis;
+        }
+    }
+
+    svg {
+        max-width: 100%;
+        height: 1.25rem;
+    }
+
+    &:hover {
+        background: var(--sidebar-hover);
+    }
+}
+

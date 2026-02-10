@@ -1,0 +1,238 @@
+// ==========================================================================
+// POST COMPONENT
+// ==========================================================================
+@use 'variables' as *;
+@use '../mixins/mixins' as *;
+
+.post {
+    padding: $spacing-3 $spacing-4;
+    @include border-bottom;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.035);
+    }
+}
+
+// --------------------------------------------------------------------------
+// Post Layout
+// --------------------------------------------------------------------------
+.post-avatar-col {
+    margin-right: $spacing-3;
+}
+
+.post-header {
+    margin-bottom: 2px;
+}
+
+// --------------------------------------------------------------------------
+// User Info
+// --------------------------------------------------------------------------
+.post-user-info {
+    font-size: $font-size-base;
+    gap: 4px;
+}
+
+.post-display-name {
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.verified-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--verified-blue);
+    flex-shrink: 0;
+}
+
+.post-handle,
+.post-time,
+.post-dot {
+    color: var(--text-secondary);
+}
+
+// --------------------------------------------------------------------------
+// Post More Button
+// --------------------------------------------------------------------------
+.post-more-btn {
+    svg {
+        width: 18px;
+        height: 18px;
+        color: var(--text-secondary);
+    }
+
+    button {
+        @include button-icon;
+        padding: $spacing-2;
+
+        &:hover {
+            background-color: var(--btn-primary-hover);
+            color: var(--text-link);
+
+            svg {
+                color: var(--text-link);
+            }
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Post Content
+// --------------------------------------------------------------------------
+.post-text {
+    font-size: $font-size-base;
+    line-height: 20px;
+    margin-bottom: $spacing-3;
+    color: var(--text-primary);
+}
+
+.post-media {
+    margin-top: $spacing-3;
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 512px;
+    object-fit: cover;
+}
+
+// --------------------------------------------------------------------------
+// Post Interactions
+// --------------------------------------------------------------------------
+.post-interactions {
+    margin-top: $spacing-3;
+    max-width: 530px;
+}
+
+.interaction-group {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: $font-size-xs;
+    transition: color $transition-fast;
+}
+
+.interaction-btn {
+    @include button-icon;
+    padding: $spacing-2;
+
+    svg {
+        width: 18.75px;
+        height: 18.75px;
+        color: var(--text-secondary);
+    }
+}
+
+.interaction-count {
+    padding: 0 4px;
+}
+
+// --------------------------------------------------------------------------
+// Interaction Hover Colors
+// --------------------------------------------------------------------------
+.comment {
+    &:hover {
+        color: var(--text-link);
+
+        .interaction-btn {
+            background-color: var(--btn-primary-hover);
+        }
+
+        svg {
+            color: var(--text-link);
+        }
+    }
+}
+
+.retweet {
+    &:hover {
+        color: $color-retweet;
+
+        .interaction-btn {
+            background-color: rgba(0, 186, 124, 0.1);
+        }
+
+        svg {
+            color: $color-retweet;
+        }
+    }
+}
+
+.like {
+    &:hover {
+        color: $color-like;
+
+        .interaction-btn {
+            background-color: rgba(249, 24, 128, 0.1);
+        }
+
+        svg {
+            color: $color-like;
+        }
+    }
+}
+
+.views {
+    &:hover {
+        color: var(--text-link);
+
+        .interaction-btn {
+            background-color: var(--btn-primary-hover);
+        }
+
+        svg {
+            color: var(--text-link);
+        }
+    }
+}
+
+.save {
+    &:hover {
+        .interaction-btn {
+            background-color: var(--btn-primary-hover);
+        }
+
+        svg {
+            color: var(--text-link);
+        }
+    }
+}
+
+.share {
+    &:hover {
+        .interaction-btn {
+            background-color: var(--btn-primary-hover);
+        }
+
+        svg {
+            color: var(--text-link);
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Right Side Interaction Icons
+// --------------------------------------------------------------------------
+.interaction-icons-right {
+    gap: 10px;
+
+    .interaction-btn {
+        background: transparent;
+        padding: $spacing-2;
+        transition: background-color $transition-fast;
+
+        &:hover {
+            background-color: var(--bg-blue-hover);
+        }
+    }
+}
+
+

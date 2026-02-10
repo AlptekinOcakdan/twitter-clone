@@ -11,16 +11,17 @@
 
     /* Birincil Aksiyon (Mavi - Gönderi Yayınla) */
     --btn-primary-bg: #1D9BF0;
-    --btn-primary-hover: #1A8CD8;
+    --btn-primary-hover: #e0f4fd;
 
     /* İkincil Aksiyon (Siyah - Takip Et) */
     --btn-black-bg: #0F1419;
-    --btn-black-hover: #272C30;
+    --btn-black-hover: rgba(29, 155, 240, 0.1);
 
     /* Yan Menü (Sidebar) İkon Hover */
     --sidebar-hover: #E7E7E8;
 
     --border-color: #EFF3F4;      /* Tweetler arası çizgiler ve kenarlıklar */
+    --border-secondary-color: rgb(207, 217, 222);
     --search-icon: #536471;       /* Arama çubuğu içindeki ikon rengi */
     --verified-blue: #1D9BF0;     /* Doğrulanmış hesap rozeti rengi */
     --input-bg: #EFF3F4;          /* Giriş alanlarının iç arkaplanı */

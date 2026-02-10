@@ -1,0 +1,778 @@
+@import "./partials/general.css";
+
+header{
+    align-items: flex-end;
+    width: 275px;
+    margin-left: 60px;
+}
+
+#header-container{
+    padding: 0 8px;
+    height: 100%;
+}
+
+#header-logo {
+    margin: 2px 0;
+    height: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: background-color 0.2s;
+    border-color: transparent;
+    border-radius: 50%;
+}
+
+#header-logo:hover {
+    background-color: var(--bg-hover);
+}
+
+main {
+    width: 1050px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#feed {
+    max-width: 600px;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+#sidebar {
+    width: 350px;
+    margin-right: 70px;
+}
+
+#logo {
+    width: 24px;
+    height: 2rem;
+    color: var(--text-primary);
+    display: block;
+    stroke: var(--text-primary);
+}
+
+svg {
+    color: var(--text-primary);
+}
+
+#header-navigation {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+#header-navigation li {
+    padding: 4px 0;
+    width: 100%;
+}
+
+.header-button{
+    display: flex;
+    flex-direction: row;
+    line-height: 24px;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 400;
+    transition: background-color 0.2s;
+    max-width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    width: fit-content;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.header-button svg {
+    width: 26.25px;
+    height: 26.25px;
+    flex-shrink: 0;
+}
+
+.active{
+    font-weight: 700;
+}
+
+.header-button span {
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-width: 0;
+    margin-left: 20px;
+    margin-right: 16px;
+}
+
+.header-button:hover {
+    background-color: var(--sidebar-hover);
+}
+
+#publish {
+    margin: 16px 0;
+    width: 90%;
+    border: 1px solid transparent;
+    background-color: var(--btn-black-bg);
+    min-width: 52px;
+    min-height: 52px;
+    padding: 0 32px;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+#publish button{
+    border: none;
+    background: transparent;
+    color: var(--text-white);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 20px;
+    font-family: inherit;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-width: 0;
+    cursor: pointer;
+}
+
+#publish:hover {
+    background-color: var(--btn-black-hover);
+    cursor: pointer;
+}
+
+#user-profile {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: auto;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 9999px;
+    background: transparent;
+}
+
+#user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#user-profile .user-info {
+    max-width: 100%;
+    margin: 0 12px;
+    flex-shrink: 1;
+}
+
+#user-profile .user-info .user-name {
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#user-profile .user-info .user-handle {
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    font-feature-settings: 'ss01' on;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#user-profile svg {
+    max-width: 100%;
+    height: 1.25rem;
+}
+
+#user-profile:hover {
+    background: var(--sidebar-hover);
+}
+
+/* --- TABS SECTION --- */
+#tabs {
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+}
+
+.tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.tab:hover {
+    background-color: var(--bg-hover);
+}
+
+.tab-label {
+    position: relative;
+    padding: 16px 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tab.active .tab-label {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.tab.active .tab-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--btn-primary-bg);
+    border-radius: 9999px;
+}
+
+.tab-arrow {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-primary);
+}
+
+/* --- CREATE POST BOX --- */
+#create-post {
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-avatar-container {
+    padding-top: 12px;
+    margin-right: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#post-content-area {
+    padding-top: 4px;
+}
+
+#post-textarea-container {
+    padding: 12px 0 0 0;
+    min-height: 52px;
+    max-height: 60px;
+}
+
+#post-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 20px;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: transparent;
+    height: 100%;
+}
+
+#post-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Reply Permission Focus logic */
+#reply-permission {
+    display: none; /* Hidden by default */
+    padding: 4px 12px;
+    margin-left: -12px;
+    width: fit-content;
+    color: var(--text-link);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    margin-bottom: 12px;
+}
+
+#reply-permission:hover {
+    background-color: var(--bg-blue-hover);
+}
+
+#reply-permission svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    fill: var(--text-link);
+}
+
+#post-content-area:focus-within #reply-permission {
+    display: flex;
+}
+
+#post-actions {
+    margin-bottom: 8px;
+    padding-top: 12px;
+    /* Border appears on focus */
+}
+
+#post-content-area:focus-within #post-actions {
+    border-top: 1px solid var(--border-color);
+}
+
+.action-icons {
+    margin-left: -8px;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background-color: var(--bg-blue-hover);
+}
+
+.action-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--btn-primary-bg);
+}
+
+.action-btn.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.action-btn.disabled:hover{
+    background-color: transparent;
+}
+
+#btn-submit-post {
+    background-color: #919497;
+    color: var(--text-white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    transition: background-color 0.2s;
+}
+
+#btn-submit-post:not(:disabled) {
+    background-color: var(--btn-black-bg);
+    cursor: pointer;
+}
+
+#btn-submit-post:not(:disabled):hover {
+    background-color: var(--btn-black-hover);
+}
+
+.post {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.post:hover {
+    background-color: rgba(0, 0, 0, 0.035);
+}
+
+.post-avatar-col {
+    margin-right: 12px;
+}
+
+.post-header {
+    margin-bottom: 2px;
+}
+
+.post-user-info {
+    font-size: 15px;
+    gap: 4px;
+}
+
+.post-display-name {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.post-display-name:hover {
+    text-decoration: underline;
+}
+
+.verified-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--verified-blue);
+    flex-shrink: 0;
+}
+
+.post-handle, .post-time, .post-dot {
+    color: var(--text-secondary);
+}
+
+.post-more-btn svg {
+    width: 18px;
+    height: 18px;
+    color: var(--text-secondary);
+}
+
+.post-more-btn button {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 8px;
+}
+
+.post-more-btn button:hover {
+    background-color: var(--btn-primary-hover);
+    color: var(--text-link);
+}
+
+.post-text {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.post-media {
+    margin-top: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 512px;
+    object-fit: cover;
+}
+
+.post-interactions {
+    margin-top: 12px;
+    max-width: 530px;
+}
+
+.interaction-group {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+    transition: color 0.2s;
+}
+
+.interaction-btn {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    padding: 8px;
+}
+
+.interaction-btn svg {
+    width: 18.75px;
+    height: 18.75px;
+    color: var(--text-secondary);
+}
+
+.interaction-count {
+    padding: 0 4px;
+}
+
+/* Interaction Hover Colors */
+.comment:hover { color: var(--text-link); }
+.comment:hover .interaction-btn { background-color: var(--btn-primary-hover); }
+.comment:hover svg { color: var(--text-link); }
+
+.retweet:hover { color: #00BA7C; }
+.retweet:hover .interaction-btn { background-color: rgba(0, 186, 124, 0.1); }
+.retweet:hover svg { color: #00BA7C; }
+
+.like:hover { color: #F91880; }
+.like:hover .interaction-btn { background-color: rgba(249, 24, 128, 0.1); }
+.like:hover svg { color: #F91880; }
+
+.views:hover { color: var(--text-link); }
+.views:hover .interaction-btn { background-color: var(--btn-primary-hover); }
+.views:hover svg { color: var(--text-link); }
+
+.save:hover .interaction-btn { background-color: var(--btn-primary-hover); }
+.save:hover svg { color: var(--text-link); }
+
+.share:hover .interaction-btn { background-color: var(--btn-primary-hover); }
+.share:hover svg { color: var(--text-link); }
+
+.interaction-icons-right {
+    gap: 10px;
+}
+
+.interaction-icons-right .interaction-btn {
+    background: transparent;
+    padding: 8px;
+    transition: background-color 0.2s;
+}
+
+.interaction-icons-right .interaction-btn:hover{
+    background-color: var(--bg-blue-hover);
+}
+
+.sidebar-search {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-main);
+    padding: 6px 0 12px 0;
+    z-index: 20;
+}
+
+.search-container {
+    background-color: transparent;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-secondary-color);
+}
+
+.search-container:focus-within {
+    background-color: var(--bg-main);
+    border-color: var(--text-link);
+}
+
+.search-container svg {
+    width: 18.75px;
+    height: 18.75px;
+    fill: var(--text-secondary);
+    margin-right: 12px;
+}
+
+.search-container:focus-within .search-icon {
+    fill: var(--text-link);
+}
+
+#search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+}
+
+.sidebar-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px 20px;
+    align-items: flex-start;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.sidebar-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.sidebar-card p {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.subscribe-btn {
+    background-color: var(--btn-primary-bg);
+    color: var(--text-white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.subscribe-btn:hover {
+    background-color: var(--btn-primary-hover);
+}
+
+/* Trends Styling */
+.sidebar-card.trends-card{
+    padding: 12px 0 0 0;
+    gap: 0;
+}
+
+.sidebar-card.trends-card a {
+    padding: 16px;
+}
+
+.sidebar-card.trends-card h2{
+    font-weight: 800;
+    padding: 0 16px;
+    margin-bottom: 10px;
+}
+
+.trend-list {
+    width: 100%;
+}
+
+.trend-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.trend-item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.trend-meta {
+    display: block;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.trend-name {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.trend-more {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.trend-more svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-secondary);
+}
+
+.show-more {
+    display: block;
+    padding: 16px 0;
+    color: var(--text-link);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    transition: background-color 0.2s;
+}
+
+.show-more:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Who to follow Styling */
+.follow-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.follow-item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.follow-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.follow-user-info .display-name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.follow-user-info .handle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: block;
+}
+
+.follow-btn {
+    background-color: var(--btn-black-bg);
+    color: var(--text-white);
+    border: none;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    padding: 16px;
+}
+
+.sidebar-footer nav a {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-right: 12px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.sidebar-footer nav a:hover {
+    text-decoration: underline;
+}
+
+.sidebar-footer .copyright {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
