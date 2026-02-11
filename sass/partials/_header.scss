@@ -1,23 +1,24 @@
-// ==========================================================================
-// HEADER COMPONENT
-// ==========================================================================
 @use 'variables' as *;
 @use '../mixins/mixins' as *;
 
 header {
+    display: flex;
+    flex-direction: column;
     align-items: flex-end;
     width: $header-width;
+    height: 100vh;
+    flex-shrink: 0;
     margin-left: 60px;
 }
 
 #header-container {
+    display: flex;
+    flex-direction: column;
+    width: 275px;
     padding: 0 $spacing-2;
     height: 100%;
 }
 
-// --------------------------------------------------------------------------
-// Logo
-// --------------------------------------------------------------------------
 #header-logo {
     margin: 2px 0;
     height: 52px;
@@ -37,9 +38,6 @@ header {
     stroke: var(--text-primary);
 }
 
-// --------------------------------------------------------------------------
-// Navigation
-// --------------------------------------------------------------------------
 #header-navigation {
     margin-top: 2px;
     margin-bottom: 4px;
@@ -51,9 +49,6 @@ header {
     }
 }
 
-// --------------------------------------------------------------------------
-// Header Button
-// --------------------------------------------------------------------------
 .header-button {
     display: flex;
     flex-direction: row;
@@ -68,6 +63,7 @@ header {
     border-radius: $border-radius-full;
     cursor: pointer;
     width: fit-content;
+    overflow: hidden;
     @include text-ellipsis;
     @include hover-bg(var(--sidebar-hover));
 
@@ -82,17 +78,14 @@ header {
         min-width: 0;
         margin-left: 20px;
         margin-right: 16px;
+        overflow: hidden;
     }
 }
 
-// Active state (genel sınıf - hem header-button hem tab için kullanılıyor)
 .active {
     font-weight: $font-weight-bold;
 }
 
-// --------------------------------------------------------------------------
-// Publish Button
-// --------------------------------------------------------------------------
 #publish {
     margin: 16px 0;
     width: 90%;
@@ -121,9 +114,6 @@ header {
     }
 }
 
-// --------------------------------------------------------------------------
-// User Profile
-// --------------------------------------------------------------------------
 #user-profile {
     cursor: pointer;
     transition: background-color $transition-fast;

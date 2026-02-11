@@ -1,17 +1,16 @@
-// ==========================================================================
-// SIDEBAR COMPONENT
-// ==========================================================================
 @use 'variables' as *;
 @use '../mixins/mixins' as *;
 
 #sidebar {
     width: $sidebar-width;
     margin-right: 70px;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    scroll-behavior: smooth;
+    @include hide-scrollbar;
 }
 
-// --------------------------------------------------------------------------
-// Search
-// --------------------------------------------------------------------------
 .sidebar-search {
     @include sticky-header(0, var(--bg-main));
     padding: 6px 0 $spacing-3 0;
@@ -47,9 +46,6 @@
     width: 100%;
 }
 
-// --------------------------------------------------------------------------
-// Sidebar Card
-// --------------------------------------------------------------------------
 .sidebar-card {
     @include flex-column;
     @include card-base;
@@ -70,9 +66,6 @@
     }
 }
 
-// --------------------------------------------------------------------------
-// Subscribe Button
-// --------------------------------------------------------------------------
 .subscribe-btn {
     @include button-pill(var(--btn-primary-bg), var(--text-white));
 
@@ -81,10 +74,22 @@
     }
 }
 
-// --------------------------------------------------------------------------
-// Trends Card
-// --------------------------------------------------------------------------
 .sidebar-card.trends-card {
+    padding: $spacing-3 0 0 0;
+    gap: 0;
+
+    a {
+        padding: $spacing-4;
+    }
+
+    h2 {
+        font-weight: $font-weight-heavy;
+        padding: 0 $spacing-4;
+        margin-bottom: 10px;
+    }
+}
+
+.sidebar-card.who-to-follow {
     padding: $spacing-3 0 0 0;
     gap: 0;
 
@@ -137,10 +142,8 @@
     }
 }
 
-// --------------------------------------------------------------------------
-// Show More Link
-// --------------------------------------------------------------------------
 .show-more {
+    width: 100%;
     display: block;
     padding: $spacing-4 0;
     color: var(--text-link);
@@ -150,13 +153,14 @@
     @include hover-bg(rgba(0, 0, 0, 0.03));
 }
 
-// --------------------------------------------------------------------------
-// Who to Follow
-// --------------------------------------------------------------------------
 .follow-item {
     padding: $spacing-3 $spacing-4;
     cursor: pointer;
     @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.follow-list{
+    width: 100%;
 }
 
 .follow-avatar {
@@ -183,9 +187,6 @@
     font-size: $font-size-sm;
 }
 
-// --------------------------------------------------------------------------
-// Sidebar Footer
-// --------------------------------------------------------------------------
 .sidebar-footer {
     padding: $spacing-4;
 

@@ -1,17 +1,15 @@
-// ==========================================================================
-// FEED COMPONENT
-// ==========================================================================
 @use 'variables' as *;
 @use '../mixins/mixins' as *;
 
 #feed {
     max-width: $feed-max-width;
+    height: 100vh;
+    overflow-y: auto;
+    flex-grow: 1;
     @include border-sides;
+    @include hide-scrollbar;
 }
 
-// --------------------------------------------------------------------------
-// Create Post Box
-// --------------------------------------------------------------------------
 #create-post {
     padding: 0 $spacing-4;
     @include border-bottom;
@@ -49,9 +47,6 @@
     }
 }
 
-// --------------------------------------------------------------------------
-// Reply Permission
-// --------------------------------------------------------------------------
 #reply-permission {
     display: none;
     padding: 4px $spacing-3;
@@ -76,20 +71,15 @@
         fill: var(--text-link);
     }
 
-    // Show on focus
     #post-content-area:focus-within & {
         display: flex;
     }
 }
 
-// --------------------------------------------------------------------------
-// Post Actions
-// --------------------------------------------------------------------------
 #post-actions {
     margin-bottom: $spacing-2;
     padding-top: $spacing-3;
 
-    // Border appears on focus
     #post-content-area:focus-within & {
         border-top: 1px solid var(--border-color);
     }
@@ -123,9 +113,6 @@
     }
 }
 
-// --------------------------------------------------------------------------
-// Submit Button
-// --------------------------------------------------------------------------
 #btn-submit-post {
     background-color: #919497;
     color: var(--text-white);

@@ -1,12 +1,5 @@
-// ==========================================================================
-// MIXINS
-// ==========================================================================
-
 @use '../partials/variables' as *;
 
-// --------------------------------------------------------------------------
-// Flexbox Mixins
-// --------------------------------------------------------------------------
 @mixin flex-center {
     display: flex;
     align-items: center;
@@ -24,9 +17,6 @@
     flex-direction: column;
 }
 
-// --------------------------------------------------------------------------
-// Text Truncation
-// --------------------------------------------------------------------------
 @mixin text-ellipsis {
     white-space: nowrap;
     word-wrap: break-word;
@@ -36,9 +26,6 @@
     overflow-y: hidden;
 }
 
-// --------------------------------------------------------------------------
-// Button Mixins
-// --------------------------------------------------------------------------
 @mixin button-reset {
     background: transparent;
     border: none;
@@ -69,18 +56,12 @@
     transition: background-color $transition-fast;
 }
 
-// --------------------------------------------------------------------------
-// Avatar Mixins
-// --------------------------------------------------------------------------
 @mixin avatar($size: 40px) {
     width: $size;
     height: $size;
     border-radius: 50%;
 }
 
-// --------------------------------------------------------------------------
-// Hover Effects
-// --------------------------------------------------------------------------
 @mixin hover-bg($color) {
     transition: background-color $transition-fast;
 
@@ -89,9 +70,6 @@
     }
 }
 
-// --------------------------------------------------------------------------
-// Card Styling
-// --------------------------------------------------------------------------
 @mixin card-base {
     background-color: transparent;
     border: 1px solid var(--border-color);
@@ -99,9 +77,6 @@
     overflow: hidden;
 }
 
-// --------------------------------------------------------------------------
-// Sticky Header
-// --------------------------------------------------------------------------
 @mixin sticky-header($top: 0, $bg-color: var(--bg-main)) {
     position: sticky;
     top: $top;
@@ -109,9 +84,6 @@
     z-index: $z-index-sticky;
 }
 
-// --------------------------------------------------------------------------
-// Border Utilities
-// --------------------------------------------------------------------------
 @mixin border-bottom {
     border-bottom: 1px solid var(--border-color);
 }
@@ -121,10 +93,6 @@
     border-right: 1px solid var(--border-color);
 }
 
-
-// --------------------------------------------------------------------------
-// Input Reset
-// --------------------------------------------------------------------------
 @mixin input-reset {
     background: transparent;
     border: none;
@@ -132,9 +100,6 @@
     font-family: inherit;
 }
 
-// --------------------------------------------------------------------------
-// Visually Hidden (Accessibility)
-// --------------------------------------------------------------------------
 @mixin visually-hidden {
     position: absolute;
     width: 1px;
@@ -145,5 +110,13 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+@mixin hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 

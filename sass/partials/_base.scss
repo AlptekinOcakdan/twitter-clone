@@ -1,14 +1,8 @@
-// ==========================================================================
-// BASE STYLES (Reset & Typography)
-// ==========================================================================
 @use 'variables' as *;
 
-// --------------------------------------------------------------------------
-// Font Face Declarations
-// --------------------------------------------------------------------------
 @font-face {
     font-family: 'TwitterChirp';
-    src: url('../assets/font/Chirp-Regular.80fda27a.woff2') format('woff2');
+    src: url('../../assets/font/Chirp-Regular.80fda27a.woff2') format('woff2');
     font-weight: $font-weight-regular;
     font-style: normal;
     font-display: swap;
@@ -16,7 +10,7 @@
 
 @font-face {
     font-family: 'TwitterChirp';
-    src: url('../assets/font/Chirp-Medium.f8e2739a.woff2') format('woff2');
+    src: url('../../assets/font/Chirp-Medium.f8e2739a.woff2') format('woff2');
     font-weight: $font-weight-medium;
     font-style: normal;
     font-display: swap;
@@ -24,7 +18,7 @@
 
 @font-face {
     font-family: 'TwitterChirp';
-    src: url('../assets/font/Chirp-Bold.ebb56aba.woff2') format('woff2');
+    src: url('../../assets/font/Chirp-Bold.ebb56aba.woff2') format('woff2');
     font-weight: $font-weight-bold;
     font-style: normal;
     font-display: swap;
@@ -32,15 +26,12 @@
 
 @font-face {
     font-family: 'TwitterChirp';
-    src: url('../assets/font/Chirp-Heavy.f44ae4ea.woff2') format('woff2');
+    src: url('../../assets/font/Chirp-Heavy.f44ae4ea.woff2') format('woff2');
     font-weight: $font-weight-heavy;
     font-style: normal;
     font-display: swap;
 }
 
-// --------------------------------------------------------------------------
-// CSS Reset
-// --------------------------------------------------------------------------
 *,
 *::before,
 *::after {
@@ -51,21 +42,18 @@
 
 html {
     height: 100%;
-    scroll-behavior: smooth;
 }
 
 body {
     font-family: $font-primary;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     background-color: var(--bg-main);
     color: var(--text-primary);
 }
 
-// --------------------------------------------------------------------------
-// Media Elements
-// --------------------------------------------------------------------------
 img,
 picture,
 video,
@@ -74,9 +62,6 @@ svg {
     display: block;
 }
 
-// --------------------------------------------------------------------------
-// Form Elements
-// --------------------------------------------------------------------------
 input,
 button,
 textarea,
@@ -84,9 +69,6 @@ select {
     font: inherit;
 }
 
-// --------------------------------------------------------------------------
-// Typography
-// --------------------------------------------------------------------------
 p,
 h1,
 h2,
@@ -97,25 +79,16 @@ h6 {
     overflow-wrap: break-word;
 }
 
-// --------------------------------------------------------------------------
-// Lists
-// --------------------------------------------------------------------------
 ul,
 ol {
     list-style: none;
 }
 
-// --------------------------------------------------------------------------
-// Links
-// --------------------------------------------------------------------------
 a {
     text-decoration: none;
     color: inherit;
 }
 
-// --------------------------------------------------------------------------
-// SVG Default Styling
-// --------------------------------------------------------------------------
 svg {
     fill: currentColor;
     color: var(--text-primary);
