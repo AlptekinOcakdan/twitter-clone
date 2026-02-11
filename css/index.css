@@ -21,28 +21,28 @@
 
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../../assets/font/Chirp-Regular.80fda27a.woff2") format("woff2");
+  src: url("../assets/font/Chirp-Regular.80fda27a.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../../assets/font/Chirp-Medium.f8e2739a.woff2") format("woff2");
+  src: url("../assets/font/Chirp-Medium.f8e2739a.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../../assets/font/Chirp-Bold.ebb56aba.woff2") format("woff2");
+  src: url("../assets/font/Chirp-Bold.ebb56aba.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../../assets/font/Chirp-Heavy.f44ae4ea.woff2") format("woff2");
+  src: url("../assets/font/Chirp-Heavy.f44ae4ea.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -397,6 +397,26 @@ svg {
   color: var(--text-primary);
 }
 
+@media (max-width: 1384px) {
+  main {
+    width: 990px;
+  }
+}
+@media (max-width: 1077px) {
+  main {
+    width: 920px;
+  }
+}
+@media (max-width: 1002px) {
+  main {
+    width: auto;
+    flex-grow: 0;
+  }
+  #feed {
+    width: 600px;
+    flex-grow: 0;
+  }
+}
 header {
   display: flex;
   flex-direction: column;
@@ -445,7 +465,6 @@ header {
   width: 100%;
 }
 #header-navigation li {
-  padding: 4px 0;
   width: 100%;
 }
 
@@ -498,7 +517,6 @@ header {
 }
 
 #publish {
-  margin: 16px 0;
   width: 90%;
   border: 1px solid transparent;
   background-color: var(--btn-black-bg);
@@ -509,11 +527,7 @@ header {
   border-radius: 9999px;
   transition: background-color 0.2s;
 }
-#publish button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
+#publish .post-text {
   color: var(--text-white);
   font-size: 17px;
   font-weight: 700;
@@ -525,6 +539,12 @@ header {
   overflow-x: hidden;
   overflow-y: hidden;
   min-width: 0;
+}
+#publish .post-icon {
+  display: none;
+  width: 24px;
+  height: 24px;
+  fill: var(--text-white);
 }
 #publish:hover {
   background-color: var(--btn-black-hover);
@@ -582,6 +602,110 @@ header {
   background: var(--sidebar-hover);
 }
 
+@media (max-width: 1384px) {
+  header {
+    margin-left: 0;
+  }
+}
+@media (max-width: 1279px) {
+  header {
+    width: 88px;
+    align-items: center;
+  }
+  #header-container {
+    width: auto;
+    padding: 0;
+    align-items: center;
+  }
+  #header-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #header-navigation li {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .header-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    justify-content: center;
+  }
+  .header-button span {
+    display: none;
+  }
+  .header-button svg {
+    margin: 0;
+  }
+  #publish {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #publish .post-text {
+    display: none;
+  }
+  #publish .post-icon {
+    display: block;
+  }
+  #user-profile {
+    padding: 12px;
+    width: fit-content;
+  }
+  #user-profile .user-info {
+    display: none;
+  }
+  #user-profile > svg {
+    display: none;
+  }
+  #user-profile img {
+    margin: 0;
+  }
+  #header-logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 599px) {
+  header {
+    width: 68px;
+    margin-left: 0;
+  }
+  #header-container {
+    width: 68px;
+  }
+  .header-button {
+    width: 42px;
+    height: 42px;
+  }
+  #publish {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+  #header-logo {
+    width: 42px;
+    height: 42px;
+  }
+  #user-profile {
+    padding: 8px;
+  }
+}
+@media (max-width: 499px) {
+  header {
+    display: none;
+  }
+}
 #tabs {
   border-bottom: 1px solid var(--border-color);
   position: sticky;
@@ -852,7 +976,6 @@ header {
 .post-text {
   font-size: 15px;
   line-height: 20px;
-  margin-bottom: 0.75rem;
   color: var(--text-primary);
 }
 
@@ -1207,4 +1330,20 @@ header {
   font-size: 13px;
   color: var(--text-secondary);
   margin-top: 0.5rem;
+}
+
+@media (max-width: 1384px) {
+  #sidebar {
+    margin-right: 10px;
+  }
+}
+@media (max-width: 1078px) {
+  #sidebar {
+    width: 290px;
+  }
+}
+@media (max-width: 1002px) {
+  #sidebar {
+    display: none;
+  }
 }

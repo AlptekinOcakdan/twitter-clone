@@ -44,7 +44,6 @@ header {
     width: 100%;
 
     li {
-        padding: 4px 0;
         width: 100%;
     }
 }
@@ -87,7 +86,6 @@ header {
 }
 
 #publish {
-    margin: 16px 0;
     width: 90%;
     border: 1px solid transparent;
     background-color: var(--btn-black-bg);
@@ -98,14 +96,20 @@ header {
     border-radius: $border-radius-full;
     transition: background-color $transition-fast;
 
-    button {
-        @include button-reset;
+    .post-text {
         color: var(--text-white);
         font-size: $font-size-md;
         font-weight: $font-weight-bold;
         line-height: 20px;
         @include text-ellipsis;
         min-width: 0;
+    }
+
+    .post-icon {
+        display: none;
+        width: 24px;
+        height: 24px;
+        fill: var(--text-white);
     }
 
     &:hover {
@@ -159,3 +163,133 @@ header {
     }
 }
 
+@media (max-width: 1384px) {
+    header {
+        margin-left: 0;
+    }
+}
+
+// Media Query for Tablet/Laptop (max-width: 1279px)
+@media (max-width: 1279px) {
+    header {
+        width: 88px; // Shrink header width
+        align-items: center; // Center items horizontally
+    }
+
+    #header-container {
+        width: auto; // Reset fixed width
+        padding: 0;
+        align-items: center;
+    }
+
+    #header-navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        li {
+            width: auto;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .header-button {
+        width: 50px; // Make buttons circular
+        height: 50px;
+        padding: 0;
+        justify-content: center; // Center icon
+
+        span {
+            display: none; // Hide text labels
+        }
+
+        svg {
+            margin: 0; // Remove margin from icon
+        }
+    }
+
+    #publish {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .post-text {
+            display: none;
+        }
+
+        .post-icon {
+            display: block;
+        }
+    }
+
+    #user-profile {
+        padding: 12px;
+        width: fit-content;
+
+        .user-info {
+            display: none;
+        }
+
+        // Hide the dropdown arrow (which is the last svg in the container)
+        & > svg {
+            display: none;
+        }
+
+        img {
+            margin: 0;
+        }
+    }
+
+    // Ensure logo is centered
+    #header-logo {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// Media Query for smaller screens (max-width: 599px)
+@media (max-width: 599px) {
+    header {
+        width: 68px;
+        margin-left: 0;
+    }
+
+    #header-container {
+        width: 68px;
+    }
+
+    .header-button {
+        width: 42px;
+        height: 42px;
+    }
+
+    #publish {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+    }
+
+    #header-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    #user-profile {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 499px) {
+    header {
+        display: none;
+    }
+}

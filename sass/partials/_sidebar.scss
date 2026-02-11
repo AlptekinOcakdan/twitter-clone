@@ -209,4 +209,22 @@
     }
 }
 
+@media (max-width: 1384px) {
+    #sidebar {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1078px) {
+    #sidebar {
+        width: 290px;
+    }
+}
+
+@media (max-width: 1002px) {
+    #sidebar {
+        display: none;
+    }
+}
+
 
