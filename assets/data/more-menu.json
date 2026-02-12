@@ -1,0 +1,35 @@
+{
+    "items": [
+        {
+            "id": "lists",
+            "label": "Listeler",
+            "iconPath": "assets/images/header/dropdown/list.svg#list"
+        },
+        {
+            "id": "communities",
+            "label": "Topluluklar",
+            "iconPath": "assets/images/header/dropdown/communities.svg#communities"
+        },
+        {
+            "id": "premium",
+            "label": "Kurumsal",
+            "iconPath": "assets/images/header/dropdown/corporate.svg#corporate"
+        },
+        {
+            "id": "ads",
+            "label": "Reklamlar",
+            "iconPath": "assets/images/header/dropdown/commercials.svg#commercials"
+        },
+        {
+            "id": "spaces",
+            "label": "Sohbet Odanı oluştur",
+            "iconPath": "assets/images/header/dropdown/create-space-room.svg#create-space-room"
+        },
+        {
+            "id": "settings",
+            "label": "Ayarlar ve gizlilik",
+            "iconPath": "assets/images/header/dropdown/setting-privacy.svg#icon-setting-privacy"
+        }
+    ]
+}
+

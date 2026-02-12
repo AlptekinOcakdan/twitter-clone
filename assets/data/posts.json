@@ -1,0 +1,73 @@
+{
+    "posts": [
+        {
+            "id": "1",
+            "author": {
+                "displayName": "Hava Forum",
+                "handle": "@HavaForum",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true
+            },
+            "content": {
+                "text": "Anlık İstanbul Boğazı",
+                "media": {
+                    "type": "image",
+                    "url": "assets/images/header/users/user-avatar.jpg",
+                    "alt": "İstanbul Boğazı"
+                }
+            },
+            "stats": {
+                "comments": 143,
+                "retweets": 56,
+                "likes": 1000,
+                "views": 893000
+            },
+            "timestamp": "13s"
+        },
+        {
+            "id": "2",
+            "author": {
+                "displayName": "Hava Forum",
+                "handle": "@HavaForum",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true
+            },
+            "content": {
+                "text": "Anlık İstanbul Boğazı",
+                "media": {
+                    "type": "image",
+                    "url": "assets/images/header/users/user-avatar.jpg",
+                    "alt": "İstanbul Boğazı"
+                }
+            },
+            "stats": {
+                "comments": 143,
+                "retweets": 56,
+                "likes": 1000,
+                "views": 893000
+            },
+            "timestamp": "13s"
+        },
+        {
+            "id": "3",
+            "author": {
+                "displayName": "Elon Musk",
+                "handle": "@elonmusk",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true
+            },
+            "content": {
+                "text": "💯",
+                "media": null
+            },
+            "stats": {
+                "comments": 149,
+                "retweets": 68,
+                "likes": 1000,
+                "views": 47000
+            },
+            "timestamp": "2s"
+        }
+    ]
+}
+

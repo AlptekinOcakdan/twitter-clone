@@ -1,0 +1,31 @@
+{
+    "tabs": [
+        {
+            "id": "for-you",
+            "label": "Sana özel",
+            "active": false,
+            "hasDropdown": false
+        },
+        {
+            "id": "following",
+            "label": "Takip ediliyor",
+            "active": true,
+            "hasDropdown": true
+        }
+    ],
+    "createPost": {
+        "placeholder": "Neler oluyor?",
+        "replyPermission": "Herkes yanıtlayabilir",
+        "submitButtonText": "Gönderi yayınla",
+        "actions": [
+            { "id": "image", "title": "Görsel", "iconPath": "assets/images/main/feed/upload-image.svg#upload-image" },
+            { "id": "gif", "title": "GIF", "iconPath": "assets/images/main/feed/upload-gif.svg#upload-gif" },
+            { "id": "grok", "title": "Grok", "iconPath": "assets/images/main/feed/generate-image-grok.svg#generate-image-grok" },
+            { "id": "poll", "title": "Anket", "iconPath": "assets/images/main/feed/create-poll.svg#create-poll" },
+            { "id": "emoji", "title": "Emoji", "iconPath": "assets/images/main/feed/emoji.svg#emoji" },
+            { "id": "schedule", "title": "Planla", "iconPath": "assets/images/main/feed/calendar-plan.svg#calendar-plan" },
+            { "id": "location", "title": "Konum", "iconPath": "assets/images/main/feed/location.svg#location", "disabled": true }
+        ]
+    }
+}
+

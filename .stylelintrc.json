@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "function-url-no-scheme-relative": null,
+    "no-invalid-position-at-import-rule": null
+  }
+}
+

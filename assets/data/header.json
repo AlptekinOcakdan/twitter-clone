@@ -1,0 +1,94 @@
+{
+    "navigation": [
+        {
+            "id": "home",
+            "label": "Anasayfa",
+            "href": "/",
+            "icon": "icon-home-filled",
+            "iconPath": "assets/images/header/icons/icon-home-filled.svg#icon-home-filled",
+            "activeIconPath": "assets/images/header/icons/icon-home-filled.svg#icon-home-filled"
+        },
+        {
+            "id": "explore",
+            "label": "Keşfet",
+            "href": "/explore",
+            "icon": "icon-explore",
+            "iconPath": "assets/images/header/icons/icon-explore.svg#icon-explore"
+        },
+        {
+            "id": "notifications",
+            "label": "Bildirimler",
+            "href": "/notifications",
+            "icon": "icon-notifications",
+            "iconPath": "assets/images/header/icons/icon-notifications.svg#icon-notifications"
+        },
+        {
+            "id": "follow",
+            "label": "Takip et",
+            "href": "/follow",
+            "icon": "icon-follow",
+            "iconPath": "assets/images/header/icons/icon-follow.svg#icon-follow"
+        },
+        {
+            "id": "chat",
+            "label": "Sohbet",
+            "href": "/messages",
+            "icon": "icon-chat",
+            "iconPath": "assets/images/header/icons/icon-chat.svg#icon-chat"
+        },
+        {
+            "id": "grok",
+            "label": "Grok",
+            "href": "/grok",
+            "icon": "icon-grok",
+            "iconPath": "assets/images/header/icons/icon-grok.svg#icon-grok"
+        },
+        {
+            "id": "bookmarks",
+            "label": "Yer İşaretleri",
+            "href": "/bookmarks",
+            "icon": "icon-bookmark",
+            "iconPath": "assets/images/header/icons/icon-bookmark.svg#icon-bookmark"
+        },
+        {
+            "id": "creator",
+            "label": "İçerik Üreticisi Stüdyosu",
+            "href": "/creator-studio",
+            "icon": "icon-creator",
+            "iconPath": "assets/images/header/icons/icon-creator.svg#icon-creator"
+        },
+        {
+            "id": "premium",
+            "label": "Premium",
+            "href": "/premium",
+            "icon": "icon-x",
+            "iconPath": "assets/images/header/icons/icon-x.svg#icon-x"
+        },
+        {
+            "id": "profile",
+            "label": "Profil",
+            "href": "/profile",
+            "icon": "icon-user",
+            "iconPath": "assets/images/header/icons/icon-user.svg#icon-user"
+        },
+        {
+            "id": "more",
+            "label": "Daha Fazla",
+            "href": null,
+            "icon": "icon-more",
+            "iconPath": "assets/images/header/icons/icon-more.svg#icon-more",
+            "isButton": true
+        }
+    ],
+    "logo": {
+        "href": "/",
+        "iconPath": "assets/images/brand/logo.svg#icon-x-logo",
+        "width": 40,
+        "height": 40
+    },
+    "publishButton": {
+        "text": "Gönderi yayınla",
+        "iconPath": "assets/images/header/icons/icon-create-post.svg#icon-create-post"
+    }
+}
+

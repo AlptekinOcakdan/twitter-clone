@@ -9,8 +9,8 @@
   --text-white: #FFFFFF;
   --btn-primary-bg: #1D9BF0;
   --btn-primary-hover: #e0f4fd;
-  --btn-black-bg: #0F1419;
-  --btn-black-hover: rgba(29, 155, 240, 0.1);
+  --btn-black-bg: rgb(15, 20, 25);
+  --btn-black-hover: rgb(39, 44, 48);
   --sidebar-hover: #E7E7E8;
   --border-color: #EFF3F4;
   --border-secondary-color: rgb(207, 217, 222);
@@ -21,28 +21,28 @@
 
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../assets/font/Chirp-Regular.80fda27a.woff2") format("woff2");
+  src: url(../assets/font/Chirp-Regular.80fda27a.woff2) format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../assets/font/Chirp-Medium.f8e2739a.woff2") format("woff2");
+  src: url(../assets/font/Chirp-Medium.f8e2739a.woff2) format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../assets/font/Chirp-Bold.ebb56aba.woff2") format("woff2");
+  src: url(../assets/font/Chirp-Bold.ebb56aba.woff2) format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "TwitterChirp";
-  src: url("../assets/font/Chirp-Heavy.f44ae4ea.woff2") format("woff2");
+  src: url(../assets/font/Chirp-Heavy.f44ae4ea.woff2) format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -466,6 +466,7 @@ header {
 }
 #header-navigation li {
   width: 100%;
+  padding: 4px 0;
 }
 
 .header-button {
@@ -1346,4 +1347,51 @@ header {
   #sidebar {
     display: none;
   }
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  max-height: calc(-361.75px + 100vh);
+  max-width: 384px;
+  min-width: 318px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: rgba(101, 119, 134, 0.2) 0 0 15px, rgba(101, 119, 134, 0.15) 0 0 3px 1px;
+  overflow-y: auto;
+}
+.dropdown.open {
+  display: block;
+}
+.dropdown .dropdown-content {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+.dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.dropdown .dropdown-item:hover {
+  background-color: rgba(15, 20, 25, 0.1);
+}
+.dropdown .dropdown-item svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.dropdown.more-menu {
+  min-width: 318px;
 }

@@ -12,11 +12,15 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "style": "gulp"
+    "style": "gulp",
+    "dev": "npx live-server --port=3000"
   },
   "dependencies": {
     "gulp": "^5.0.1",
     "gulp-sass": "^6.0.1",
     "sass": "^1.97.3"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
   }
 }

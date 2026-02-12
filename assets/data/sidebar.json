@@ -1,0 +1,76 @@
+{
+    "premium": {
+        "title": "Premium'a Abone Ol",
+        "description": "Yeni özellikleri açmak için abone ol ve uygun olman durumunda içerik üreticisi gelir payı kazan.",
+        "buttonText": "Abone ol"
+    },
+    "trends": {
+        "title": "Neler oluyor?",
+        "items": [
+            {
+                "id": "1",
+                "category": "İş dünyası ve finans · Gündemdekiler",
+                "name": "#altın"
+            },
+            {
+                "id": "2",
+                "category": "Spor · Gündemdekiler",
+                "name": "Cerny"
+            },
+            {
+                "id": "3",
+                "category": "Türkiye tarihinde gündem",
+                "name": "#TürkiyeminGücüneBak"
+            },
+            {
+                "id": "4",
+                "category": "Türkiye tarihinde gündem",
+                "name": "Maydonoz Döner"
+            }
+        ],
+        "showMoreText": "Daha fazla göster"
+    },
+    "whoToFollow": {
+        "title": "Kimi takip etmeli",
+        "users": [
+            {
+                "id": "1",
+                "displayName": "Emre Kocadag",
+                "handle": "@kocadagemre",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true,
+                "verifiedType": "blue"
+            },
+            {
+                "id": "2",
+                "displayName": "Merih Demiral",
+                "handle": "@Merihdemiral",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true,
+                "verifiedType": "blue"
+            },
+            {
+                "id": "3",
+                "displayName": "NASA Events",
+                "handle": "@NASA_Events",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true,
+                "verifiedType": "gray"
+            }
+        ],
+        "showMoreText": "Daha fazla göster"
+    },
+    "footer": {
+        "links": [
+            { "text": "Hizmet Şartları", "href": "#" },
+            { "text": "Gizlilik Politikası", "href": "#" },
+            { "text": "Çerez Politikası", "href": "#" },
+            { "text": "Imprint", "href": "#" },
+            { "text": "Erişilebilirlik", "href": "#" },
+            { "text": "Reklam bilgisi", "href": "#" },
+            { "text": "Daha fazla ...", "href": "#" }
+        ],
+        "copyright": "© 2026 X Corp."
+    }
+}
+

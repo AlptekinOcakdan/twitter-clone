@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["js/*"],
+            "@/core": ["js/core/index.js"],
+            "@/components": ["js/components/index.js"],
+            "@/components/header": ["js/components/header/index.js"],
+            "@/components/feed": ["js/components/feed/index.js"],
+            "@/components/sidebar": ["js/components/sidebar/index.js"],
+            "@/components/common": ["js/components/common/index.js"],
+            "@/sections": ["js/sections/index.js"],
+            "@/views": ["js/views/index.js"]
+        }
+    },
+    "include": ["js/**/*"],
+    "exclude": ["node_modules"]
+}
+
