@@ -1,5 +1,7 @@
 import { Section, dataService } from '@/core';
 import { Logo, Navigation, PublishButton, UserProfile, MoreMenu } from '@/components/header';
+import { Dialog } from '@/components/common';
+import { DialogPostCreate } from '@/components/post';
 
 export class HeaderSection extends Section {
     constructor(props = {}) {
@@ -8,6 +10,7 @@ export class HeaderSection extends Section {
         this.userData = null;
         this.moreMenuData = null;
         this.moreMenu = null;
+        this.postDialog = null;
     }
 
     async loadData() {
@@ -61,7 +64,24 @@ export class HeaderSection extends Section {
         if (this.moreMenu) {
             this.moreMenu.onMount();
         }
+
+        const publishButton = this.element.querySelector('#publish');
+        if (publishButton) {
+            publishButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openPostDialog();
+            });
+        }
+    }
+
+    openPostDialog() {
+        if (!this.postDialog) {
+            const dialogPostCreate = new DialogPostCreate();
+            this.postDialog = new Dialog({
+                title: '',
+                contentComponent: dialogPostCreate
+            });
+        }
+        this.postDialog.open();
     }
 }
-
-

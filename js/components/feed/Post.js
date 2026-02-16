@@ -70,15 +70,15 @@ export class Post extends Component {
                     <img src="${author.avatar}" alt="${author.displayName}" class="user-avatar">
                 </div>
                 <div class="post-content-col grow">
-                    <div class="post-header flex items-center justify-between">
-                        <div class="post-user-info flex items-center">
+                    <div class="post-header flex justify-between">
+                        <div class="post-user-info flex">
                             <span class="post-display-name">${author.displayName}</span>
                             ${this.renderVerifiedIcon()}
                             <span class="post-handle">${author.handle}</span>
                             <span class="post-dot">·</span>
                             <span class="post-time">${timestamp}</span>
                         </div>
-                        <div class="post-more-btn flex gap-2">
+                        <div class="post-more-btn flex">
                             <button>
                                 <svg viewBox="0 0 24 24"><use href="assets/images/main/post/grok.svg#grok"/></svg>
                             </button>

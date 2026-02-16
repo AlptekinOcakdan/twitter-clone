@@ -2,10 +2,12 @@
 @use '../mixins/mixins' as *;
 
 .post {
-    padding: $spacing-3 $spacing-4;
+    padding: $spacing-3 $spacing-4 0 $spacing-4;
     @include border-bottom;
     cursor: pointer;
     transition: background-color $transition-fast;
+    align-items: flex-start;
+    position: relative;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.035);
@@ -17,7 +19,7 @@
 }
 
 .post-header {
-    margin-bottom: 2px;
+    margin-bottom: 0;
 }
 
 .post-user-info {
@@ -48,6 +50,11 @@
 }
 
 .post-more-btn {
+    position: absolute;
+    top: $spacing-1;
+    right: $spacing-1;
+    margin-right: 8px;
+
     svg {
         width: 18px;
         height: 18px;
@@ -55,11 +62,11 @@
     }
 
     button {
-        @include button-icon;
-        padding: $spacing-2;
+        @include button-icon(36px);
+        margin-right: -8px;
 
         &:hover {
-            background-color: var(--btn-primary-hover);
+            background-color: var(--bg-blue-hover);
             color: var(--text-link);
 
             svg {
@@ -89,7 +96,6 @@
 }
 
 .post-interactions {
-    margin-top: $spacing-3;
     max-width: 530px;
 }
 
@@ -103,7 +109,6 @@
 
 .interaction-btn {
     @include button-icon;
-    padding: $spacing-2;
 
     svg {
         width: 18.75px;
@@ -197,17 +202,14 @@
 }
 
 .interaction-icons-right {
-    gap: 10px;
 
     .interaction-btn {
         background: transparent;
-        padding: $spacing-2;
         transition: background-color $transition-fast;
+        margin-right: -8px;
 
         &:hover {
             background-color: var(--bg-blue-hover);
         }
     }
 }
-
-

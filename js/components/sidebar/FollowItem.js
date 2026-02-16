@@ -32,7 +32,7 @@ export class FollowItem extends Component {
 
         return `
             <div class="follow-item flex items-center justify-between" data-user-id="${id}">
-                <div class="flex items-center">
+                <div class="flex items-center follow-item__main">
                     <img src="${avatar}" alt="${displayName}" class="follow-avatar">
                     <div class="follow-user-info">
                         <div class="flex items-center">
@@ -47,4 +47,3 @@ export class FollowItem extends Component {
         `;
     }
 }
-

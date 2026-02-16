@@ -904,10 +904,12 @@ header {
 }
 
 .post {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1rem 0 1rem;
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
   transition: background-color 0.2s;
+  align-items: flex-start;
+  position: relative;
 }
 .post:hover {
   background-color: rgba(0, 0, 0, 0.035);
@@ -918,7 +920,7 @@ header {
 }
 
 .post-header {
-  margin-bottom: 2px;
+  margin-bottom: 0;
 }
 
 .post-user-info {
@@ -947,6 +949,12 @@ header {
   color: var(--text-secondary);
 }
 
+.post-more-btn {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  margin-right: 8px;
+}
 .post-more-btn svg {
   width: 18px;
   height: 18px;
@@ -960,14 +968,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   transition: background-color 0.2s;
-  padding: 0.5rem;
+  margin-right: -8px;
 }
 .post-more-btn button:hover {
-  background-color: var(--btn-primary-hover);
+  background-color: var(--bg-blue-hover);
   color: var(--text-link);
 }
 .post-more-btn button:hover svg {
@@ -994,7 +1002,6 @@ header {
 }
 
 .post-interactions {
-  margin-top: 0.75rem;
   max-width: 530px;
 }
 
@@ -1018,7 +1025,6 @@ header {
   height: 40px;
   border-radius: 50%;
   transition: background-color 0.2s;
-  padding: 0.5rem;
 }
 .interaction-btn svg {
   width: 18.75px;
@@ -1084,13 +1090,10 @@ header {
   color: var(--text-link);
 }
 
-.interaction-icons-right {
-  gap: 10px;
-}
 .interaction-icons-right .interaction-btn {
   background: transparent;
-  padding: 0.5rem;
   transition: background-color 0.2s;
+  margin-right: -8px;
 }
 .interaction-icons-right .interaction-btn:hover {
   background-color: var(--bg-blue-hover);
@@ -1278,6 +1281,10 @@ header {
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+.follow-item__main {
+  min-width: 0;
+}
+
 .follow-list {
   width: 100%;
 }
@@ -1289,9 +1296,15 @@ header {
   margin-right: 0.75rem;
 }
 
+.follow-user-info {
+  min-width: 0;
+}
 .follow-user-info .display-name {
   font-weight: 700;
   font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .follow-user-info .handle {
   font-size: 14px;
@@ -1312,25 +1325,36 @@ header {
   padding: 8px 16px;
   padding: 6px 1rem;
   font-size: 14px;
+  min-width: 32px;
+  flex-shrink: 0;
 }
 
 .sidebar-footer {
-  padding: 1rem;
+  padding: 0 1rem;
 }
 .sidebar-footer nav a {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-right: 0.75rem;
-  margin-bottom: 4px;
+  margin: 2px 0;
   white-space: nowrap;
+  padding-right: 12px;
+}
+.sidebar-footer nav a .main-text {
+  font-size: 11px;
+  line-height: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+.sidebar-footer nav a .separator {
+  font-size: 15px;
+  line-height: 20px;
+  padding-left: 0.25rem;
+  font-weight: 400;
 }
 .sidebar-footer nav a:hover {
   text-decoration: underline;
 }
 .sidebar-footer .copyright {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-secondary);
-  margin-top: 0.5rem;
 }
 
 @media (max-width: 1384px) {
