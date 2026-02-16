@@ -76,9 +76,15 @@ export class HeaderSection extends Section {
 
     openPostDialog() {
         if (!this.postDialog) {
-            const dialogPostCreate = new DialogPostCreate();
+            const dialogPostCreate = new DialogPostCreate({
+                onPostCreated: () => {
+                    this.postDialog.close();
+                }
+            });
             this.postDialog = new Dialog({
                 title: '',
+                cssClass: 'dialog-post-modal',
+                headerExtra: '<button class="dialog-drafts-btn">Taslaklar</button>',
                 contentComponent: dialogPostCreate
             });
         }

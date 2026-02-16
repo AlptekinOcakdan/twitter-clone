@@ -1,4 +1,5 @@
-import { Component } from '@/core';
+import { Component, postService } from '@/core';
+import { formatRelativeTime } from '@/utils/timeUtils';
 
 export class Post extends Component {
     constructor(props = {}) {
@@ -24,6 +25,9 @@ export class Post extends Component {
             timestamp: '',
             ...props
         };
+        this.isLiked = false;
+
+        this.handleLikeClick = this.handleLikeClick.bind(this);
     }
 
     formatNumber(num) {
@@ -46,6 +50,38 @@ export class Post extends Component {
         `;
     }
 
+    formatTimestamp(timestamp) {
+        if (!timestamp) return '';
+
+        if (!timestamp.includes('T') && !timestamp.includes('Z')) {
+            return timestamp;
+        }
+
+        return formatRelativeTime(timestamp);
+    }
+
+    async handleLikeClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const { id } = this.props;
+        const likeButton = this.element.querySelector('.like .interaction-btn');
+        const likeCount = this.element.querySelector('.like .interaction-count');
+
+        if (!likeButton || !likeCount) return;
+
+        try {
+            const result = await postService.toggleLike(id);
+
+            // Update UI
+            this.isLiked = result.liked;
+            likeButton.classList.toggle('liked', this.isLiked);
+            likeCount.textContent = this.formatNumber(result.likes);
+        } catch (error) {
+            console.error('Failed to toggle like:', error);
+        }
+    }
+
     renderMedia() {
         const { media } = this.props.content;
         if (!media) return '';
@@ -59,6 +95,22 @@ export class Post extends Component {
         }
 
         return '';
+    }
+
+    onMount() {
+        // Check if post is liked when mounting
+        this.isLiked = postService.isPostLiked(this.props.id);
+
+        // Add like button event listener
+        const likeButton = this.element.querySelector('.like .interaction-btn');
+        if (likeButton) {
+            // Set initial liked state
+            if (this.isLiked) {
+                likeButton.classList.add('liked');
+            }
+
+            likeButton.addEventListener('click', this.handleLikeClick);
+        }
     }
 
     render() {
@@ -76,7 +128,7 @@ export class Post extends Component {
                             ${this.renderVerifiedIcon()}
                             <span class="post-handle">${author.handle}</span>
                             <span class="post-dot">·</span>
-                            <span class="post-time">${timestamp}</span>
+                            <span class="post-time">${this.formatTimestamp(timestamp)}</span>
                         </div>
                         <div class="post-more-btn flex">
                             <button>

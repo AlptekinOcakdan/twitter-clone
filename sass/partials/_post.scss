@@ -150,6 +150,18 @@
 }
 
 .like {
+    .interaction-btn.liked {
+        svg {
+            color: $color-like;
+            fill: $color-like;
+        }
+    }
+
+    &.liked,
+    .interaction-btn.liked {
+        color: $color-like;
+    }
+
     &:hover {
         color: $color-like;
 

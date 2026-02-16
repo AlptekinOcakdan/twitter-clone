@@ -1,5 +1,5 @@
-import { View } from '@/core';
-import { HeaderSection, FeedSection, SidebarSection } from '@/sections';
+import {View} from '@/core';
+import {FeedSection, HeaderSection, SidebarSection} from '@/sections';
 
 export class HomeView extends View {
     constructor() {
@@ -34,12 +34,15 @@ export class HomeView extends View {
 
         if (headerContainer) {
             headerContainer.outerHTML = this.headerSection.render();
+            this.headerSection.element = container.querySelector('header');
         }
         if (feedContainer) {
             feedContainer.outerHTML = this.feedSection.render();
+            this.feedSection.element = container.querySelector('#feed');
         }
         if (sidebarContainer) {
             sidebarContainer.outerHTML = this.sidebarSection.render();
+            this.sidebarSection.element = container.querySelector('#sidebar');
         }
 
         this.onMount();

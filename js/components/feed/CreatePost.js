@@ -1,4 +1,4 @@
-import { Component } from '@/core';
+import { Component, postService } from '@/core';
 
 export class CreatePost extends Component {
     constructor(props = {}) {
@@ -11,6 +11,49 @@ export class CreatePost extends Component {
             actions: [],
             ...props
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    async handleSubmit() {
+        const textarea = document.getElementById('post-input');
+        const submitButton = document.getElementById('btn-submit-post');
+
+        if (!textarea || !submitButton) return;
+
+        const text = textarea.value.trim();
+        if (!text) return;
+
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Gönderiliyor...';
+
+        try {
+            // Create the post
+            await postService.createPost({ text });
+
+            // Clear the textarea and reset height
+            textarea.value = '';
+            textarea.style.height = 'auto';
+            submitButton.textContent = originalText;
+        } catch (error) {
+            console.error('Failed to create post:', error);
+            alert('Gönderi oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.');
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+    }
+
+    onMount() {
+        const textarea = document.getElementById('post-input');
+        if (textarea) {
+            textarea.addEventListener('input', () => {
+                // Auto-expand textarea
+                textarea.style.height = 'auto';
+                textarea.style.height = `${textarea.scrollHeight}px`;
+            });
+        }
     }
 
     renderActions() {
@@ -52,7 +95,7 @@ export class CreatePost extends Component {
                             ${this.renderActions()}
                         </div>
                         <div class="submit-post">
-                            <button id="btn-submit-post" disabled>${submitButtonText}</button>
+                            <button id="btn-submit-post" class="btn-disabled-opacity" disabled>${submitButtonText}</button>
                         </div>
                     </div>
                 </div>

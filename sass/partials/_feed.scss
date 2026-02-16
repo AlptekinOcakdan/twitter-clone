@@ -31,7 +31,6 @@
 #post-textarea-container {
     padding: $spacing-3 0 0 0;
     min-height: 52px;
-    max-height: 60px;
 }
 
 #post-input {
@@ -40,7 +39,9 @@
     resize: none;
     font-size: $font-size-lg;
     color: var(--text-primary);
-    height: 100%;
+    min-height: 52px;
+    max-height: calc(100vh - 350px);
+    overflow-y: auto;
 
     &::placeholder {
         color: var(--text-secondary);
@@ -123,6 +124,10 @@
     font-size: $font-size-base;
     line-height: 20px;
     transition: background-color $transition-fast;
+
+    &.btn-disabled-opacity {
+        opacity: 0.5;
+    }
 
     &:not(:disabled) {
         background-color: var(--btn-black-bg);

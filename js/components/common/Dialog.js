@@ -1,4 +1,4 @@
-import { Component } from '@/core';
+import {Component} from '@/core';
 
 export class Dialog extends Component {
     constructor(props = {}) {
@@ -6,6 +6,8 @@ export class Dialog extends Component {
         this.props = {
             title: '',
             contentComponent: null,
+            cssClass: '',
+            headerExtra: '',
             ...props
         };
         this.isOpen = false;
@@ -55,34 +57,47 @@ export class Dialog extends Component {
         if (!this.dialogElement) return;
 
         const closeButton = this.dialogElement.querySelector('.dialog-close');
-        const overlay = this.dialogElement.querySelector('.dialog-overlay');
 
         closeButton?.addEventListener('click', this.close);
-        overlay?.addEventListener('click', (e) => {
-            if (e.target === overlay) {
+
+        // The dialogElement itself is the overlay
+        this.dialogElement.addEventListener('click', (e) => {
+            if (e.target === this.dialogElement) {
+                this.clearTextareaContent();
                 this.close();
             }
         });
     }
 
-    render() {
-        const { title } = this.props;
+    clearTextareaContent() {
+        if (!this.dialogElement) return;
 
-        const dialogHtml = `
+        // Find and clear textarea in dialog
+        const textarea = this.dialogElement.querySelector('textarea');
+        if (textarea) {
+            textarea.value = '';
+            textarea.style.height = 'auto';
+        }
+    }
+
+    render() {
+        const { title, cssClass, headerExtra } = this.props;
+        const containerClass = `dialog-container${cssClass ? ` ${cssClass}` : ''}`;
+
+        return `
             <div class="dialog-overlay">
-                <div class="dialog-container" role="dialog" aria-labelledby="dialog-title" aria-modal="true">
+                <div class="${containerClass}" role="dialog" aria-labelledby="dialog-title" aria-modal="true">
                     <div class="dialog-header">
                         <button class="dialog-close" aria-label="Kapat">
                             <svg viewBox="0 0 24 24"><path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path></svg>
                         </button>
                         <h2 id="dialog-title" class="dialog-title">${title}</h2>
+                        ${headerExtra}
                     </div>
                     <div class="dialog-body">
                     </div>
                 </div>
             </div>
         `;
-
-        return dialogHtml;
     }
 }
