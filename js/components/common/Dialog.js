@@ -60,7 +60,6 @@ export class Dialog extends Component {
 
         closeButton?.addEventListener('click', this.close);
 
-        // The dialogElement itself is the overlay
         this.dialogElement.addEventListener('click', (e) => {
             if (e.target === this.dialogElement) {
                 this.clearTextareaContent();
@@ -72,7 +71,6 @@ export class Dialog extends Component {
     clearTextareaContent() {
         if (!this.dialogElement) return;
 
-        // Find and clear textarea in dialog
         const textarea = this.dialogElement.querySelector('textarea');
         if (textarea) {
             textarea.value = '';
