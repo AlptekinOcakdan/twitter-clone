@@ -73,7 +73,6 @@ export class Post extends Component {
         try {
             const result = await postService.toggleLike(id);
 
-            // Update UI
             this.isLiked = result.liked;
             likeButton.classList.toggle('liked', this.isLiked);
             likeCount.textContent = this.formatNumber(result.likes);
@@ -98,13 +97,10 @@ export class Post extends Component {
     }
 
     onMount() {
-        // Check if post is liked when mounting
         this.isLiked = postService.isPostLiked(this.props.id);
 
-        // Add like button event listener
         const likeButton = this.element.querySelector('.like .interaction-btn');
         if (likeButton) {
-            // Set initial liked state
             if (this.isLiked) {
                 likeButton.classList.add('liked');
             }
@@ -182,4 +178,3 @@ export class Post extends Component {
         `;
     }
 }
-

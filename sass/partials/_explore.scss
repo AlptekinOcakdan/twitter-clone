@@ -1,0 +1,281 @@
+@use 'variables' as *;
+@use '../mixins/mixins' as *;
+
+#explore {
+    max-width: $feed-max-width;
+    height: 100vh;
+    overflow-y: auto;
+    flex-grow: 1;
+    @include border-sides;
+    @include hide-scrollbar;
+}
+
+.explore-search {
+    @include sticky-header(0, rgba(255, 255, 255, 0.85));
+    padding: 6px $spacing-4;
+    backdrop-filter: blur(12px);
+    z-index: $z-index-dropdown;
+}
+
+.explore-search-container {
+    background-color: var(--input-bg);
+    border-radius: $border-radius-full;
+    padding: $spacing-2 $spacing-4;
+
+    &:focus-within {
+        background-color: var(--bg-main);
+        border: 1px solid var(--text-link);
+
+        .search-icon {
+            fill: var(--text-link);
+        }
+    }
+
+    svg {
+        width: 18.75px;
+        height: 18.75px;
+        fill: var(--text-secondary);
+        margin-right: $spacing-3;
+        flex-shrink: 0;
+    }
+}
+
+#explore-search-input {
+    @include input-reset;
+    font-size: $font-size-base;
+    width: 100%;
+}
+
+.explore-trends {
+    @include border-bottom;
+}
+
+.explore-section-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-heavy;
+    padding: $spacing-3 $spacing-4;
+}
+
+.explore-trend-list {
+    width: 100%;
+}
+
+.explore-trend-item {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.explore-trend-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.explore-trend-meta {
+    font-size: $font-size-xs;
+    line-height: 16px;
+    font-weight: $font-weight-regular;
+    color: var(--text-secondary);
+}
+
+.explore-trend-name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-top: 2px;
+}
+
+.explore-trend-posts {
+    font-size: $font-size-xs;
+    line-height: 16px;
+    font-weight: $font-weight-regular;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.explore-trend-more {
+    @include button-reset;
+    padding: $spacing-2;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+
+    svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--text-secondary);
+    }
+}
+
+.explore-show-more {
+    display: block;
+    padding: $spacing-4;
+    color: var(--text-link);
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    line-height: 20px;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.explore-who-to-follow {
+    @include border-bottom;
+}
+
+.explore-follow-list {
+    width: 100%;
+}
+
+.explore-follow-item {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.explore-follow-item__main {
+    min-width: 0;
+}
+
+.explore-follow-avatar {
+    @include avatar(40px);
+    margin-right: $spacing-3;
+    flex-shrink: 0;
+}
+
+.explore-follow-user-info {
+    min-width: 0;
+
+    .display-name {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-base;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .handle {
+        font-size: $font-size-sm;
+        color: var(--text-secondary);
+        display: block;
+    }
+}
+
+.explore-follow-btn {
+    @include button-pill(var(--btn-black-bg), var(--text-white));
+    padding: 6px $spacing-4;
+    font-size: $font-size-sm;
+    min-width: 32px;
+    flex-shrink: 0;
+}
+
+.verified-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--verified-blue);
+    margin-left: 2px;
+    flex-shrink: 0;
+}
+
+.explore-trending-card {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    @include border-bottom;
+    padding: 16px 8px;
+
+    &:hover {
+        opacity: 0.92;
+    }
+}
+
+.explore-trending-card__image {
+    width: 100%;
+    height: 136px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+.explore-trending-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top:15px;
+    padding: $spacing-3 $spacing-6;
+    display: flex;
+    flex-direction: column;
+}
+
+.explore-trending-card__category {
+    font-size: $font-size-xs;
+    color: var(--text-white);
+    font-weight: $font-weight-regular;
+}
+
+.explore-trending-card__title {
+    font-size: $font-size-md;
+    color: var(--text-white);
+    font-weight: $font-weight-bold;
+    margin-top: 2px;
+}
+
+.explore-trending-card__subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-white);
+    font-weight: $font-weight-regular;
+    margin-top: 2px;
+}
+
+.explore-trending-card__btn {
+    @include button-reset;
+    border: 1px solid var(--text-white) !important;
+    color: var(--text-white);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    padding: 6px $spacing-4;
+    border-radius: $border-radius-full;
+    width: fit-content;
+    margin-top: $spacing-4;
+
+    &:hover {
+        background-color: var(--bg-hover);
+    }
+}
+
+.explore-numbered-list {
+    width: 100%;
+}
+
+.explore-numbered-trend {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    align-items: flex-start;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.explore-numbered-trend__rank {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: var(--text-secondary);
+    min-width: 28px;
+    padding-top: 2px;
+    flex-shrink: 0;
+}
+
+.explore-numbered-trend__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.explore-category-list {
+    width: 100%;
+}
+
+@media (max-width: 1002px) {
+    #explore {
+        width: $feed-max-width;
+        flex-grow: 0;
+    }
+}

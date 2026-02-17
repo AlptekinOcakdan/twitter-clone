@@ -1,3 +1,5 @@
+import { safeSetInnerHTML, createSafeHTML } from './TrustedHTML.js';
+
 export class Component {
     constructor(props = {}) {
         this.props = props;
@@ -9,7 +11,7 @@ export class Component {
     }
 
     mount(container) {
-        container.innerHTML = this.render();
+        safeSetInnerHTML(container, this.render());
         this.element = container.firstElementChild;
         this.onMount();
         return this.element;
@@ -34,8 +36,7 @@ export class Component {
 
     static createElement(html) {
         const template = document.createElement('template');
-        template.innerHTML = html.trim();
+        template.innerHTML = createSafeHTML(html.trim());
         return template.content.firstChild;
     }
 }
-

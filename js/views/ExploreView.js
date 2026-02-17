@@ -1,4 +1,4 @@
-import { View } from '@/core';
+import { View, safeSetInnerHTML, safeSetOuterHTML } from '@/core';
 import { HeaderSection, SidebarSection, ExploreSection } from '@/sections';
 
 export class ExploreView extends View {
@@ -14,10 +14,11 @@ export class ExploreView extends View {
 
         await Promise.all([
             this.headerSection.loadData(),
+            this.exploreSection.loadData(),
             this.sidebarSection.loadData()
         ]);
 
-        container.innerHTML = `
+        safeSetInnerHTML(container, `
             <div class="app-container">
                 <div data-section="header"></div>
                 <main class="flex">
@@ -25,22 +26,22 @@ export class ExploreView extends View {
                     <div data-section="sidebar"></div>
                 </main>
             </div>
-        `;
+        `);
 
         const headerContainer = container.querySelector('[data-section="header"]');
         const exploreContainer = container.querySelector('[data-section="explore"]');
         const sidebarContainer = container.querySelector('[data-section="sidebar"]');
 
         if (headerContainer) {
-            headerContainer.outerHTML = this.headerSection.render();
+            safeSetOuterHTML(headerContainer, this.headerSection.render());
             this.headerSection.element = container.querySelector('header');
         }
         if (exploreContainer) {
-            exploreContainer.outerHTML = this.exploreSection.render();
+            safeSetOuterHTML(exploreContainer, this.exploreSection.render());
             this.exploreSection.element = container.querySelector('#explore');
         }
         if (sidebarContainer) {
-            sidebarContainer.outerHTML = this.sidebarSection.render();
+            safeSetOuterHTML(sidebarContainer, this.sidebarSection.render());
             this.sidebarSection.element = container.querySelector('#sidebar');
         }
 

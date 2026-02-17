@@ -1,5 +1,5 @@
 import { router } from '@/core';
-import {ExploreView, HomeView} from '@/views';
+import { ExploreView, HomeView, ProfileView } from '@/views';
 
 class App {
     constructor() {
@@ -16,7 +16,7 @@ class App {
         router.route('/index.html', async () => new HomeView());
         router.route('/explore', async () => new ExploreView());
         router.route('/notifications', async () => new HomeView());
-        router.route('/profile', async () => new HomeView());
+        router.route('/profile', async () => new ProfileView());
         router.notFound(async () => new HomeView());
     }
 }

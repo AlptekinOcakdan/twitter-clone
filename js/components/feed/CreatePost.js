@@ -24,16 +24,13 @@ export class CreatePost extends Component {
         const text = textarea.value.trim();
         if (!text) return;
 
-        // Disable button and show loading state
         submitButton.disabled = true;
         const originalText = submitButton.textContent;
         submitButton.textContent = 'Gönderiliyor...';
 
         try {
-            // Create the post
             await postService.createPost({ text });
 
-            // Clear the textarea and reset height
             textarea.value = '';
             textarea.style.height = 'auto';
             submitButton.textContent = originalText;
@@ -49,7 +46,6 @@ export class CreatePost extends Component {
         const textarea = document.getElementById('post-input');
         if (textarea) {
             textarea.addEventListener('input', () => {
-                // Auto-expand textarea
                 textarea.style.height = 'auto';
                 textarea.style.height = `${textarea.scrollHeight}px`;
             });
@@ -103,4 +99,3 @@ export class CreatePost extends Component {
         `;
     }
 }
-

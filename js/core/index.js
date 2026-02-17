@@ -4,4 +4,4 @@ export { View } from './View.js';
 export { router } from './Router.js';
 export { dataService } from './DataService.js';
 export { postService } from './PostService.js';
-
+export { createSafeHTML, safeSetInnerHTML, safeSetOuterHTML, safeCreateFragment } from './TrustedHTML.js';

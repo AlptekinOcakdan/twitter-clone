@@ -61,8 +61,6 @@ class PostService {
 
             this.notify(updatedPosts);
 
-            console.log('Post created and persisted:', newPost);
-
             return newPost;
         } catch (error) {
             console.error('Error creating post:', error);
@@ -89,29 +87,23 @@ class PostService {
                 throw new Error(`Post with id ${postId} not found`);
             }
 
-            // Get or initialize liked posts from localStorage
             const likedPosts = JSON.parse(localStorage.getItem('twitter-clone-liked-posts') || '[]');
             const isLiked = likedPosts.includes(postId);
 
-            // Toggle like state
             if (isLiked) {
-                // Unlike: decrease count and remove from liked list
                 posts[postIndex].stats.likes = Math.max(0, posts[postIndex].stats.likes - 1);
                 const updatedLikedPosts = likedPosts.filter(id => id !== postId);
                 localStorage.setItem('twitter-clone-liked-posts', JSON.stringify(updatedLikedPosts));
             } else {
-                // Like: increase count and add to liked list
                 posts[postIndex].stats.likes += 1;
                 likedPosts.push(postId);
                 localStorage.setItem('twitter-clone-liked-posts', JSON.stringify(likedPosts));
             }
 
-            // Update cache and localStorage
             const updatedPostsData = { posts };
             dataService.cache.set('posts', updatedPostsData);
             dataService.save('posts', updatedPostsData);
 
-            // Notify subscribers
             this.notify(posts);
 
             return { liked: !isLiked, likes: posts[postIndex].stats.likes };

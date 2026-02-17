@@ -107,7 +107,6 @@ export class DialogPostCreate extends Component {
                 const isEmpty = textarea.value.trim() === '';
                 submitButton.disabled = isEmpty;
 
-                // Toggle opacity class based on disabled state
                 if (isEmpty) {
                     submitButton.classList.add('btn-disabled-opacity');
                 } else {
@@ -124,4 +123,3 @@ export class DialogPostCreate extends Component {
         }
     }
 }
-

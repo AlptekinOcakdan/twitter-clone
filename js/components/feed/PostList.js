@@ -14,7 +14,6 @@ export class PostList extends Component {
     render() {
         const { posts } = this.props;
 
-        // Clear previous components
         this.postComponents = [];
 
         const postsHtml = posts.map(post => {
@@ -31,7 +30,6 @@ export class PostList extends Component {
     }
 
     onMount() {
-        // Mount each post component
         const postElements = this.element.querySelectorAll('.post');
         postElements.forEach((postElement, index) => {
             if (this.postComponents[index]) {
@@ -41,4 +39,3 @@ export class PostList extends Component {
         });
     }
 }
-

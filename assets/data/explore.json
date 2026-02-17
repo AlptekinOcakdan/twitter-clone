@@ -1,0 +1,385 @@
+{
+    "search": {
+        "placeholder": "Ara"
+    },
+    "tabs": [
+        { "id": "for-you", "label": "Senin için", "active": true },
+        { "id": "trending", "label": "Gündemdekiler" },
+        { "id": "news", "label": "Haberler" },
+        { "id": "sports", "label": "Spor" },
+        { "id": "entertainment", "label": "Eğlence" }
+    ],
+    "tabContents": {
+        "trending": {
+            "card": {
+                "image": "assets/images/explore/trending-card.png",
+                "category": "Gündemdekiler",
+                "title": "Küresel Trendler",
+                "subtitle": "En popüler gönderiler",
+                "buttonText": "Keşfet"
+            },
+            "items": [
+                {
+                    "id": "t1",
+                    "rank": 1,
+                    "category": "Gündemdekiler",
+                    "name": "Murat Dalkılıç",
+                    "postCount": "4.634"
+                },
+                {
+                    "id": "t2",
+                    "rank": 2,
+                    "category": "Gündemdekiler",
+                    "name": "Ekrem İmamoğlu",
+                    "postCount": "104 B"
+                },
+                {
+                    "id": "t3",
+                    "rank": 3,
+                    "category": "Gündemdekiler",
+                    "name": "Galatasaray",
+                    "postCount": "37,6 B"
+                },
+                {
+                    "id": "t4",
+                    "rank": 4,
+                    "category": "Gündemdekiler",
+                    "name": "#YesWeAre",
+                    "postCount": "1.292"
+                },
+                {
+                    "id": "t5",
+                    "rank": 5,
+                    "category": "Gündemdekiler",
+                    "name": "Baro",
+                    "postCount": "17,8 B"
+                },
+                {
+                    "id": "t6",
+                    "rank": 6,
+                    "category": "Gündemdekiler",
+                    "name": "#altın",
+                    "postCount": "2.150"
+                },
+                {
+                    "id": "t7",
+                    "rank": 7,
+                    "category": "Gündemdekiler",
+                    "name": "Cerny",
+                    "postCount": "1.038"
+                },
+                {
+                    "id": "t8",
+                    "rank": 8,
+                    "category": "Gündemdekiler",
+                    "name": "#TürkiyeminGücüneBak",
+                    "postCount": "5.429"
+                },
+                {
+                    "id": "t9",
+                    "rank": 9,
+                    "category": "Gündemdekiler",
+                    "name": "Maydonoz Döner",
+                    "postCount": "3.784"
+                },
+                {
+                    "id": "t10",
+                    "rank": 10,
+                    "category": "Gündemdekiler",
+                    "name": "Kerem Aktürkoğlu",
+                    "postCount": "2.893"
+                }
+            ]
+        },
+        "news": {
+            "items": [
+                {
+                    "id": "n1",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "Ekrem İmamoğlu",
+                    "postCount": "104 B"
+                },
+                {
+                    "id": "n2",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "Baro",
+                    "postCount": "17,8 B"
+                },
+                {
+                    "id": "n3",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "#YesWeAre",
+                    "postCount": "1.292"
+                },
+                {
+                    "id": "n4",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "#altın",
+                    "postCount": "2.150"
+                },
+                {
+                    "id": "n5",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "#TürkiyeminGücüneBak",
+                    "postCount": "5.429"
+                },
+                {
+                    "id": "n6",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "Maydonoz Döner",
+                    "postCount": "3.784"
+                },
+                {
+                    "id": "n7",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "İsrail",
+                    "postCount": "48,3 B"
+                },
+                {
+                    "id": "n8",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "Anayasa Mahkemesi",
+                    "postCount": "12,1 B"
+                },
+                {
+                    "id": "n9",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "Netanyahu",
+                    "postCount": "22,4 B"
+                },
+                {
+                    "id": "n10",
+                    "category": "Haber · Gündemdekiler",
+                    "name": "TBMM",
+                    "postCount": "8.756"
+                }
+            ]
+        },
+        "sports": {
+            "items": [
+                {
+                    "id": "s1",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Galatasaray",
+                    "postCount": "37,6 B"
+                },
+                {
+                    "id": "s2",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Cerny",
+                    "postCount": "1.038"
+                },
+                {
+                    "id": "s3",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Kerem Aktürkoğlu",
+                    "postCount": "2.893"
+                },
+                {
+                    "id": "s4",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Fenerbahçe",
+                    "postCount": "28,1 B"
+                },
+                {
+                    "id": "s5",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Beşiktaş",
+                    "postCount": "15,3 B"
+                },
+                {
+                    "id": "s6",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Trabzonspor",
+                    "postCount": "9.245"
+                },
+                {
+                    "id": "s7",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Icardi",
+                    "postCount": "6.712"
+                },
+                {
+                    "id": "s8",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Arda Güler",
+                    "postCount": "4.523"
+                },
+                {
+                    "id": "s9",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Süper Lig",
+                    "postCount": "3.187"
+                },
+                {
+                    "id": "s10",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Şampiyonlar Ligi",
+                    "postCount": "11,2 B"
+                }
+            ]
+        },
+        "entertainment": {
+            "items": [
+                {
+                    "id": "e1",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Murat Dalkılıç",
+                    "postCount": "4.634"
+                },
+                {
+                    "id": "e2",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Netflix",
+                    "postCount": "12,3 B"
+                },
+                {
+                    "id": "e3",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Survivor",
+                    "postCount": "8.456"
+                },
+                {
+                    "id": "e4",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "MasterChef",
+                    "postCount": "5.123"
+                },
+                {
+                    "id": "e5",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Kızılcık Şerbeti",
+                    "postCount": "3.876"
+                },
+                {
+                    "id": "e6",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Yargı",
+                    "postCount": "2.945"
+                },
+                {
+                    "id": "e7",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Tarkan",
+                    "postCount": "7.821"
+                },
+                {
+                    "id": "e8",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Spotify",
+                    "postCount": "6.134"
+                },
+                {
+                    "id": "e9",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Oscar",
+                    "postCount": "15,7 B"
+                },
+                {
+                    "id": "e10",
+                    "category": "Eğlence · Gündemdekiler",
+                    "name": "Barbie",
+                    "postCount": "4.267"
+                }
+            ]
+        }
+    },
+    "forYou": {
+        "trends": {
+            "title": "Senin için gündemler",
+            "items": [
+                {
+                    "id": "1",
+                    "category": "Müzik · Gündemdekiler",
+                    "name": "Murat Dalkılıç",
+                    "postCount": "4.634"
+                },
+                {
+                    "id": "2",
+                    "category": "Gündemdekiler",
+                    "name": "Ekrem İmamoğlu",
+                    "postCount": "104 B"
+                },
+                {
+                    "id": "3",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Galatasaray",
+                    "postCount": "37,6 B"
+                },
+                {
+                    "id": "4",
+                    "category": "Gündemdekiler",
+                    "name": "#YesWeAre",
+                    "postCount": "1.292"
+                },
+                {
+                    "id": "5",
+                    "category": "Gündemdekiler",
+                    "name": "Baro",
+                    "postCount": "17,8 B"
+                },
+                {
+                    "id": "6",
+                    "category": "İş dünyası ve finans · Gündemdekiler",
+                    "name": "#altın",
+                    "postCount": "2.150"
+                },
+                {
+                    "id": "7",
+                    "category": "Spor · Gündemdekiler",
+                    "name": "Cerny",
+                    "postCount": "1.038"
+                },
+                {
+                    "id": "8",
+                    "category": "Türkiye tarihinde gündem",
+                    "name": "#TürkiyeminGücüneBak",
+                    "postCount": "5.429"
+                },
+                {
+                    "id": "9",
+                    "category": "Türkiye tarihinde gündem",
+                    "name": "Maydonoz Döner",
+                    "postCount": "3.784"
+                },
+                {
+                    "id": "10",
+                    "category": "Spor · Gündem",
+                    "name": "Kerem Aktürkoğlu",
+                    "postCount": "2.893"
+                }
+            ],
+            "showMoreText": "Daha fazla göster"
+        },
+        "whoToFollow": {
+            "title": "Kimi takip etmeli",
+            "users": [
+                {
+                    "id": "1",
+                    "displayName": "Emre Kocadag",
+                    "handle": "@kocadagemre",
+                    "avatar": "assets/images/header/users/user-avatar.jpg",
+                    "isVerified": true,
+                    "verifiedType": "blue"
+                },
+                {
+                    "id": "2",
+                    "displayName": "Merih Demiral",
+                    "handle": "@Merihdemiral",
+                    "avatar": "assets/images/header/users/user-avatar.jpg",
+                    "isVerified": true,
+                    "verifiedType": "blue"
+                },
+                {
+                    "id": "3",
+                    "displayName": "NASA Events",
+                    "handle": "@NASA_Events",
+                    "avatar": "assets/images/header/users/user-avatar.jpg",
+                    "isVerified": true,
+                    "verifiedType": "gray"
+                }
+            ],
+            "showMoreText": "Daha fazla göster"
+        }
+    }
+}

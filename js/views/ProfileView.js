@@ -1,11 +1,11 @@
 import { View, safeSetInnerHTML, safeSetOuterHTML } from '@/core';
-import { FeedSection, HeaderSection, SidebarSection } from '@/sections';
+import { HeaderSection, SidebarSection, ProfileSection } from '@/sections';
 
-export class HomeView extends View {
+export class ProfileView extends View {
     constructor() {
         super();
         this.headerSection = new HeaderSection();
-        this.feedSection = new FeedSection();
+        this.profileSection = new ProfileSection();
         this.sidebarSection = new SidebarSection();
     }
 
@@ -14,7 +14,7 @@ export class HomeView extends View {
 
         await Promise.all([
             this.headerSection.loadData(),
-            this.feedSection.loadData(),
+            this.profileSection.loadData(),
             this.sidebarSection.loadData()
         ]);
 
@@ -22,23 +22,23 @@ export class HomeView extends View {
             <div class="app-container">
                 <div data-section="header"></div>
                 <main class="flex">
-                    <div data-section="feed"></div>
+                    <div data-section="profile"></div>
                     <div data-section="sidebar"></div>
                 </main>
             </div>
         `);
 
         const headerContainer = container.querySelector('[data-section="header"]');
-        const feedContainer = container.querySelector('[data-section="feed"]');
+        const profileContainer = container.querySelector('[data-section="profile"]');
         const sidebarContainer = container.querySelector('[data-section="sidebar"]');
 
         if (headerContainer) {
             safeSetOuterHTML(headerContainer, this.headerSection.render());
             this.headerSection.element = container.querySelector('header');
         }
-        if (feedContainer) {
-            safeSetOuterHTML(feedContainer, this.feedSection.render());
-            this.feedSection.element = container.querySelector('#feed');
+        if (profileContainer) {
+            safeSetOuterHTML(profileContainer, this.profileSection.render());
+            this.profileSection.element = container.querySelector('#profile');
         }
         if (sidebarContainer) {
             safeSetOuterHTML(sidebarContainer, this.sidebarSection.render());
@@ -50,7 +50,7 @@ export class HomeView extends View {
 
     onMount() {
         this.headerSection.onMount();
-        this.feedSection.onMount();
+        this.profileSection.onMount();
         this.sidebarSection.onMount();
         this.initLinkHandlers();
     }

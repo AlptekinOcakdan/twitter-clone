@@ -1,4 +1,4 @@
-import { Section, dataService, postService } from '@/core';
+import { Section, dataService, postService, safeSetInnerHTML } from '@/core';
 import { Tabs, CreatePost, PostList } from '@/components/feed';
 
 export class FeedSection extends Section {
@@ -54,13 +54,12 @@ export class FeedSection extends Section {
         const postList = new PostList({ posts });
 
         const tempContainer = document.createElement('div');
-        tempContainer.innerHTML = postList.render();
+        safeSetInnerHTML(tempContainer, postList.render());
 
         const newPostsContainer = tempContainer.querySelector('#posts-container');
         if (newPostsContainer) {
-            postsContainer.innerHTML = newPostsContainer.innerHTML;
+            safeSetInnerHTML(postsContainer, newPostsContainer.innerHTML);
 
-            // Mount the PostList component to initialize like buttons
             postList.element = postsContainer;
             postList.onMount();
         }
@@ -71,7 +70,6 @@ export class FeedSection extends Section {
         this.initScrollSync();
         this.initPostSubmit();
 
-        // Mount CreatePost component to enable textarea auto-expansion
         if (this.createPostComponent) {
             const createPostElement = document.getElementById('create-post');
             if (createPostElement) {
@@ -80,7 +78,6 @@ export class FeedSection extends Section {
             }
         }
 
-        // Mount PostList component to initialize like buttons on initial load
         if (this.postListComponent) {
             const postsContainer = document.getElementById('posts-container');
             if (postsContainer) {
@@ -124,7 +121,6 @@ export class FeedSection extends Section {
                 const isEmpty = postInput.value.trim().length === 0;
                 submitBtn.disabled = isEmpty;
 
-                // Toggle opacity class based on disabled state
                 if (isEmpty) {
                     submitBtn.classList.add('btn-disabled-opacity');
                 } else {
@@ -140,5 +136,3 @@ export class FeedSection extends Section {
         }
     }
 }
-
-

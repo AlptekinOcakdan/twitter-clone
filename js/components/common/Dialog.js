@@ -1,4 +1,4 @@
-import {Component} from '@/core';
+import { Component, safeCreateFragment } from '@/core';
 
 export class Dialog extends Component {
     constructor(props = {}) {
@@ -21,13 +21,13 @@ export class Dialog extends Component {
         this.isOpen = true;
 
         const dialogHtml = this.render();
-        const fragment = document.createRange().createContextualFragment(dialogHtml);
+        const fragment = safeCreateFragment(dialogHtml);
         this.dialogElement = fragment.firstElementChild;
 
         const { contentComponent } = this.props;
         if (contentComponent) {
             const contentHtml = contentComponent.render();
-            const contentFragment = document.createRange().createContextualFragment(contentHtml);
+            const contentFragment = safeCreateFragment(contentHtml);
             const contentElement = contentFragment.firstElementChild;
 
             const dialogBody = this.dialogElement.querySelector('.dialog-body');
