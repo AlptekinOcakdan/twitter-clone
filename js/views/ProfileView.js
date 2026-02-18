@@ -6,7 +6,7 @@ export class ProfileView extends View {
         super();
         this.headerSection = new HeaderSection();
         this.profileSection = new ProfileSection();
-        this.sidebarSection = new SidebarSection();
+        this.sidebarSection = new SidebarSection({ variant: 'profile' });
     }
 
     async render(container) {

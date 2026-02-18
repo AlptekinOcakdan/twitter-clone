@@ -198,6 +198,43 @@
     flex-shrink: 0;
 }
 
+.sidebar-card.topics-card {
+    padding: $spacing-3 0 0 0;
+    gap: 0;
+
+    h2 {
+        font-weight: $font-weight-heavy;
+        padding: 0 $spacing-4;
+        margin-bottom: 10px;
+    }
+
+    .topics-list {
+        gap: $spacing-3;
+        padding: 0 $spacing-4 $spacing-3 $spacing-4;
+    }
+
+    a.show-more {
+        padding: $spacing-4;
+    }
+}
+
+.topic-pill {
+    display: inline-block;
+    padding: 6px $spacing-4;
+    border: 1px solid var(--border-secondary-color);
+    border-radius: $border-radius-full;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    background-color: transparent;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+
 .sidebar-footer {
     padding: 0 $spacing-4;
 
@@ -227,6 +264,12 @@
     .copyright {
         font-size: $font-size-xxs;
         color: var(--text-secondary);
+    }
+}
+
+.sidebar--explore {
+    #sidebar-content {
+        padding-top: $spacing-4;
     }
 }
 

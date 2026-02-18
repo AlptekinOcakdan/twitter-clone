@@ -60,6 +60,17 @@
         ],
         "showMoreText": "Daha fazla göster"
     },
+    "topics": {
+        "title": "İlgini çekebilecek konular",
+        "items": [
+            { "id": "1", "name": "Moda ve güzellik" },
+            { "id": "2", "name": "Müzik" },
+            { "id": "3", "name": "Eğlence" },
+            { "id": "4", "name": "Kariyer" },
+            { "id": "5", "name": "Animasyon ve çizgi film" }
+        ],
+        "showMoreText": "Daha fazla göster"
+    },
     "footer": {
         "links": [
             { "text": "Hizmet Şartları", "href": "#" },

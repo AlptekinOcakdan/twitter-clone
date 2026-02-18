@@ -1341,6 +1341,39 @@ header {
   flex-shrink: 0;
 }
 
+.sidebar-card.topics-card {
+  padding: 0.75rem 0 0 0;
+  gap: 0;
+}
+.sidebar-card.topics-card h2 {
+  font-weight: 800;
+  padding: 0 1rem;
+  margin-bottom: 10px;
+}
+.sidebar-card.topics-card .topics-list {
+  gap: 0.75rem;
+  padding: 0 1rem 0.75rem 1rem;
+}
+.sidebar-card.topics-card a.show-more {
+  padding: 1rem;
+}
+
+.topic-pill {
+  display: inline-block;
+  padding: 6px 1rem;
+  border: 1px solid var(--border-secondary-color);
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background-color: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.topic-pill:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
 .sidebar-footer {
   padding: 0 1rem;
 }
@@ -1367,6 +1400,10 @@ header {
 .sidebar-footer .copyright {
   font-size: 11px;
   color: var(--text-secondary);
+}
+
+.sidebar--explore #sidebar-content {
+  padding-top: 1rem;
 }
 
 @media (max-width: 1384px) {

@@ -13,7 +13,7 @@
   "main": "index.js",
   "scripts": {
     "style": "gulp",
-    "dev": "npx live-server --port=3000"
+    "dev": "bunx live-server --port=3000 --entry-file=index.html"
   },
   "dependencies": {
     "gulp": "^5.0.1",

@@ -6,7 +6,7 @@ export class ExploreView extends View {
         super();
         this.headerSection = new HeaderSection();
         this.exploreSection = new ExploreSection();
-        this.sidebarSection = new SidebarSection();
+        this.sidebarSection = new SidebarSection({ variant: 'explore' });
     }
 
     async render(container) {

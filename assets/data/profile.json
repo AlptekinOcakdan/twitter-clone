@@ -16,46 +16,5 @@
         { "id": "highlights", "label": "Öne Çıkanlar", "active": false },
         { "id": "media", "label": "Medya", "active": false },
         { "id": "likes", "label": "Beğeniler", "active": false }
-    ],
-    "carousel": {
-        "title": "Seni tanımak isteriz!",
-        "subtitle": "Adımları tamamlayarak X deneyiminden en iyi şekilde faydalanabilirsin.",
-        "items": [
-            {
-                "id": "profile-photo",
-                "icon": "camera",
-                "title": "Profil resmini seç",
-                "description": "Bir selfien mi var? Hemen yükle.",
-                "completed": false
-            },
-            {
-                "id": "bio",
-                "icon": "pen",
-                "title": "Biyografini yaz",
-                "description": "Kendini birkaç kelimeyle anlat.",
-                "completed": false
-            },
-            {
-                "id": "follow",
-                "icon": "person",
-                "title": "5 hesap takip et",
-                "description": "Anasayfanı doldur.",
-                "completed": false
-            },
-            {
-                "id": "username",
-                "icon": "at",
-                "title": "Kullanıcı adını özelleştir",
-                "description": "Seni yansıtan bir ad seç.",
-                "completed": false
-            },
-            {
-                "id": "notifications",
-                "icon": "bell",
-                "title": "Bildirimleri aç",
-                "description": "Hiçbir şeyi kaçırma.",
-                "completed": false
-            }
-        ]
-    }
+    ]
 }

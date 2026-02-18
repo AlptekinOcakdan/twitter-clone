@@ -4,5 +4,7 @@ export { TrendItem } from './TrendItem.js';
 export { TrendsCard } from './TrendsCard.js';
 export { FollowItem } from './FollowItem.js';
 export { WhoToFollow } from './WhoToFollow.js';
+export { TopicItem } from './TopicItem.js';
+export { TopicsCard } from './TopicsCard.js';
 export { Footer } from './Footer.js';
 
