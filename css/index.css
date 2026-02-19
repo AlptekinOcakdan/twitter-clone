@@ -1187,30 +1187,23 @@ header {
   padding-bottom: 0;
 }
 .thread-group .post--thread-parent .post-avatar-col {
+  anchor-name: --thread-parent;
   position: relative;
 }
 .thread-group .post--thread-parent .post-avatar-col::after {
   content: "";
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 48px;
-  bottom: 0;
-  width: 2px;
-  background-color: var(--border-secondary-color);
+  border: 3px solid var(--text-primary);
+  border-right-color: transparent;
+  border-left-color: transparent;
+  top: anchor(--thread-parent bottom);
+  bottom: anchor(--thread-reply top);
+}
+.thread-group .post--thread-reply {
+  anchor-name: --thread-reply;
 }
 .thread-group .post--thread-reply .post-avatar-col {
   position: relative;
-}
-.thread-group .post--thread-reply .post-avatar-col::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  height: 0.75rem;
-  width: 2px;
-  background-color: var(--border-secondary-color);
 }
 
 #sidebar {
