@@ -4,8 +4,8 @@
             "id": "home",
             "label": "Anasayfa",
             "href": "/",
-            "icon": "icon-home-filled",
-            "iconPath": "assets/images/header/icons/icon-home-filled.svg#icon-home-filled",
+            "icon": "icon-home",
+            "iconPath": "assets/images/header/icons/icon-home.svg#icon-home",
             "activeIconPath": "assets/images/header/icons/icon-home-filled.svg#icon-home-filled"
         },
         {
@@ -13,49 +13,56 @@
             "label": "Keşfet",
             "href": "/explore",
             "icon": "icon-explore",
-            "iconPath": "assets/images/header/icons/icon-explore.svg#icon-explore"
+            "iconPath": "assets/images/header/icons/icon-explore.svg#icon-explore",
+            "activeIconPath": "assets/images/header/icons/icon-explore-filled.svg#icon-explore-filled"
         },
         {
             "id": "notifications",
             "label": "Bildirimler",
             "href": "/notifications",
             "icon": "icon-notifications",
-            "iconPath": "assets/images/header/icons/icon-notifications.svg#icon-notifications"
+            "iconPath": "assets/images/header/icons/icon-notifications.svg#icon-notifications",
+            "activeIconPath": "assets/images/header/icons/icon-notifications-filled.svg#icon-notifications-filled"
         },
         {
             "id": "follow",
             "label": "Takip et",
             "href": "/follow",
             "icon": "icon-follow",
-            "iconPath": "assets/images/header/icons/icon-follow.svg#icon-follow"
+            "iconPath": "assets/images/header/icons/icon-follow.svg#icon-follow",
+            "activeIconPath": "assets/images/header/icons/icon-follow-filled.svg#icon-follow-filled"
         },
         {
             "id": "chat",
             "label": "Sohbet",
             "href": "/messages",
             "icon": "icon-chat",
-            "iconPath": "assets/images/header/icons/icon-chat.svg#icon-chat"
+            "iconPath": "assets/images/header/icons/icon-chat.svg#icon-chat",
+            "activeIconPath": "assets/images/header/icons/icon-chat-filled.svg#icon-chat-filled"
         },
         {
             "id": "grok",
             "label": "Grok",
             "href": "/grok",
             "icon": "icon-grok",
-            "iconPath": "assets/images/header/icons/icon-grok.svg#icon-grok"
+            "iconPath": "assets/images/header/icons/icon-grok.svg#icon-grok",
+            "activeIconPath": "assets/images/header/icons/icon-grok-filled.svg#icon-grok-filled"
         },
         {
             "id": "bookmarks",
             "label": "Yer İşaretleri",
             "href": "/bookmarks",
             "icon": "icon-bookmark",
-            "iconPath": "assets/images/header/icons/icon-bookmark.svg#icon-bookmark"
+            "iconPath": "assets/images/header/icons/icon-bookmark.svg#icon-bookmark",
+            "activeIconPath": "assets/images/header/icons/icon-bookmark-filled.svg#icon-bookmark-filled"
         },
         {
             "id": "creator",
             "label": "İçerik Üreticisi Stüdyosu",
             "href": "/creator-studio",
             "icon": "icon-creator",
-            "iconPath": "assets/images/header/icons/icon-creator.svg#icon-creator"
+            "iconPath": "assets/images/header/icons/icon-creator.svg#icon-creator",
+            "activeIconPath": "assets/images/header/icons/icon-creator-filled.svg#icon-creator-filled"
         },
         {
             "id": "premium",
@@ -69,7 +76,8 @@
             "label": "Profil",
             "href": "/profile",
             "icon": "icon-user",
-            "iconPath": "assets/images/header/icons/icon-user.svg#icon-user"
+            "iconPath": "assets/images/header/icons/icon-user.svg#icon-user",
+            "activeIconPath": "assets/images/header/icons/icon-user-filled.svg#icon-user-filled"
         },
         {
             "id": "more",

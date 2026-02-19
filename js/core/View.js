@@ -26,6 +26,10 @@ export class View {
         this.onMount();
     }
 
+    setTitle(title) {
+        document.title = `${title} / X`;
+    }
+
     onMount() {}
 
     updateSection(name) {

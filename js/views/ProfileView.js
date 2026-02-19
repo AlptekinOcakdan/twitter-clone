@@ -18,6 +18,9 @@ export class ProfileView extends View {
             this.sidebarSection.loadData()
         ]);
 
+        const { displayName, handle } = this.profileSection.profileData;
+        this.setTitle(`${displayName} (${handle})`);
+
         safeSetInnerHTML(container, `
             <div class="app-container">
                 <div data-section="header"></div>

@@ -69,6 +69,7 @@ export class FeedSection extends Section {
         super.onMount();
         this.initScrollSync();
         this.initPostSubmit();
+        this.initTabs();
 
         if (this.createPostComponent) {
             const createPostElement = document.getElementById('create-post');
@@ -88,6 +89,20 @@ export class FeedSection extends Section {
 
         this.unsubscribe = postService.subscribe((posts) => {
             this.refreshFeed(posts);
+        });
+    }
+
+    initTabs() {
+        const tabsContainer = document.getElementById('tabs');
+        if (!tabsContainer) return;
+
+        tabsContainer.addEventListener('click', (e) => {
+            const tab = e.target.closest('.tab');
+            if (!tab || !tab.dataset.tabId) return;
+
+            const allTabs = tabsContainer.querySelectorAll('.tab');
+            allTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
         });
     }
 

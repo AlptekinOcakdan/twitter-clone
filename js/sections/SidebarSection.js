@@ -30,15 +30,13 @@ export class SidebarSection extends Section {
 
     renderProfile() {
         const searchBox = new SearchBox();
-        const whoToFollow = new WhoToFollow(this.sidebarData.whoToFollow);
-        const topicsCard = new TopicsCard(this.sidebarData.topics);
+        const youMightLike = new WhoToFollow(this.sidebarData.youMightLike);
         const trendsCard = new TrendsCard(this.sidebarData.trends);
         const footer = new Footer(this.sidebarData.footer);
 
         return `
             ${searchBox.render()}
-            ${whoToFollow.render()}
-            ${topicsCard.render()}
+            ${youMightLike.render()}
             ${trendsCard.render()}
             ${footer.render()}
         `;
@@ -74,6 +72,7 @@ export class SidebarSection extends Section {
 
         return `
             <section id="sidebar" class="h-full sidebar--${this.variant}">
+            <div id="sidebar-separator"></div>
                 <div id="sidebar-content">
                     ${content}
                 </div>

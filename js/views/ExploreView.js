@@ -18,6 +18,8 @@ export class ExploreView extends View {
             this.sidebarSection.loadData()
         ]);
 
+        this.setTitle('Keşfet');
+
         safeSetInnerHTML(container, `
             <div class="app-container">
                 <div data-section="header"></div>

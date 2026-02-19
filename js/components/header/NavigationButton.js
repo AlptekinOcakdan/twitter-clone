@@ -15,15 +15,16 @@ export class NavigationButton extends Component {
     }
 
     render() {
-        const { id, label, href, iconPath, isActive, isButton } = this.props;
+        const { id, label, href, iconPath, activeIconPath, isActive, isButton } = this.props;
         const activeClass = isActive ? ' active' : '';
+        const currentIcon = (isActive && activeIconPath) ? activeIconPath : iconPath;
 
         if (isButton) {
             return `
                 <li>
                     <button class="header-button${activeClass}" data-nav-id="${id}">
                         <svg viewBox="0 0 24 24">
-                            <use href="${iconPath}"/>
+                            <use href="${currentIcon}"/>
                         </svg>
                         <span>${label}</span>
                     </button>
@@ -35,7 +36,7 @@ export class NavigationButton extends Component {
             <li>
                 <a class="header-button${activeClass}" href="${href}" data-nav-id="${id}" data-link>
                     <svg viewBox="0 0 24 24">
-                        <use href="${iconPath}"/>
+                        <use href="${currentIcon}"/>
                     </svg>
                     <span>${label}</span>
                 </a>

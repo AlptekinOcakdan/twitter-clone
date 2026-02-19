@@ -60,6 +60,36 @@
         ],
         "showMoreText": "Daha fazla göster"
     },
+    "youMightLike": {
+        "title": "Bunları beğenebilirsin",
+        "users": [
+            {
+                "id": "4",
+                "displayName": "Emre Kocadag",
+                "handle": "@kocadagemre",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true,
+                "verifiedType": "blue"
+            },
+            {
+                "id": "5",
+                "displayName": "Merih Demiral",
+                "handle": "@Merihdemiral",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true,
+                "verifiedType": "blue"
+            },
+            {
+                "id": "6",
+                "displayName": "NASA Events",
+                "handle": "@NASA_Events",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true,
+                "verifiedType": "gray"
+            }
+        ],
+        "showMoreText": "Daha fazla göster"
+    },
     "topics": {
         "title": "İlgini çekebilecek konular",
         "items": [

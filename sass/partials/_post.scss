@@ -225,3 +225,111 @@
         }
     }
 }
+
+.quoted-post {
+    border: 1px solid var(--border-secondary-color);
+    border-radius: $border-radius-xl;
+    margin-top: $spacing-3;
+    padding: $spacing-3;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+
+.quoted-post-header {
+    gap: 4px;
+    margin-bottom: $spacing-1;
+}
+
+.quoted-post-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.quoted-post-name {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xs;
+}
+
+.quoted-post-handle,
+.quoted-post-time {
+    color: var(--text-secondary);
+    font-size: $font-size-xs;
+}
+
+.quoted-post-text {
+    font-size: $font-size-base;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.quoted-post-media {
+    margin-top: $spacing-2;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        max-height: 150px;
+        object-fit: cover;
+    }
+}
+
+.replying-to {
+    margin-bottom: 2px;
+}
+
+.replying-to-text {
+    font-size: $font-size-xs;
+    color: var(--text-secondary);
+}
+
+.thread-group {
+    display: flex;
+    flex-direction: column;
+
+    .post--thread-parent {
+        border-bottom: none;
+        padding-bottom: 0;
+
+        .post-avatar-col {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: calc(40px + 8px);
+                bottom: 0;
+                width: 2px;
+                background-color: var(--border-secondary-color);
+            }
+        }
+    }
+
+    .post--thread-reply {
+        .post-avatar-col {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                height: $spacing-3;
+                width: 2px;
+                background-color: var(--border-secondary-color);
+            }
+        }
+    }
+}

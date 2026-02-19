@@ -67,6 +67,48 @@
                 "views": 47000
             },
             "timestamp": "2026-02-16T09:30:00.000Z"
+        },
+        {
+            "id": "4",
+            "author": {
+                "displayName": "Emre Kocadag",
+                "handle": "@kocadagemre",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true
+            },
+            "content": {
+                "text": "İstanbul her zaman güzeldir, ama bu manzara ayrı bir güzel!",
+                "media": null
+            },
+            "quoteOf": "2",
+            "stats": {
+                "comments": 12,
+                "retweets": 3,
+                "likes": 87,
+                "views": 5200
+            },
+            "timestamp": "2026-02-16T12:00:00.000Z"
+        },
+        {
+            "id": "5",
+            "author": {
+                "displayName": "Merih Demiral",
+                "handle": "@Merihdemiral",
+                "avatar": "assets/images/header/users/user-avatar.jpg",
+                "isVerified": true
+            },
+            "content": {
+                "text": "Kesinlikle katılıyorum, bu manzarayı görmek için İstanbul'a gelmek lazım.",
+                "media": null
+            },
+            "replyTo": "2",
+            "stats": {
+                "comments": 8,
+                "retweets": 2,
+                "likes": 45,
+                "views": 3100
+            },
+            "timestamp": "2026-02-16T11:00:00.000Z"
         }
     ]
 }

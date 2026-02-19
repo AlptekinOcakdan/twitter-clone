@@ -18,6 +18,8 @@ export class HomeView extends View {
             this.sidebarSection.loadData()
         ]);
 
+        this.setTitle('Anasayfa');
+
         safeSetInnerHTML(container, `
             <div class="app-container">
                 <div data-section="header"></div>

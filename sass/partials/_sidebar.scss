@@ -267,9 +267,17 @@
     }
 }
 
+#sidebar-separator {
+    display: none;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: $spacing-3 0 $spacing-4 0;
+}
+
 .sidebar--explore {
-    #sidebar-content {
-        padding-top: $spacing-4;
+    #sidebar-separator {
+        display: block;
     }
 }
 

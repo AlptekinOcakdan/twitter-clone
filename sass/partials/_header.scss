@@ -84,6 +84,9 @@ header {
 
 .active {
     font-weight: $font-weight-bold;
+    svg {
+        fill: var(--text-primary);
+    }
 }
 
 #publish {
@@ -170,15 +173,14 @@ header {
     }
 }
 
-// Media Query for Tablet/Laptop (max-width: 1279px)
 @media (max-width: 1279px) {
     header {
-        width: 88px; // Shrink header width
-        align-items: center; // Center items horizontally
+        width: 88px;
+        align-items: center;
     }
 
     #header-container {
-        width: auto; // Reset fixed width
+        width: auto;
         padding: 0;
         align-items: center;
     }
@@ -196,17 +198,17 @@ header {
     }
 
     .header-button {
-        width: 50px; // Make buttons circular
+        width: 50px;
         height: 50px;
         padding: 0;
-        justify-content: center; // Center icon
+        justify-content: center;
 
         span {
-            display: none; // Hide text labels
+            display: none;
         }
 
         svg {
-            margin: 0; // Remove margin from icon
+            margin: 0;
         }
     }
 
@@ -237,7 +239,6 @@ header {
             display: none;
         }
 
-        // Hide the dropdown arrow (which is the last svg in the container)
         & > svg {
             display: none;
         }
@@ -247,7 +248,6 @@ header {
         }
     }
 
-    // Ensure logo is centered
     #header-logo {
         width: 50px;
         height: 50px;
@@ -257,7 +257,6 @@ header {
     }
 }
 
-// Media Query for smaller screens (max-width: 599px)
 @media (max-width: 599px) {
     header {
         width: 68px;

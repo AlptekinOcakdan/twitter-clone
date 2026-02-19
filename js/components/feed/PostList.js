@@ -16,15 +16,57 @@ export class PostList extends Component {
 
         this.postComponents = [];
 
-        const postsHtml = posts.map(post => {
-            const postComponent = new Post(post);
-            this.postComponents.push(postComponent);
-            return postComponent.render();
-        }).join('');
+        const postsMap = new Map(posts.map(p => [p.id, p]));
+
+        const replyChildIds = new Set();
+        const parentIdsRendered = new Set();
+
+        posts.forEach(post => {
+            if (post.replyTo) {
+                replyChildIds.add(post.id);
+            }
+        });
+
+        const htmlParts = [];
+
+        posts.forEach(post => {
+            if (parentIdsRendered.has(post.id)) return;
+
+            if (post.replyTo && postsMap.has(post.replyTo)) {
+                const parentPost = postsMap.get(post.replyTo);
+
+                const parentComponent = new Post({
+                    ...parentPost,
+                    postsMap,
+                    isThreadParent: true
+                });
+                this.postComponents.push(parentComponent);
+
+                const replyComponent = new Post({
+                    ...post,
+                    postsMap,
+                    isThreadReply: true
+                });
+                this.postComponents.push(replyComponent);
+
+                parentIdsRendered.add(parentPost.id);
+
+                htmlParts.push(`
+                    <div class="thread-group">
+                        ${parentComponent.render()}
+                        ${replyComponent.render()}
+                    </div>
+                `);
+            } else if (!parentIdsRendered.has(post.id)) {
+                const postComponent = new Post({ ...post, postsMap });
+                this.postComponents.push(postComponent);
+                htmlParts.push(postComponent.render());
+            }
+        });
 
         return `
             <div id="posts-container">
-                ${postsHtml}
+                ${htmlParts.join('')}
             </div>
         `;
     }

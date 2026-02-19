@@ -17,14 +17,47 @@
     z-index: $z-index-dropdown;
 }
 
+#explore-search-back {
+    @include button-reset;
+    min-width: 56px;
+    flex-shrink: 0;
+    display: none;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: var(--text-secondary);
+    }
+}
+
+#explore-search-settings{
+    @include button-reset;
+    min-width: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: var(--text-secondary);
+    }
+}
+
+.explore-search:has(.explore-search-container:focus-within) #explore-search-back {
+    display: block;
+}
+
 .explore-search-container {
-    background-color: var(--input-bg);
+    background-color: transparent;
     border-radius: $border-radius-full;
     padding: $spacing-2 $spacing-4;
+    border: 1px solid var(--border-color);
+    flex: 1;
 
     &:focus-within {
-        background-color: var(--bg-main);
-        border: 1px solid var(--text-link);
+        border: 2px solid var(--text-link);
 
         .search-icon {
             fill: var(--text-link);

@@ -23,6 +23,11 @@ export class Post extends Component {
                 views: 0
             },
             timestamp: '',
+            quoteOf: null,
+            replyTo: null,
+            isThreadParent: false,
+            isThreadReply: false,
+            postsMap: new Map(),
             ...props
         };
         this.isLiked = false;
@@ -42,6 +47,16 @@ export class Post extends Component {
 
     renderVerifiedIcon() {
         if (!this.props.author.isVerified) return '';
+
+        return `
+            <svg class="verified-icon" viewBox="0 0 24 24">
+                <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path>
+            </svg>
+        `;
+    }
+
+    renderQuotedVerifiedIcon(author) {
+        if (!author.isVerified) return '';
 
         return `
             <svg class="verified-icon" viewBox="0 0 24 24">
@@ -96,6 +111,54 @@ export class Post extends Component {
         return '';
     }
 
+    renderQuote() {
+        const { quoteOf, postsMap } = this.props;
+        if (!quoteOf) return '';
+
+        const quotedPost = postsMap.get(quoteOf);
+        if (!quotedPost) return '';
+
+        const { author, content, timestamp } = quotedPost;
+
+        let mediaHtml = '';
+        if (content.media && content.media.type === 'image') {
+            mediaHtml = `
+                <div class="quoted-post-media">
+                    <img src="${content.media.url}" alt="${content.media.alt || ''}">
+                </div>
+            `;
+        }
+
+        return `
+            <div class="quoted-post" data-quoted-id="${quotedPost.id}">
+                <div class="quoted-post-header flex items-center">
+                    <img src="${author.avatar}" alt="${author.displayName}" class="quoted-post-avatar">
+                    <span class="quoted-post-name">${author.displayName}</span>
+                    ${this.renderQuotedVerifiedIcon(author)}
+                    <span class="quoted-post-handle">${author.handle}</span>
+                    <span class="post-dot">·</span>
+                    <span class="quoted-post-time">${this.formatTimestamp(timestamp)}</span>
+                </div>
+                <div class="quoted-post-text">${content.text}</div>
+                ${mediaHtml}
+            </div>
+        `;
+    }
+
+    renderReplyingTo() {
+        const { replyTo, postsMap } = this.props;
+        if (!replyTo) return '';
+
+        const parentPost = postsMap.get(replyTo);
+        if (!parentPost) return '';
+
+        return `
+            <div class="replying-to">
+                <span class="replying-to-text">${parentPost.author.handle} kullanıcısına yanıt olarak</span>
+            </div>
+        `;
+    }
+
     onMount() {
         this.isLiked = postService.isPostLiked(this.props.id);
 
@@ -110,10 +173,14 @@ export class Post extends Component {
     }
 
     render() {
-        const { id, author, content, stats, timestamp } = this.props;
+        const { id, author, content, stats, timestamp, isThreadParent, isThreadReply } = this.props;
+
+        let threadClass = '';
+        if (isThreadParent) threadClass = ' post--thread-parent';
+        if (isThreadReply) threadClass = ' post--thread-reply';
 
         return `
-            <article class="post flex" data-post-id="${id}">
+            <article class="post flex${threadClass}" data-post-id="${id}">
                 <div class="post-avatar-col">
                     <img src="${author.avatar}" alt="${author.displayName}" class="user-avatar">
                 </div>
@@ -135,10 +202,12 @@ export class Post extends Component {
                             </button>
                         </div>
                     </div>
+                    ${this.renderReplyingTo()}
                     <div class="post-text">
                         ${content.text}
                     </div>
                     ${this.renderMedia()}
+                    ${this.renderQuote()}
                     <div class="post-interactions flex items-center justify-between">
                         <div class="interaction-group comment">
                             <button class="interaction-btn">

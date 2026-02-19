@@ -22,7 +22,7 @@ export class ExploreTrendsSection extends Component {
 
         return `
             <div class="explore-trends">
-                <h2 class="explore-section-title">${title}</h2>
+<!--                <h2 class="explore-section-title">${title}</h2>-->
                 <div class="explore-trend-list">
                     ${trendsHtml}
                 </div>
