@@ -1258,6 +1258,133 @@ header {
   width: 100%;
 }
 
+.search-wrapper {
+  position: relative;
+}
+
+.search-popover {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-main);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  min-height: 100px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 20;
+  flex-direction: column;
+}
+.search-wrapper:focus-within .search-popover {
+  display: flex;
+}
+
+.search-popover-text {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 20px;
+  padding: 1.25rem;
+  text-align: center;
+  align-self: center;
+  margin: auto;
+}
+
+.search-popover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+}
+
+.search-popover-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.search-popover-clear {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text-link);
+  font-size: 14px;
+}
+.search-popover-clear:hover {
+  text-decoration: underline;
+}
+
+.search-popover-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  gap: 0.75rem;
+  transition: background-color 0.2s;
+}
+.search-result-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.search-result-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.search-result-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.search-result-name {
+  gap: 2px;
+}
+.search-result-name .verified-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--verified-blue);
+  flex-shrink: 0;
+}
+
+.search-result-displayname {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.search-result-handle {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.search-result-trend {
+  gap: 0.75rem;
+}
+
+.search-result-trend-icon {
+  width: 18.75px;
+  height: 18.75px;
+  fill: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.search-result-trend-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
 .sidebar-card {
   display: flex;
   flex-direction: column;

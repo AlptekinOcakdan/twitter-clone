@@ -5,22 +5,29 @@ export class SidebarSection extends Section {
     constructor(props = {}) {
         super(props);
         this.sidebarData = null;
+        this.searchData = null;
         this.variant = props.variant || 'home';
+        this.searchBoxComponent = null;
     }
 
     async loadData() {
-        this.sidebarData = await dataService.load('sidebar');
+        const [sidebarData, searchData] = await Promise.all([
+            dataService.load('sidebar'),
+            dataService.load('search')
+        ]);
+        this.sidebarData = sidebarData;
+        this.searchData = searchData;
     }
 
     renderHome() {
-        const searchBox = new SearchBox();
+        this.searchBoxComponent = new SearchBox({ searchData: this.searchData });
         const premiumCard = new PremiumCard(this.sidebarData.premium);
         const trendsCard = new TrendsCard(this.sidebarData.trends);
         const whoToFollow = new WhoToFollow(this.sidebarData.whoToFollow);
         const footer = new Footer(this.sidebarData.footer);
 
         return `
-            ${searchBox.render()}
+            ${this.searchBoxComponent.render()}
             ${premiumCard.render()}
             ${trendsCard.render()}
             ${whoToFollow.render()}
@@ -29,13 +36,13 @@ export class SidebarSection extends Section {
     }
 
     renderProfile() {
-        const searchBox = new SearchBox();
+        this.searchBoxComponent = new SearchBox({ searchData: this.searchData });
         const youMightLike = new WhoToFollow(this.sidebarData.youMightLike);
         const trendsCard = new TrendsCard(this.sidebarData.trends);
         const footer = new Footer(this.sidebarData.footer);
 
         return `
-            ${searchBox.render()}
+            ${this.searchBoxComponent.render()}
             ${youMightLike.render()}
             ${trendsCard.render()}
             ${footer.render()}
@@ -79,6 +86,15 @@ export class SidebarSection extends Section {
             </section>
         `;
     }
+
+    onMount() {
+        super.onMount();
+        if (this.searchBoxComponent) {
+            const searchEl = this.element?.querySelector('.sidebar-search');
+            if (searchEl) {
+                this.searchBoxComponent.element = searchEl;
+                this.searchBoxComponent.onMount();
+            }
+        }
+    }
 }
-
-

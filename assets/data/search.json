@@ -1,0 +1,112 @@
+{
+    "profiles": [
+        {
+            "id": "1",
+            "displayName": "Hava Forum",
+            "handle": "@HavaForum",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "2",
+            "displayName": "Elon Musk",
+            "handle": "@elonmusk",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "3",
+            "displayName": "Emre Kocadag",
+            "handle": "@kocadagemre",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "4",
+            "displayName": "Merih Demiral",
+            "handle": "@Merihdemiral",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "5",
+            "displayName": "NASA Events",
+            "handle": "@NASA_Events",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "gray"
+        },
+        {
+            "id": "6",
+            "displayName": "Teknoloji Haberleri",
+            "handle": "@teknohaberler",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "7",
+            "displayName": "Galatasaray SK",
+            "handle": "@GalatasaraySK",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "8",
+            "displayName": "Fenerbahce SK",
+            "handle": "@Fenerbahce",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "9",
+            "displayName": "CNN Turk",
+            "handle": "@cabornnturk",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "gray"
+        },
+        {
+            "id": "10",
+            "displayName": "Alptekin OCAKDAN",
+            "handle": "@AlptekinOc23031",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": false,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "11",
+            "displayName": "SpaceX",
+            "handle": "@SpaceX",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        },
+        {
+            "id": "12",
+            "displayName": "Besiktas JK",
+            "handle": "@Besiktas",
+            "avatar": "assets/images/header/users/user-avatar.jpg",
+            "isVerified": true,
+            "verifiedType": "blue"
+        }
+    ],
+    "trends": [
+        { "id": "1", "name": "#altin" },
+        { "id": "2", "name": "#TurkiyeminGucuneBak" },
+        { "id": "3", "name": "Cerny" },
+        { "id": "4", "name": "Maydonoz Doner" },
+        { "id": "5", "name": "#deprem" },
+        { "id": "6", "name": "#Bitcoin" },
+        { "id": "7", "name": "Galatasaray" },
+        { "id": "8", "name": "Fenerbahce" },
+        { "id": "9", "name": "#teknoloji" },
+        { "id": "10", "name": "#yapayZeka" }
+    ]
+}
