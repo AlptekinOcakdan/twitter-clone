@@ -1,6 +1,5 @@
 @use 'variables' as *;
 
-// Font path is relative to compiled CSS location (css/index.css)
 $font-path: '../assets/font';
 
 @font-face {

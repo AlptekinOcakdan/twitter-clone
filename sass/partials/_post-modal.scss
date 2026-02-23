@@ -1,7 +1,6 @@
 @use '../mixins/mixins' as *;
 @use '../partials/variables' as *;
 
-// Post modal specific overlay & container overrides
 .dialog-overlay:has(.dialog-post-modal) {
     align-items: flex-start;
     padding-top: 5vh;
@@ -27,7 +26,6 @@
     }
 }
 
-// Post create content
 .dialog-post-create {
     .dialog-post-input-row {
         gap: $spacing-3;
