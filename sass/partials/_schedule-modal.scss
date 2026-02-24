@@ -1,0 +1,121 @@
+@use 'variables' as *;
+@use '../mixins/mixins' as *;
+
+$schedule-z-index: 200;
+
+.schedule-modal-overlay {
+    z-index: $schedule-z-index;
+}
+
+.schedule-modal {
+    width: 440px;
+    max-width: 90vw;
+
+    .dialog-header {
+        @include border-bottom;
+    }
+}
+
+.schedule-body {
+    padding: $spacing-4 !important;
+}
+
+.schedule-info {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    background-color: var(--bg-secondary);
+    border-radius: $spacing-3;
+    margin-bottom: $spacing-5;
+}
+
+.schedule-info-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-secondary);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.schedule-info-text {
+    font-size: $font-size-sm;
+    line-height: $line-height-base;
+    color: var(--text-secondary);
+}
+
+.schedule-form {
+    @include flex-column;
+    gap: $spacing-4;
+}
+
+.schedule-field {
+    @include flex-column;
+    gap: 6px;
+}
+
+.schedule-label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: var(--text-secondary);
+}
+
+.schedule-date-input,
+.schedule-hour-select,
+.schedule-minute-select {
+    padding: 10px $spacing-3;
+    border: 1px solid var(--border-secondary-color);
+    border-radius: $spacing-2;
+    font-family: inherit;
+    font-size: $font-size-base;
+    color: var(--text-primary);
+    background-color: var(--bg-main);
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+
+    &:focus {
+        border-color: var(--btn-primary-bg);
+    }
+}
+
+.schedule-time-row {
+    gap: $spacing-3;
+}
+
+.schedule-preview {
+    margin-top: $spacing-5;
+    padding: $spacing-3;
+    background-color: var(--bg-secondary);
+    border-radius: $spacing-3;
+    @include flex-column;
+    gap: $spacing-1;
+}
+
+.schedule-preview-label {
+    font-size: $font-size-xs;
+    color: var(--text-secondary);
+}
+
+.schedule-preview-date {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+}
+
+.schedule-footer {
+    padding: $spacing-3 $spacing-4;
+    border-top: 1px solid var(--border-color);
+}
+
+.schedule-confirm-btn {
+    @include button-pill(var(--btn-primary-bg), var(--text-white));
+    width: 100%;
+    padding: 10px;
+    font-size: $font-size-base;
+    border: none;
+
+    &:hover {
+        background-color: #1a8cd8;
+    }
+}

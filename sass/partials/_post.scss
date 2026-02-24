@@ -136,6 +136,16 @@
 }
 
 .retweet {
+    .interaction-btn.retweeted {
+        svg {
+            color: $color-retweet;
+        }
+    }
+
+    .interaction-btn.retweeted ~ .interaction-count {
+        color: $color-retweet;
+    }
+
     &:hover {
         color: $color-retweet;
 

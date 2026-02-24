@@ -1,5 +1,7 @@
-import { Component, postService } from '@/core';
+import { Component, postService, router } from '@/core';
 import { formatRelativeTime } from '@/utils/timeUtils';
+import { PostMoreMenu } from './PostMoreMenu.js';
+import { SharePopover } from './SharePopover.js';
 
 export class Post extends Component {
     constructor(props = {}) {
@@ -31,8 +33,14 @@ export class Post extends Component {
             ...props
         };
         this.isLiked = false;
+        this.isRetweeted = false;
 
         this.handleLikeClick = this.handleLikeClick.bind(this);
+        this.handleRetweetClick = this.handleRetweetClick.bind(this);
+        this.handleShareClick = this.handleShareClick.bind(this);
+        this.handleCommentClick = this.handleCommentClick.bind(this);
+        this.handleMoreClick = this.handleMoreClick.bind(this);
+        this.handlePostClick = this.handlePostClick.bind(this);
     }
 
     formatNumber(num) {
@@ -87,13 +95,97 @@ export class Post extends Component {
 
         try {
             const result = await postService.toggleLike(id);
-
             this.isLiked = result.liked;
             likeButton.classList.toggle('liked', this.isLiked);
             likeCount.textContent = this.formatNumber(result.likes);
         } catch (error) {
             console.error('Failed to toggle like:', error);
         }
+    }
+
+    async handleRetweetClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const { id } = this.props;
+        const retweetButton = this.element.querySelector('.retweet .interaction-btn');
+        const retweetCount = this.element.querySelector('.retweet .interaction-count');
+
+        if (!retweetButton || !retweetCount) return;
+
+        try {
+            const result = await postService.toggleRetweet(id);
+            this.isRetweeted = result.retweeted;
+            retweetButton.classList.toggle('retweeted', this.isRetweeted);
+            retweetCount.textContent = this.formatNumber(result.retweets);
+        } catch (error) {
+            console.error('Failed to toggle retweet:', error);
+        }
+    }
+
+    handleShareClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const shareBtn = this.element.querySelector('.share');
+        if (!shareBtn) return;
+
+        const popover = new SharePopover({
+            postId: this.props.id,
+            anchorElement: shareBtn
+        });
+        popover.open();
+    }
+
+    handleCommentClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        Promise.all([
+            import('@/components/post/DialogReplyCreate.js'),
+            import('@/components/common/Dialog.js')
+        ]).then(([{ DialogReplyCreate }, { Dialog }]) => {
+            const replyCreate = new DialogReplyCreate({
+                parentPost: this.props,
+                onReplyCreated: () => {
+                    replyDialog.close();
+                }
+            });
+            const replyDialog = new Dialog({
+                title: '',
+                cssClass: 'dialog-post-modal',
+                contentComponent: replyCreate
+            });
+            replyDialog.open();
+        });
+    }
+
+    handleMoreClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const moreBtn = this.element.querySelector('.post-more-btn button:last-child');
+        if (!moreBtn) return;
+
+        const menu = new PostMoreMenu({
+            postId: this.props.id,
+            authorHandle: this.props.author.handle,
+            anchorElement: moreBtn
+        });
+        menu.open();
+    }
+
+    handlePostClick(e) {
+        if (e.target.closest('.interaction-btn') ||
+            e.target.closest('.interaction-group') ||
+            e.target.closest('.interaction-icons-right') ||
+            e.target.closest('.post-more-btn') ||
+            e.target.closest('.quoted-post') ||
+            e.target.closest('a')) {
+            return;
+        }
+
+        router.navigate(`/post/${this.props.id}`);
     }
 
     renderMedia() {
@@ -154,22 +246,43 @@ export class Post extends Component {
 
         return `
             <div class="replying-to">
-                <span class="replying-to-text">${parentPost.author.handle} kullanıcısına yanıt olarak</span>
+                <span class="replying-to-text">${parentPost.author.handle} kullanicisina yanit olarak</span>
             </div>
         `;
     }
 
     onMount() {
         this.isLiked = postService.isPostLiked(this.props.id);
+        this.isRetweeted = postService.isPostRetweeted(this.props.id);
 
         const likeButton = this.element.querySelector('.like .interaction-btn');
         if (likeButton) {
-            if (this.isLiked) {
-                likeButton.classList.add('liked');
-            }
-
+            if (this.isLiked) likeButton.classList.add('liked');
             likeButton.addEventListener('click', this.handleLikeClick);
         }
+
+        const retweetButton = this.element.querySelector('.retweet .interaction-btn');
+        if (retweetButton) {
+            if (this.isRetweeted) retweetButton.classList.add('retweeted');
+            retweetButton.addEventListener('click', this.handleRetweetClick);
+        }
+
+        const commentButton = this.element.querySelector('.comment .interaction-btn');
+        if (commentButton) {
+            commentButton.addEventListener('click', this.handleCommentClick);
+        }
+
+        const shareButton = this.element.querySelector('.share');
+        if (shareButton) {
+            shareButton.addEventListener('click', this.handleShareClick);
+        }
+
+        const moreButton = this.element.querySelector('.post-more-btn button:last-child');
+        if (moreButton) {
+            moreButton.addEventListener('click', this.handleMoreClick);
+        }
+
+        this.element.addEventListener('click', this.handlePostClick);
     }
 
     render() {
@@ -237,7 +350,7 @@ export class Post extends Component {
                             <button class="interaction-btn save" title="Kaydet">
                                 <svg viewBox="0 0 24 24"><use href="assets/images/main/post/save.svg#save"/></svg>
                             </button>
-                            <button class="interaction-btn share" title="Paylaş">
+                            <button class="interaction-btn share" title="Paylas">
                                 <svg viewBox="0 0 24 24"><use href="assets/images/main/post/share.svg#share"/></svg>
                             </button>
                         </div>

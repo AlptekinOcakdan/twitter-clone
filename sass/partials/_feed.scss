@@ -12,6 +12,7 @@
 
 #create-post {
     padding: 0 $spacing-4;
+    position: relative;
     @include border-bottom;
 }
 

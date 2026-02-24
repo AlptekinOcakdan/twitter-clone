@@ -1,35 +1,57 @@
+@use 'variables' as *;
 @use '../mixins/mixins' as *;
-@use '../partials/variables' as *;
 
-.dialog-overlay:has(.dialog-post-modal) {
-    align-items: flex-start;
-    padding-top: 5vh;
-}
-
-.dialog-post-modal {
-    .dialog-header {
-        justify-content: space-between;
-    }
-
-    .dialog-drafts-btn {
-        @include button-base;
-        font-size: $font-size-sm;
-        font-weight: $font-weight-bold;
-        color: var(--text-link);
-        padding: 6px 16px;
-        margin-right: $spacing-2;
-        margin-left: auto;
-
-        &:hover {
-            background-color: var(--bg-blue-hover);
-        }
-    }
-}
-
-.dialog-post-create {
+.dialog-reply-create {
     position: relative;
 
-    .dialog-post-input-row {
+    .reply-parent-post {
+        padding-bottom: $spacing-2;
+    }
+
+    .reply-parent-avatar-col {
+        margin-right: $spacing-3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .user-avatar {
+            @include avatar(40px);
+        }
+    }
+
+    .reply-thread-line {
+        width: 2px;
+        flex-grow: 1;
+        background-color: var(--border-secondary-color);
+        margin-top: $spacing-1;
+    }
+
+    .reply-parent-header {
+        gap: 4px;
+        font-size: $font-size-base;
+    }
+
+    .reply-parent-text {
+        font-size: $font-size-base;
+        line-height: 20px;
+        color: var(--text-primary);
+        margin-top: 2px;
+    }
+
+    .reply-to-label {
+        margin-top: $spacing-2;
+    }
+
+    .reply-to-label-text {
+        color: var(--text-secondary);
+    }
+
+    .replying-to-text {
+        font-size: $font-size-sm;
+        color: var(--text-link);
+    }
+
+    .dialog-reply-input-row {
         gap: $spacing-3;
     }
 
@@ -42,47 +64,24 @@
         @include avatar(40px);
     }
 
-    .dialog-post-textarea-container {
+    .dialog-reply-textarea-container {
         padding: $spacing-3 0 0 0;
-        min-height: 130px;
+        min-height: 80px;
     }
 
-    #dialog-post-input {
+    #dialog-reply-input {
         @include input-reset;
         width: 100%;
         resize: none;
         font-size: $font-size-lg;
         color: var(--text-primary);
         line-height: 24px;
-        min-height: 130px;
-        max-height: calc(90vh - 250px);
+        min-height: 80px;
+        max-height: calc(90vh - 350px);
         overflow-y: auto;
 
         &::placeholder {
             color: var(--text-secondary);
-        }
-    }
-
-    .dialog-reply-permission {
-        padding: 4px $spacing-3;
-        width: fit-content;
-        color: var(--text-link);
-        font-weight: $font-weight-bold;
-        font-size: $font-size-sm;
-        cursor: pointer;
-        border-radius: $border-radius-full;
-        transition: background-color $transition-fast;
-        margin-bottom: $spacing-3;
-
-        &:hover {
-            background-color: var(--bg-blue-hover);
-        }
-
-        svg {
-            width: 16px;
-            height: 16px;
-            margin-right: $spacing-1;
-            fill: var(--text-link);
         }
     }
 
@@ -120,7 +119,7 @@
         }
     }
 
-    #btn-submit-dialog-post {
+    #btn-submit-reply {
         background-color: var(--btn-black-bg);
         color: var(--text-white);
         border: none;

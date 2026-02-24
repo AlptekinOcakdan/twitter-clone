@@ -1,0 +1,37 @@
+@use 'variables' as *;
+@use '../mixins/mixins' as *;
+
+#post-detail {
+    max-width: $feed-max-width;
+    height: 100vh;
+    overflow-y: auto;
+    flex-grow: 1;
+    @include border-sides;
+    @include hide-scrollbar;
+}
+
+.post-detail-header {
+    @include sticky-header;
+    padding: $spacing-2 $spacing-4;
+    gap: $spacing-6;
+    @include border-bottom;
+}
+
+.back-btn {
+    @include button-icon(36px);
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: var(--text-primary);
+    }
+
+    &:hover {
+        background-color: var(--bg-hover);
+    }
+}
+
+.post-detail-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+}

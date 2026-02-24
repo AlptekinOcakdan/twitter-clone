@@ -43,7 +43,7 @@ class PostService {
                 },
                 content: {
                     text: postData.text,
-                    media: null
+                    media: postData.media || null
                 },
                 stats: {
                     comments: 0,
@@ -51,7 +51,8 @@ class PostService {
                     likes: 0,
                     views: 0
                 },
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
+                ...(postData.replyTo ? { replyTo: postData.replyTo } : {})
             };
 
             const updatedPosts = [newPost, ...posts];
@@ -116,6 +117,51 @@ class PostService {
     isPostLiked(postId) {
         const likedPosts = JSON.parse(localStorage.getItem('twitter-clone-liked-posts') || '[]');
         return likedPosts.includes(postId);
+    }
+
+    async toggleRetweet(postId) {
+        try {
+            const postsData = await dataService.load('posts');
+            if (!postsData) {
+                throw new Error('Failed to load posts data');
+            }
+
+            const posts = postsData.posts || [];
+            const postIndex = posts.findIndex(post => post.id === postId);
+
+            if (postIndex === -1) {
+                throw new Error(`Post with id ${postId} not found`);
+            }
+
+            const retweetedPosts = JSON.parse(localStorage.getItem('twitter-clone-retweeted-posts') || '[]');
+            const isRetweeted = retweetedPosts.includes(postId);
+
+            if (isRetweeted) {
+                posts[postIndex].stats.retweets = Math.max(0, posts[postIndex].stats.retweets - 1);
+                const updated = retweetedPosts.filter(id => id !== postId);
+                localStorage.setItem('twitter-clone-retweeted-posts', JSON.stringify(updated));
+            } else {
+                posts[postIndex].stats.retweets += 1;
+                retweetedPosts.push(postId);
+                localStorage.setItem('twitter-clone-retweeted-posts', JSON.stringify(retweetedPosts));
+            }
+
+            const updatedPostsData = { posts };
+            dataService.cache.set('posts', updatedPostsData);
+            dataService.save('posts', updatedPostsData);
+
+            this.notify(posts);
+
+            return { retweeted: !isRetweeted, retweets: posts[postIndex].stats.retweets };
+        } catch (error) {
+            console.error('Error toggling retweet:', error);
+            throw error;
+        }
+    }
+
+    isPostRetweeted(postId) {
+        const retweetedPosts = JSON.parse(localStorage.getItem('twitter-clone-retweeted-posts') || '[]');
+        return retweetedPosts.includes(postId);
     }
 }
 

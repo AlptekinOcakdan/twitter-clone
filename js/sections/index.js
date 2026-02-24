@@ -3,3 +3,4 @@ export { FeedSection } from './FeedSection.js';
 export { SidebarSection } from './SidebarSection.js';
 export { ExploreSection } from './ExploreSection.js';
 export { ProfileSection } from './ProfileSection.js';
+export { PostDetailSection } from './PostDetailSection.js';

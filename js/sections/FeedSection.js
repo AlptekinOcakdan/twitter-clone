@@ -128,21 +128,9 @@ export class FeedSection extends Section {
     }
 
     initPostSubmit() {
-        const postInput = document.getElementById('post-input');
         const submitBtn = document.getElementById('btn-submit-post');
 
-        if (postInput && submitBtn) {
-            postInput.addEventListener('input', () => {
-                const isEmpty = postInput.value.trim().length === 0;
-                submitBtn.disabled = isEmpty;
-
-                if (isEmpty) {
-                    submitBtn.classList.add('btn-disabled-opacity');
-                } else {
-                    submitBtn.classList.remove('btn-disabled-opacity');
-                }
-            });
-
+        if (submitBtn) {
             submitBtn.addEventListener('click', () => {
                 if (this.createPostComponent) {
                     this.createPostComponent.handleSubmit();
