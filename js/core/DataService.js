@@ -3,7 +3,7 @@ const STORAGE_PREFIX = 'twitter-clone-';
 class DataService {
     constructor() {
         this.cache = new Map();
-        this.basePath = './assets/data';
+        this.basePath = '/assets/data';
     }
 
     async load(filename) {

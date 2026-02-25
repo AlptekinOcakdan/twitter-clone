@@ -311,26 +311,35 @@
         padding-bottom: 0;
 
         .post-avatar-col {
-            anchor-name: --thread-parent;
-            position: relative;
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
             &::after {
                 content: '';
-                position: absolute;
-
-                border: 3px solid var(--text-primary);
-                border-right-color: transparent;
-                border-left-color: transparent;
-                top: anchor(--thread-parent bottom);
-                bottom: anchor(--thread-reply top);
+                width: 2px;
+                flex-grow: 1;
+                background-color: var(--border-secondary-color);
+                margin-top: $spacing-1;
             }
         }
     }
 
     .post--thread-reply {
-        anchor-name: --thread-reply;
         .post-avatar-col {
             position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 2px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -$spacing-3;
+                height: $spacing-3;
+                background-color: var(--border-secondary-color);
+            }
         }
     }
 }

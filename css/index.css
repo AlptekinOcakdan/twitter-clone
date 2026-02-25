@@ -1194,23 +1194,30 @@ header {
   padding-bottom: 0;
 }
 .thread-group .post--thread-parent .post-avatar-col {
-  anchor-name: --thread-parent;
-  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .thread-group .post--thread-parent .post-avatar-col::after {
   content: "";
-  position: absolute;
-  border: 3px solid var(--text-primary);
-  border-right-color: transparent;
-  border-left-color: transparent;
-  top: anchor(--thread-parent bottom);
-  bottom: anchor(--thread-reply top);
-}
-.thread-group .post--thread-reply {
-  anchor-name: --thread-reply;
+  width: 2px;
+  flex-grow: 1;
+  background-color: var(--border-secondary-color);
+  margin-top: 0.25rem;
 }
 .thread-group .post--thread-reply .post-avatar-col {
   position: relative;
+}
+.thread-group .post--thread-reply .post-avatar-col::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -0.75rem;
+  height: 0.75rem;
+  background-color: var(--border-secondary-color);
 }
 
 #sidebar {
@@ -2014,7 +2021,7 @@ header {
   min-width: 318px;
   background-color: #fff;
   border-radius: 16px;
-  box-shadow: rgba(101, 119, 134, 0.2) 0 0 15px, rgba(101, 119, 134, 0.15) 0 0 3px 1px;
+  box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
   overflow-y: auto;
 }
 .dropdown.open {
@@ -2263,6 +2270,106 @@ header {
   cursor: pointer;
 }
 .dialog-post-create #btn-submit-dialog-post:not(:disabled):hover {
+  background-color: #1a8cd8;
+}
+
+.dialog-quote-create {
+  position: relative;
+}
+.dialog-quote-create .dialog-quote-input-row {
+  gap: 0.75rem;
+}
+.dialog-quote-create .post-avatar-container {
+  padding-top: 0.25rem;
+  flex-shrink: 0;
+}
+.dialog-quote-create .user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.dialog-quote-create .dialog-quote-textarea-container {
+  padding: 0.75rem 0 0 0;
+  min-height: 80px;
+}
+.dialog-quote-create #dialog-quote-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  width: 100%;
+  resize: none;
+  font-size: 20px;
+  color: var(--text-primary);
+  line-height: 24px;
+  min-height: 56px;
+  max-height: calc(90vh - 350px);
+  overflow-y: auto;
+}
+.dialog-quote-create #dialog-quote-input::placeholder {
+  color: var(--text-secondary);
+}
+.dialog-quote-create .quoted-post {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.dialog-quote-create .dialog-post-actions {
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-top: 1px solid var(--border-color);
+}
+.dialog-quote-create .action-icons {
+  margin-left: -8px;
+}
+.dialog-quote-create .action-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+.dialog-quote-create .action-btn:hover {
+  background-color: var(--bg-blue-hover);
+}
+.dialog-quote-create .action-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--btn-primary-bg);
+}
+.dialog-quote-create .action-btn.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.dialog-quote-create .action-btn.disabled:hover {
+  background-color: transparent;
+}
+.dialog-quote-create #btn-submit-quote {
+  background-color: var(--btn-black-bg);
+  color: var(--text-white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  min-height: 36px;
+  transition: background-color 0.2s;
+}
+.dialog-quote-create #btn-submit-quote.btn-disabled-opacity {
+  opacity: 0.5;
+}
+.dialog-quote-create #btn-submit-quote:not(:disabled) {
+  background-color: var(--btn-primary-bg);
+  cursor: pointer;
+}
+.dialog-quote-create #btn-submit-quote:not(:disabled):hover {
   background-color: #1a8cd8;
 }
 
@@ -2914,7 +3021,7 @@ header {
   max-height: 360px;
   background-color: var(--bg-main);
   border-radius: 16px;
-  box-shadow: rgba(101, 119, 134, 0.2) 0 0 15px, rgba(101, 119, 134, 0.15) 0 0 3px 1px;
+  box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -3133,7 +3240,7 @@ header {
   z-index: 20;
   background-color: var(--bg-main);
   border-radius: 16px;
-  box-shadow: rgba(101, 119, 134, 0.2) 0 0 15px, rgba(101, 119, 134, 0.15) 0 0 3px 1px;
+  box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
   min-width: 300px;
   overflow: hidden;
   padding: 0.25rem 0;
@@ -3171,7 +3278,7 @@ header {
   z-index: 20;
   background-color: var(--bg-main);
   border-radius: 16px;
-  box-shadow: rgba(101, 119, 134, 0.2) 0 0 15px, rgba(101, 119, 134, 0.15) 0 0 3px 1px;
+  box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
   min-width: 260px;
   overflow: hidden;
   padding: 0.25rem 0;
@@ -3194,6 +3301,41 @@ header {
   background-color: rgba(15, 20, 25, 0.03);
 }
 .share-popover-item svg {
+  width: 18.75px;
+  height: 18.75px;
+  margin-right: 0.75rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.retweet-popover {
+  position: fixed;
+  z-index: 20;
+  background-color: var(--bg-main);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
+  min-width: 260px;
+  overflow: hidden;
+  padding: 0.25rem 0;
+}
+
+.retweet-popover-item {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.retweet-popover-item:hover {
+  background-color: rgba(15, 20, 25, 0.03);
+}
+.retweet-popover-item svg {
   width: 18.75px;
   height: 18.75px;
   margin-right: 0.75rem;

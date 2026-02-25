@@ -2,6 +2,7 @@ import { Component, postService, router } from '@/core';
 import { formatRelativeTime } from '@/utils/timeUtils';
 import { PostMoreMenu } from './PostMoreMenu.js';
 import { SharePopover } from './SharePopover.js';
+import { RetweetPopover } from './RetweetPopover.js';
 
 export class Post extends Component {
     constructor(props = {}) {
@@ -103,10 +104,23 @@ export class Post extends Component {
         }
     }
 
-    async handleRetweetClick(e) {
+    handleRetweetClick(e) {
         e.preventDefault();
         e.stopPropagation();
 
+        const retweetGroup = this.element.querySelector('.retweet');
+        if (!retweetGroup) return;
+
+        const popover = new RetweetPopover({
+            postId: this.props.id,
+            anchorElement: retweetGroup,
+            onRepost: () => this.toggleRepost(),
+            onQuote: () => this.openQuoteDialog()
+        });
+        popover.open();
+    }
+
+    async toggleRepost() {
         const { id } = this.props;
         const retweetButton = this.element.querySelector('.retweet .interaction-btn');
         const retweetCount = this.element.querySelector('.retweet .interaction-count');
@@ -121,6 +135,26 @@ export class Post extends Component {
         } catch (error) {
             console.error('Failed to toggle retweet:', error);
         }
+    }
+
+    openQuoteDialog() {
+        Promise.all([
+            import('@/components/post/DialogQuoteCreate.js'),
+            import('@/components/common/Dialog.js')
+        ]).then(([{ DialogQuoteCreate }, { Dialog }]) => {
+            const quoteCreate = new DialogQuoteCreate({
+                quotedPost: this.props,
+                onQuoteCreated: () => {
+                    quoteDialog.close();
+                }
+            });
+            const quoteDialog = new Dialog({
+                title: '',
+                cssClass: 'dialog-post-modal',
+                contentComponent: quoteCreate
+            });
+            quoteDialog.open();
+        });
     }
 
     handleShareClick(e) {
@@ -308,10 +342,10 @@ export class Post extends Component {
                         </div>
                         <div class="post-more-btn flex">
                             <button>
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/grok.svg#grok"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/grok.svg#grok"/></svg>
                             </button>
                             <button>
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/more.svg#more"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/more.svg#more"/></svg>
                             </button>
                         </div>
                     </div>
@@ -324,34 +358,34 @@ export class Post extends Component {
                     <div class="post-interactions flex items-center justify-between">
                         <div class="interaction-group comment">
                             <button class="interaction-btn">
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/comment.svg#comment"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/comment.svg#comment"/></svg>
                             </button>
                             <span class="interaction-count">${this.formatNumber(stats.comments)}</span>
                         </div>
                         <div class="interaction-group retweet">
                             <button class="interaction-btn">
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/retweet.svg#retweet"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/retweet.svg#retweet"/></svg>
                             </button>
                             <span class="interaction-count">${this.formatNumber(stats.retweets)}</span>
                         </div>
                         <div class="interaction-group like">
                             <button class="interaction-btn">
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/like.svg#like"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/like.svg#like"/></svg>
                             </button>
                             <span class="interaction-count">${this.formatNumber(stats.likes)}</span>
                         </div>
                         <div class="interaction-group views">
                             <button class="interaction-btn">
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/statics.svg#statics"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/statics.svg#statics"/></svg>
                             </button>
                             <span class="interaction-count">${this.formatNumber(stats.views)}</span>
                         </div>
                         <div class="interaction-icons-right flex items-center">
                             <button class="interaction-btn save" title="Kaydet">
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/save.svg#save"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/save.svg#save"/></svg>
                             </button>
                             <button class="interaction-btn share" title="Paylas">
-                                <svg viewBox="0 0 24 24"><use href="assets/images/main/post/share.svg#share"/></svg>
+                                <svg viewBox="0 0 24 24"><use href="/assets/images/main/post/share.svg#share"/></svg>
                             </button>
                         </div>
                     </div>

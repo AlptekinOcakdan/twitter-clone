@@ -6,7 +6,7 @@ export class UserProfile extends Component {
         this.props = {
             displayName: '',
             handle: '',
-            avatar: 'assets/images/header/users/user-avatar.jpg',
+            avatar: '/assets/images/header/users/user-avatar.jpg',
             ...props
         };
     }
@@ -22,7 +22,7 @@ export class UserProfile extends Component {
                     <span class="user-handle">${handle}</span>
                 </div>
                 <svg>
-                    <use href="./assets/images/header/icons/icon-dropdown.svg#icon-dropdown"/>
+                    <use href="/assets/images/header/icons/icon-dropdown.svg#icon-dropdown"/>
                 </svg>
             </div>
         `;

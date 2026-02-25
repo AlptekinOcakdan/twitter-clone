@@ -7,7 +7,7 @@ export class CreatePost extends Component {
     constructor(props = {}) {
         super(props);
         this.props = {
-            userAvatar: 'assets/images/header/users/user-avatar.jpg',
+            userAvatar: '/assets/images/header/users/user-avatar.jpg',
             placeholder: 'Neler oluyor?',
             replyPermission: 'Herkes yanıtlayabilir',
             submitButtonText: 'Gönderi yayınla',

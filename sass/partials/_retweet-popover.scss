@@ -1,7 +1,7 @@
 @use 'variables' as *;
 @use '../mixins/mixins' as *;
 
-.share-popover {
+.retweet-popover {
     position: fixed;
     z-index: $z-index-dropdown;
     background-color: var(--bg-main);
@@ -12,7 +12,7 @@
     padding: $spacing-1 0;
 }
 
-.share-popover-item {
+.retweet-popover-item {
     @include button-reset;
     display: flex;
     align-items: center;

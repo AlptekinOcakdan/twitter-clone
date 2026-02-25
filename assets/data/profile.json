@@ -1,6 +1,6 @@
 {
     "cover": "",
-    "avatar": "assets/images/header/users/user-avatar.jpg",
+    "avatar": "/assets/images/header/users/user-avatar.jpg",
     "displayName": "Alptekin OCAKDAN",
     "handle": "@AlptekinOc23031",
     "isVerified": false,

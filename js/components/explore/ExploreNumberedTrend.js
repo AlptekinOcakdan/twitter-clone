@@ -29,7 +29,7 @@ export class ExploreNumberedTrend extends Component {
                     ${postCountHtml}
                 </div>
                 <button class="explore-trend-more">
-                    <svg viewBox="0 0 24 24"><use href="assets/images/main/sidebar/more.svg#more"/></svg>
+                    <svg viewBox="0 0 24 24"><use href="/assets/images/main/sidebar/more.svg#more"/></svg>
                 </button>
             </div>
         `;

@@ -12,7 +12,7 @@
     "tabContents": {
         "trending": {
             "card": {
-                "image": "assets/images/explore/trending-card.png",
+                "image": "/assets/images/explore/trending-card.png",
                 "category": "Gündemdekiler",
                 "title": "Küresel Trendler",
                 "subtitle": "En popüler gönderiler",
@@ -358,7 +358,7 @@
                     "id": "1",
                     "displayName": "Emre Kocadag",
                     "handle": "@kocadagemre",
-                    "avatar": "assets/images/header/users/user-avatar.jpg",
+                    "avatar": "/assets/images/header/users/user-avatar.jpg",
                     "isVerified": true,
                     "verifiedType": "blue"
                 },
@@ -366,7 +366,7 @@
                     "id": "2",
                     "displayName": "Merih Demiral",
                     "handle": "@Merihdemiral",
-                    "avatar": "assets/images/header/users/user-avatar.jpg",
+                    "avatar": "/assets/images/header/users/user-avatar.jpg",
                     "isVerified": true,
                     "verifiedType": "blue"
                 },
@@ -374,7 +374,7 @@
                     "id": "3",
                     "displayName": "NASA Events",
                     "handle": "@NASA_Events",
-                    "avatar": "assets/images/header/users/user-avatar.jpg",
+                    "avatar": "/assets/images/header/users/user-avatar.jpg",
                     "isVerified": true,
                     "verifiedType": "gray"
                 }

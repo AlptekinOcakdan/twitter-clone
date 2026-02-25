@@ -5,7 +5,7 @@ export class PublishButton extends Component {
         super(props);
         this.props = {
             text: 'Gönderi yayınla',
-            iconPath: 'assets/images/header/icons/icon-create-post.svg#icon-create-post',
+            iconPath: '/assets/images/header/icons/icon-create-post.svg#icon-create-post',
             ...props
         };
     }

@@ -73,7 +73,7 @@ export class SearchBox extends Component {
         return `
             <div class="search-result-item search-result-trend" data-type="trend" data-id="${trend.id}">
                 <svg class="search-result-trend-icon" viewBox="0 0 24 24">
-                    <use href="assets/images/main/sidebar/search.svg#search"/>
+                    <use href="/assets/images/main/sidebar/search.svg#search"/>
                 </svg>
                 <span class="search-result-trend-name">${trend.name}</span>
             </div>
@@ -191,7 +191,7 @@ export class SearchBox extends Component {
                 <div class="search-wrapper">
                     <div class="search-container flex items-center">
                         <svg>
-                            <use href="assets/images/main/sidebar/search.svg#search"/>
+                            <use href="/assets/images/main/sidebar/search.svg#search"/>
                         </svg>
                         <label for="search-input" hidden></label>
                         <input type="text" placeholder="${placeholder}" id="search-input">

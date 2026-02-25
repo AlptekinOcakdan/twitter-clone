@@ -18,7 +18,7 @@ export class Tab extends Component {
 
         const dropdownIcon = hasDropdown ? `
             <svg class="tab-arrow">
-                <use href="assets/images/main/feed/arrow-down.svg#arrow-down"/>
+                <use href="/assets/images/main/feed/arrow-down.svg#arrow-down"/>
             </svg>
         ` : '';
 

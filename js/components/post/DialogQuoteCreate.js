@@ -1,25 +1,21 @@
-import {Component, postService, safeSetInnerHTML} from '@/core';
-import {GifPicker} from '@/components/common/GifPicker.js';
-import {EmojiPicker} from '@/components/common/EmojiPicker.js';
-import {ScheduleModal} from '@/components/common/ScheduleModal.js';
+import { Component, postService, safeSetInnerHTML } from '@/core';
+import { GifPicker } from '@/components/common/GifPicker.js';
+import { EmojiPicker } from '@/components/common/EmojiPicker.js';
 
-export class DialogPostCreate extends Component {
+export class DialogQuoteCreate extends Component {
     constructor(props = {}) {
         super(props);
         this.props = {
+            quotedPost: null,
             userAvatar: '/assets/images/header/users/user-avatar.jpg',
-            placeholder: 'Neler oluyor?',
-            replyPermission: 'Herkes yanıtlayabilir',
+            placeholder: 'Yorum ekle!',
             submitButtonText: 'Gönderi yayınla',
-            onPostCreated: null,
+            onQuoteCreated: null,
             maxChars: 150,
             actions: [
                 { id: 'media', title: 'Medya', iconPath: '/assets/images/main/feed/upload-image.svg#upload-image' },
                 { id: 'gif', title: 'GIF', iconPath: '/assets/images/main/feed/upload-gif.svg#upload-gif' },
-                { id: 'poll', title: 'Anket', iconPath: '/assets/images/main/feed/create-poll.svg#create-poll', disabled: true },
                 { id: 'emoji', title: 'İfade', iconPath: '/assets/images/main/feed/emoji.svg#emoji' },
-                { id: 'schedule', title: 'Zamanla', iconPath: '/assets/images/main/feed/calendar-plan.svg#calendar-plan' },
-                { id: 'location', title: 'Konum', iconPath: '/assets/images/main/feed/location.svg#location', disabled: true }
             ],
             ...props
         };
@@ -27,8 +23,33 @@ export class DialogPostCreate extends Component {
         this.mediaFile = null;
         this.mediaPreviewUrl = null;
         this.selectedGif = null;
-        this.scheduledDate = null;
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    renderQuotedPostPreview() {
+        const post = this.props.quotedPost;
+        if (!post) return '';
+
+        let verifiedIcon = '';
+        if (post.author.isVerified) {
+            verifiedIcon = `
+                <svg class="verified-icon" viewBox="0 0 24 24">
+                    <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.97-.81-4.01s-2.62-1.27-4.01-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.98-.2-4.02.81s-1.27 2.62-.81 4.01c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.97.81 4.01s2.62 1.27 4.01.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.33-2.19c1.4.46 2.98.2 4.02-.81s1.27-2.62.81-4.01c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.35-6.2 6.78z"></path>
+                </svg>
+            `;
+        }
+
+        return `
+            <div class="quoted-post">
+                <div class="quoted-post-header flex items-center">
+                    <img src="${post.author.avatar}" alt="${post.author.displayName}" class="quoted-post-avatar">
+                    <span class="quoted-post-name">${post.author.displayName}</span>
+                    ${verifiedIcon}
+                    <span class="quoted-post-handle">${post.author.handle}</span>
+                </div>
+                <div class="quoted-post-text">${post.content.text}</div>
+            </div>
+        `;
     }
 
     renderActions() {
@@ -55,17 +76,17 @@ export class DialogPostCreate extends Component {
     }
 
     render() {
-        const { userAvatar, placeholder, replyPermission, submitButtonText } = this.props;
+        const { userAvatar, placeholder, submitButtonText } = this.props;
 
         return `
-            <div class="dialog-post-create">
-                <div class="dialog-post-input-row flex">
+            <div class="dialog-quote-create">
+                <div class="dialog-quote-input-row flex">
                     <div class="post-avatar-container">
                         <img src="${userAvatar}" alt="User Avatar" class="user-avatar">
                     </div>
-                    <div class="dialog-post-textarea-container grow">
-                        <label for="dialog-post-input" hidden></label>
-                        <textarea id="dialog-post-input" placeholder="${placeholder}"></textarea>
+                    <div class="dialog-quote-textarea-container grow">
+                        <label for="dialog-quote-input" hidden></label>
+                        <textarea id="dialog-quote-input" placeholder="${placeholder}"></textarea>
                         <div class="char-limit-warning hidden">
                             <span class="char-limit-warning-text"></span>
                             <a href="#" class="char-limit-premium-link">Twitter Premium'a abone ol</a>
@@ -74,16 +95,9 @@ export class DialogPostCreate extends Component {
                             <button class="media-preview-remove" type="button">&times;</button>
                             <img class="media-preview-img" src="" alt="">
                         </div>
+                        ${this.renderQuotedPostPreview()}
                     </div>
                 </div>
-
-                <div class="dialog-reply-permission flex items-center">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
-                    </svg>
-                    <span>${replyPermission}</span>
-                </div>
-
                 <div class="dialog-post-actions flex items-center justify-between">
                     <div class="action-icons flex items-center">
                         ${this.renderActions()}
@@ -91,7 +105,7 @@ export class DialogPostCreate extends Component {
                     <div class="submit-area flex items-center">
                         ${this.renderCharCounter()}
                         <div class="submit-post">
-                            <button id="btn-submit-dialog-post" class="btn-disabled-opacity" disabled>${submitButtonText}</button>
+                            <button id="btn-submit-quote" class="btn-disabled-opacity" disabled>${submitButtonText}</button>
                         </div>
                     </div>
                 </div>
@@ -101,7 +115,7 @@ export class DialogPostCreate extends Component {
     }
 
     updateCharCounter() {
-        const textarea = this.element.querySelector('#dialog-post-input');
+        const textarea = this.element.querySelector('#dialog-quote-input');
         const counterFill = this.element.querySelector('.char-counter-fill');
         const counterText = this.element.querySelector('.char-counter-text');
         const counterSvg = this.element.querySelector('.char-counter-svg');
@@ -109,7 +123,7 @@ export class DialogPostCreate extends Component {
         const counterDivider = this.element.querySelector('.char-counter-divider');
         const warningEl = this.element.querySelector('.char-limit-warning');
         const warningText = this.element.querySelector('.char-limit-warning-text');
-        const submitButton = this.element.querySelector('#btn-submit-dialog-post');
+        const submitButton = this.element.querySelector('#btn-submit-quote');
 
         if (!textarea || !counterFill || !counterText) return;
 
@@ -176,8 +190,8 @@ export class DialogPostCreate extends Component {
     }
 
     async handleSubmit() {
-        const textarea = this.element.querySelector('#dialog-post-input');
-        const submitButton = this.element.querySelector('#btn-submit-dialog-post');
+        const textarea = this.element.querySelector('#dialog-quote-input');
+        const submitButton = this.element.querySelector('#btn-submit-quote');
 
         if (!textarea || !submitButton) return;
 
@@ -190,7 +204,10 @@ export class DialogPostCreate extends Component {
         submitButton.textContent = 'Gönderiliyor...';
 
         try {
-            const postData = { text };
+            const postData = {
+                text,
+                quoteOf: this.props.quotedPost.id
+            };
 
             if (this.mediaPreviewUrl) {
                 postData.media = { type: 'image', url: this.mediaPreviewUrl, alt: '' };
@@ -198,23 +215,17 @@ export class DialogPostCreate extends Component {
                 postData.media = { type: 'image', url: this.selectedGif, alt: 'GIF' };
             }
 
-            if (this.scheduledDate) {
-                postData.scheduledDate = this.scheduledDate;
-            }
-
             await postService.createPost(postData);
 
             textarea.value = '';
             textarea.style.height = 'auto';
             this.clearMedia();
-            this.scheduledDate = null;
 
-            if (this.props.onPostCreated) {
-                this.props.onPostCreated();
+            if (this.props.onQuoteCreated) {
+                this.props.onQuoteCreated();
             }
         } catch (error) {
-            console.error('Failed to create post:', error);
-            alert('Gönderi oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.');
+            console.error('Failed to create quote post:', error);
             submitButton.disabled = false;
             submitButton.textContent = originalText;
         }
@@ -250,8 +261,6 @@ export class DialogPostCreate extends Component {
             this.openGifPicker();
         } else if (action === 'emoji') {
             this.openEmojiPicker();
-        } else if (action === 'schedule') {
-            this.openScheduleModal();
         }
     }
 
@@ -279,7 +288,7 @@ export class DialogPostCreate extends Component {
 
         const picker = new EmojiPicker({
             onSelect: (emoji) => {
-                const textarea = this.element.querySelector('#dialog-post-input');
+                const textarea = this.element.querySelector('#dialog-quote-input');
                 if (textarea) {
                     const start = textarea.selectionStart;
                     const end = textarea.selectionEnd;
@@ -295,18 +304,9 @@ export class DialogPostCreate extends Component {
         picker.mount(this.element);
     }
 
-    openScheduleModal() {
-        const modal = new ScheduleModal({
-            onSchedule: (date) => {
-                this.scheduledDate = date;
-            }
-        });
-        modal.open();
-    }
-
     onMount() {
-        const textarea = this.element.querySelector('#dialog-post-input');
-        const submitButton = this.element.querySelector('#btn-submit-dialog-post');
+        const textarea = this.element.querySelector('#dialog-quote-input');
+        const submitButton = this.element.querySelector('#btn-submit-quote');
         const fileInput = this.element.querySelector('.media-file-input');
 
         if (textarea && submitButton) {

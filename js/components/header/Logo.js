@@ -5,7 +5,7 @@ export class Logo extends Component {
         super(props);
         this.props = {
             href: '/',
-            iconPath: 'assets/images/brand/logo.svg#icon-x-logo',
+            iconPath: '/assets/images/brand/logo.svg#icon-x-logo',
             width: 40,
             height: 40,
             ...props

@@ -30,7 +30,7 @@ export class FeedSection extends Section {
 
         const tabs = new Tabs({ tabs: this.feedData.tabs });
         this.createPostComponent = new CreatePost({
-            userAvatar: this.userData?.avatar || 'assets/images/header/users/user-avatar.jpg',
+            userAvatar: this.userData?.avatar || '/assets/images/header/users/user-avatar.jpg',
             placeholder: this.feedData.createPost.placeholder,
             replyPermission: this.feedData.createPost.replyPermission,
             submitButtonText: this.feedData.createPost.submitButtonText,

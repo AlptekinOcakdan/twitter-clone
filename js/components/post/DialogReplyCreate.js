@@ -7,15 +7,15 @@ export class DialogReplyCreate extends Component {
         super(props);
         this.props = {
             parentPost: null,
-            userAvatar: 'assets/images/header/users/user-avatar.jpg',
+            userAvatar: '/assets/images/header/users/user-avatar.jpg',
             placeholder: 'Yanitini gonder',
             submitButtonText: 'Yanitla',
             onReplyCreated: null,
             maxChars: 150,
             actions: [
-                { id: 'media', title: 'Medya', iconPath: 'assets/images/main/feed/upload-image.svg#upload-image' },
-                { id: 'gif', title: 'GIF', iconPath: 'assets/images/main/feed/upload-gif.svg#upload-gif' },
-                { id: 'emoji', title: 'Ifade', iconPath: 'assets/images/main/feed/emoji.svg#emoji' },
+                { id: 'media', title: 'Medya', iconPath: '/assets/images/main/feed/upload-image.svg#upload-image' },
+                { id: 'gif', title: 'GIF', iconPath: '/assets/images/main/feed/upload-gif.svg#upload-gif' },
+                { id: 'emoji', title: 'Ifade', iconPath: '/assets/images/main/feed/emoji.svg#emoji' },
             ],
             ...props
         };

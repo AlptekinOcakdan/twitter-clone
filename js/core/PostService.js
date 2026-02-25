@@ -52,7 +52,8 @@ class PostService {
                     views: 0
                 },
                 timestamp: new Date().toISOString(),
-                ...(postData.replyTo ? { replyTo: postData.replyTo } : {})
+                ...(postData.replyTo ? { replyTo: postData.replyTo } : {}),
+                ...(postData.quoteOf ? { quoteOf: postData.quoteOf } : {})
             };
 
             const updatedPosts = [newPost, ...posts];
