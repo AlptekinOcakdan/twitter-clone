@@ -1,4 +1,4 @@
-import { Component, postService, router } from '@/core';
+import { Component, postService, router, safeCreateFragment } from '@/core';
 import { formatRelativeTime } from '@/utils/timeUtils';
 import { PostMoreMenu } from './PostMoreMenu.js';
 import { SharePopover } from './SharePopover.js';
@@ -28,6 +28,7 @@ export class Post extends Component {
             timestamp: '',
             quoteOf: null,
             replyTo: null,
+            isRepost: false,
             isThreadParent: false,
             isThreadReply: false,
             postsMap: new Map(),
@@ -35,10 +36,12 @@ export class Post extends Component {
         };
         this.isLiked = false;
         this.isRetweeted = false;
+        this.isBookmarked = false;
 
         this.handleLikeClick = this.handleLikeClick.bind(this);
         this.handleRetweetClick = this.handleRetweetClick.bind(this);
         this.handleShareClick = this.handleShareClick.bind(this);
+        this.handleBookmarkClick = this.handleBookmarkClick.bind(this);
         this.handleCommentClick = this.handleCommentClick.bind(this);
         this.handleMoreClick = this.handleMoreClick.bind(this);
         this.handlePostClick = this.handlePostClick.bind(this);
@@ -132,6 +135,31 @@ export class Post extends Component {
             this.isRetweeted = result.retweeted;
             retweetButton.classList.toggle('retweeted', this.isRetweeted);
             retweetCount.textContent = this.formatNumber(result.retweets);
+
+            const feedContainer = document.getElementById('posts-container');
+            if (!feedContainer) return;
+
+            if (this.isRetweeted) {
+                const repostComponent = new Post({
+                    ...this.props,
+                    isRepost: true,
+                    isThreadParent: false,
+                    isThreadReply: false
+                });
+
+                const fragment = safeCreateFragment(repostComponent.render());
+                const repostElement = fragment.firstElementChild;
+                feedContainer.prepend(repostElement);
+                repostComponent.element = repostElement;
+                repostComponent.onMount();
+            } else {
+                const existingRepost = feedContainer.querySelector(
+                    `.post[data-post-id="${id}"][data-repost="true"]`
+                );
+                if (existingRepost) {
+                    existingRepost.remove();
+                }
+            }
         } catch (error) {
             console.error('Failed to toggle retweet:', error);
         }
@@ -171,6 +199,25 @@ export class Post extends Component {
         popover.open();
     }
 
+    handleBookmarkClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const saveBtn = this.element.querySelector('.save');
+        if (!saveBtn) return;
+
+        this.isBookmarked = !this.isBookmarked;
+        saveBtn.classList.toggle('bookmarked', this.isBookmarked);
+
+        const useEl = saveBtn.querySelector('use');
+        if (useEl) {
+            useEl.setAttribute('href', this.isBookmarked
+                ? '/assets/images/header/icons/icon-bookmark-filled.svg#icon-bookmark-filled'
+                : '/assets/images/main/post/save.svg#save'
+            );
+        }
+    }
+
     handleCommentClick(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -188,6 +235,7 @@ export class Post extends Component {
             const replyDialog = new Dialog({
                 title: '',
                 cssClass: 'dialog-post-modal',
+                headerExtra: '<button class="dialog-drafts-btn">Taslaklar</button>',
                 contentComponent: replyCreate
             });
             replyDialog.open();
@@ -203,7 +251,7 @@ export class Post extends Component {
 
         const menu = new PostMoreMenu({
             postId: this.props.id,
-            authorHandle: this.props.author.handle,
+            username: this.props.author.handle,
             anchorElement: moreBtn
         });
         menu.open();
@@ -306,6 +354,11 @@ export class Post extends Component {
             commentButton.addEventListener('click', this.handleCommentClick);
         }
 
+        const saveButton = this.element.querySelector('.save');
+        if (saveButton) {
+            saveButton.addEventListener('click', this.handleBookmarkClick);
+        }
+
         const shareButton = this.element.querySelector('.share');
         if (shareButton) {
             shareButton.addEventListener('click', this.handleShareClick);
@@ -319,15 +372,31 @@ export class Post extends Component {
         this.element.addEventListener('click', this.handlePostClick);
     }
 
+    renderContextHeader() {
+        if (!this.props.isRepost) return '';
+
+        return `
+            <div class="tweet-context-header">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path>
+                </svg>
+                <span>Yeniden gönderi yayınladın</span>
+            </div>
+        `;
+    }
+
     render() {
-        const { id, author, content, stats, timestamp, isThreadParent, isThreadReply } = this.props;
+        const { id, author, content, stats, timestamp, isRepost, isThreadParent, isThreadReply } = this.props;
 
         let threadClass = '';
         if (isThreadParent) threadClass = ' post--thread-parent';
         if (isThreadReply) threadClass = ' post--thread-reply';
 
+        const repostAttr = isRepost ? ' data-repost="true"' : '';
+
         return `
-            <article class="post flex${threadClass}" data-post-id="${id}">
+            <article class="post flex${threadClass}" data-post-id="${id}"${repostAttr}>
+                ${this.renderContextHeader()}
                 <div class="post-avatar-col">
                     <img src="${author.avatar}" alt="${author.displayName}" class="user-avatar">
                 </div>

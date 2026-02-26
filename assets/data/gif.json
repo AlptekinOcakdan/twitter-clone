@@ -1,0 +1,70 @@
+{
+    "categories": [
+        { "id": "katiliyorum", "name": "Katılıyorum", "background": "https://media1.giphy.com/media/WJjLyXCVvro2I/giphy_s.gif" },
+        { "id": "alkis", "name": "Alkış", "background": "https://media4.giphy.com/media/fnK0jeA8vIh2QLq3IZ/giphy_s.gif" },
+        { "id": "oyyy", "name": "Oyyy", "background": "https://media0.giphy.com/media/rpf0Du8NasK6Q/giphy_s.gif" },
+        { "id": "dans", "name": "Dans", "background": "https://media1.giphy.com/media/l4Ep3mmmj7Bw3adWw/giphy_s.gif" },
+        { "id": "kiskananlar-catlasin", "name": "Kıskananlar çatlasın", "background": "https://media3.giphy.com/media/tqiYB9X6goN68/giphy_s.gif" },
+        { "id": "istemiyorum", "name": "İstemiyorum", "background": "https://media0.giphy.com/media/2pU8T0OTNkmre/giphy_s.gif" },
+        { "id": "iyy", "name": "Iyy", "background": "https://media0.giphy.com/media/10FHR5A4cXqVrO/giphy_s.gif" },
+        { "id": "yumruk-tokusturma", "name": "Yumruk tokuşturma", "background": "https://media4.giphy.com/media/Dnt2VnWFknFNm/giphy_s.gif" }
+    ],
+  "sample_gifs": {
+    "katiliyorum": [
+      "https://media.giphy.com/media/xT5LMENaxV4fpd0DQI/giphy.gif",
+      "https://media.giphy.com/media/11ISwbgCxEzMyY/giphy.gif",
+      "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
+      "https://media.giphy.com/media/3rgXBOmTlzyFCURutG/giphy.gif",
+      "https://media.giphy.com/media/Fhd84cjcUGE9ZvgRMZ/giphy.gif"
+    ],
+    "alkis": [
+      "https://media.giphy.com/media/11uVWvRoGZnPcEN/giphy.gif",
+      "https://media.giphy.com/media/3o7qDEq2bMbcbPRQ2c/giphy.gif",
+      "https://media.giphy.com/media/l3q2XhfQ8oCKM1GQ0/giphy.gif",
+      "https://media.giphy.com/media/9wGjpl8z1CJ5m/giphy.gif",
+      "https://media.giphy.com/media/PZkOEZ3QvLz0c/giphy.gif"
+    ],
+    "dans": [
+      "https://media.giphy.com/media/blSTtZehjAZ8I/giphy.gif",
+      "https://media.giphy.com/media/EKs0KQgEfIuys/giphy.gif",
+      "https://media.giphy.com/media/14qb1Uhf40ndw4/giphy.gif",
+      "https://media.giphy.com/media/3ohhwfAa9rbXaZe86c/giphy.gif",
+      "https://media.giphy.com/media/mXnO9IiWWarkI/giphy.gif"
+    ],
+    "oyyy": [
+      "https://media.giphy.com/media/Z5zuypybI5dYc/giphy.gif",
+      "https://media.giphy.com/media/1zjQiI2KFjmNi/giphy.gif",
+      "https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
+      "https://media.giphy.com/media/3oEjHAUOqG3l14RVx6/giphy.gif",
+      "https://media.giphy.com/media/l41lUjUgLLwWrz20w/giphy.gif"
+    ],
+    "kiskananlar-catlasin": [
+      "https://media.giphy.com/media/xT0xeQ1ZUQ0lvzgwX6/giphy.gif",
+      "https://media.giphy.com/media/l0HlvtIPzyCroiiuI/giphy.gif",
+      "https://media.giphy.com/media/3oEduV4SOS9mmmIOkw/giphy.gif",
+      "https://media.giphy.com/media/12wsnLPJcC6o92/giphy.gif",
+      "https://media.giphy.com/media/bsTWzOglWhcIg/giphy.gif"
+    ],
+    "istemiyorum": [
+      "https://media.giphy.com/media/23BST5FQOc8k8/giphy.gif",
+      "https://media.giphy.com/media/d1E1msx7Yw5Ne1Fe/giphy.gif",
+      "https://media.giphy.com/media/spfi6nabALrmvj6CVu/giphy.gif",
+      "https://media.giphy.com/media/wYyTHMm50f4CbWHA51/giphy.gif",
+      "https://media.giphy.com/media/10fTHeZVQug7hC/giphy.gif"
+    ],
+    "iyy": [
+      "https://media.giphy.com/media/X4Hn2cuntiSuF5PkVV/giphy.gif",
+      "https://media.giphy.com/media/4baoNZ5QepNrm/giphy.gif",
+      "https://media.giphy.com/media/l41Ye7i203TfEADYs/giphy.gif",
+      "https://media.giphy.com/media/DsdVe5jhHWNC8/giphy.gif",
+      "https://media.giphy.com/media/R0jVGp0sNd808/giphy.gif"
+    ],
+    "yumruk-tokusturma": [
+      "https://media.giphy.com/media/l0K4hT0XN6VWe2qK4/giphy.gif",
+      "https://media.giphy.com/media/111EBiv3B3A5oI/giphy.gif",
+      "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
+      "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif",
+      "https://media.giphy.com/media/uBuzWfwVsq11XGTdtL/giphy.gif"
+    ]
+  }
+}

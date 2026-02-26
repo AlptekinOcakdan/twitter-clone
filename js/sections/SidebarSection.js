@@ -1,5 +1,6 @@
 import { Section, dataService } from '@/core';
 import { SearchBox, PremiumCard, TrendsCard, TopicsCard, WhoToFollow, Footer } from '@/components/sidebar';
+import { TrendMoreMenu } from '@/components/common';
 
 export class SidebarSection extends Section {
     constructor(props = {}) {
@@ -96,5 +97,21 @@ export class SidebarSection extends Section {
                 this.searchBoxComponent.onMount();
             }
         }
+        this.initTrendMoreMenus();
+    }
+
+    initTrendMoreMenus() {
+        this.element?.addEventListener('click', (e) => {
+            const moreBtn = e.target.closest('.trend-more');
+            if (moreBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                const trendItem = moreBtn.closest('.trend-item');
+                const trendId = trendItem?.dataset.trendId || '';
+                const trendName = trendItem?.querySelector('.trend-name')?.textContent || '';
+                const menu = new TrendMoreMenu({ trendId, trendName });
+                menu.open(moreBtn);
+            }
+        });
     }
 }

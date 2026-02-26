@@ -15,7 +15,7 @@ export class TrendItem extends Component {
         const { id, category, name } = this.props;
 
         return `
-            <div class="trend-item flex justify-between" data-trend-id="${id}">
+            <div class="trend-item" data-trend-id="${id}">
                 <div class="trend-info">
                     <span class="trend-meta">${category}</span>
                     <span class="trend-name">${name}</span>

@@ -106,8 +106,6 @@ class PostService {
             dataService.cache.set('posts', updatedPostsData);
             dataService.save('posts', updatedPostsData);
 
-            this.notify(posts);
-
             return { liked: !isLiked, likes: posts[postIndex].stats.likes };
         } catch (error) {
             console.error('Error toggling like:', error);
@@ -150,8 +148,6 @@ class PostService {
             const updatedPostsData = { posts };
             dataService.cache.set('posts', updatedPostsData);
             dataService.save('posts', updatedPostsData);
-
-            this.notify(posts);
 
             return { retweeted: !isRetweeted, retweets: posts[postIndex].stats.retweets };
         } catch (error) {

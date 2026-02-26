@@ -96,6 +96,7 @@
 .explore-trend-item {
     padding: $spacing-3 $spacing-4;
     cursor: pointer;
+    @include flex-between();
     @include hover-bg(rgba(0, 0, 0, 0.03));
 }
 
@@ -128,15 +129,28 @@
 
 .explore-trend-more {
     @include button-reset;
+    @include flex-center;
     padding: $spacing-2;
     border-radius: 50%;
     color: var(--text-secondary);
     flex-shrink: 0;
+    transition: background-color $transition-fast;
+    height: 38px;
+    width: 38px;
+
+    &:hover {
+        background-color: rgba(29, 155, 240, 0.1);
+
+        svg {
+            fill: var(--text-link);
+        }
+    }
 
     svg {
         width: 18px;
         height: 18px;
         fill: var(--text-secondary);
+        transition: fill $transition-fast;
     }
 }
 

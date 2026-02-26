@@ -10,6 +10,7 @@ export class HeaderSection extends Section {
         this.userData = null;
         this.moreMenuData = null;
         this.moreMenu = null;
+        this.userProfile = null;
         this.postDialog = null;
     }
 
@@ -36,7 +37,7 @@ export class HeaderSection extends Section {
             currentPath: currentPath
         });
         const publishButton = new PublishButton(this.headerData.publishButton);
-        const userProfile = new UserProfile({
+        this.userProfile = new UserProfile({
             displayName: this.userData.displayName,
             handle: this.userData.handle,
             avatar: this.userData.avatar
@@ -53,7 +54,7 @@ export class HeaderSection extends Section {
                     ${navigation.render()}
                     ${this.moreMenu.render()}
                     ${publishButton.render()}
-                    ${userProfile.render()}
+                    ${this.userProfile.render()}
                 </div>
             </header>
         `;
@@ -63,6 +64,14 @@ export class HeaderSection extends Section {
         super.onMount();
         if (this.moreMenu) {
             this.moreMenu.onMount();
+        }
+
+        if (this.userProfile) {
+            const userProfileEl = this.element.querySelector('#user-profile');
+            if (userProfileEl) {
+                this.userProfile.element = userProfileEl;
+                this.userProfile.onMount();
+            }
         }
 
         const publishButton = this.element.querySelector('#publish');

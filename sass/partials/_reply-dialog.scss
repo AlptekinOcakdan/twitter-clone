@@ -22,8 +22,10 @@
     .reply-thread-line {
         width: 2px;
         flex-grow: 1;
+        min-height: 8px;
         background-color: var(--border-secondary-color);
         margin-top: $spacing-1;
+        margin-bottom: -$spacing-3;
     }
 
     .reply-parent-header {

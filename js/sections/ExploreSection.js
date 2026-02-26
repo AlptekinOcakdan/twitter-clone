@@ -8,6 +8,7 @@ import {
     ExploreNumberedTrend,
     ExploreTrendItem
 } from '@/components/explore';
+import { TrendMoreMenu } from '@/components/common';
 
 export class ExploreSection extends Section {
     constructor(props = {}) {
@@ -163,6 +164,7 @@ export class ExploreSection extends Section {
         });
 
         this.initScrollSync();
+        this.initTrendMoreMenus();
 
         this.unsubscribe = postService.subscribe((posts) => {
             if (this.activeTab === 'for-you') {
@@ -190,7 +192,23 @@ export class ExploreSection extends Section {
         }
     }
 
+    initTrendMoreMenus() {
+        this.element?.addEventListener('click', (e) => {
+            const moreBtn = e.target.closest('.explore-trend-more');
+            if (moreBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                const trendItem = moreBtn.closest('[data-trend-id]');
+                const trendId = trendItem?.dataset.trendId || '';
+                const trendName = trendItem?.querySelector('.explore-trend-name')?.textContent || '';
+                const menu = new TrendMoreMenu({ trendId, trendName });
+                menu.open(moreBtn);
+            }
+        });
+    }
+
     destroy() {
+        TrendMoreMenu.closeActive();
         if (this.unsubscribe) {
             this.unsubscribe();
         }

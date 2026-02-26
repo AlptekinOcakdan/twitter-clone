@@ -918,9 +918,31 @@ header {
   transition: background-color 0.2s;
   align-items: flex-start;
   position: relative;
+  flex-wrap: wrap;
 }
 .post:hover {
   background-color: rgba(0, 0, 0, 0.035);
+}
+
+.tweet-context-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-left: 52px;
+  margin-bottom: 0.25rem;
+}
+.tweet-context-header svg {
+  width: 16px;
+  height: 16px;
+  fill: #536471;
+  flex-shrink: 0;
+}
+.tweet-context-header span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #536471;
+  line-height: 16px;
 }
 
 .post-avatar-col {
@@ -1054,10 +1076,12 @@ header {
   color: var(--text-link);
 }
 
-.retweet .interaction-btn.retweeted svg {
+.retweet .interaction-btn.retweeted svg,
+.retweet .interaction-btn.reposted svg {
   color: #00BA7C;
 }
-.retweet .interaction-btn.retweeted ~ .interaction-count {
+.retweet .interaction-btn.retweeted ~ .interaction-count,
+.retweet .interaction-btn.reposted ~ .interaction-count {
   color: #00BA7C;
 }
 .retweet:hover {
@@ -1098,14 +1122,20 @@ header {
   color: var(--text-link);
 }
 
-.save:hover .interaction-btn {
+.save:hover {
   background-color: var(--btn-primary-hover);
 }
 .save:hover svg {
   color: var(--text-link);
 }
+.save.bookmarked svg {
+  color: var(--text-link);
+}
+.save.bookmarked:hover {
+  background-color: var(--btn-primary-hover);
+}
 
-.share:hover .interaction-btn {
+.share:hover {
   background-color: var(--btn-primary-hover);
 }
 .share:hover svg {
@@ -1470,6 +1500,9 @@ header {
 .trend-item {
   padding: 0.75rem 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: background-color 0.2s;
 }
 .trend-item:hover {
@@ -1496,14 +1529,27 @@ header {
   border: none;
   cursor: pointer;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
   border-radius: 50%;
   color: var(--text-secondary);
+  transition: background-color 0.2s;
+  height: 34px;
+  width: 34px;
+}
+.trend-more:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+}
+.trend-more:hover svg {
+  fill: var(--text-link);
 }
 .trend-more svg {
   width: 18px;
   height: 18px;
   fill: var(--text-secondary);
+  transition: fill 0.2s;
 }
 
 .show-more {
@@ -1772,6 +1818,9 @@ header {
 .explore-trend-item {
   padding: 0.75rem 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: background-color 0.2s;
 }
 .explore-trend-item:hover {
@@ -1810,15 +1859,28 @@ header {
   border: none;
   cursor: pointer;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
   border-radius: 50%;
   color: var(--text-secondary);
   flex-shrink: 0;
+  transition: background-color 0.2s;
+  height: 38px;
+  width: 38px;
+}
+.explore-trend-more:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+}
+.explore-trend-more:hover svg {
+  fill: var(--text-link);
 }
 .explore-trend-more svg {
   width: 18px;
   height: 18px;
   fill: var(--text-secondary);
+  transition: fill 0.2s;
 }
 
 .explore-show-more {
@@ -2883,10 +2945,37 @@ header {
   display: flex;
   flex-direction: column;
 }
-.gif-picker-modal .dialog-header {
+
+.gif-header {
   gap: 0.5rem;
   padding: 0.25rem 0.5rem;
   border-bottom: 1px solid var(--border-color);
+}
+
+.gif-back-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+.gif-back-btn:hover {
+  background-color: var(--bg-hover);
+}
+.gif-back-btn {
+  flex-shrink: 0;
+}
+.gif-back-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-primary);
 }
 
 .gif-search-container {
@@ -2916,6 +3005,73 @@ header {
   color: var(--text-secondary);
 }
 
+.gif-search-clear {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--btn-primary-bg);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gif-search-clear:hover {
+  opacity: 0.85;
+}
+.gif-search-clear svg {
+  width: 10px;
+  height: 10px;
+  fill: #fff;
+}
+
+.gif-autoplay-bar {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.gif-autoplay-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.gif-autoplay-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 40px;
+  height: 22px;
+  border-radius: 9999px;
+  background-color: var(--border-secondary-color);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.gif-autoplay-toggle.active {
+  background-color: var(--btn-primary-bg);
+}
+.gif-autoplay-toggle.active .gif-toggle-thumb {
+  transform: translateX(18px);
+}
+
+.gif-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 .gif-picker-body {
   overflow-y: auto;
   padding: 0.5rem;
@@ -2936,12 +3092,19 @@ header {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  min-height: 96px;
+  min-height: 166px;
   position: relative;
   overflow: hidden;
   transition: opacity 0.2s;
   background-size: cover;
   background-position: center;
+}
+.gif-category-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+  pointer-events: none;
 }
 .gif-category-item:hover {
   opacity: 0.85;
@@ -2956,42 +3119,9 @@ header {
   z-index: 1;
 }
 
-.gif-list-header {
-  padding: 0.5rem 0.25rem;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.gif-back-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-  transition: background-color 0.2s;
-}
-.gif-back-btn:hover {
-  background-color: var(--bg-hover);
-}
-.gif-back-btn svg {
-  fill: var(--text-primary);
-}
-
-.gif-list-title {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.gif-results-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.25rem;
+.gif-results-masonry {
+  column-count: 2;
+  column-gap: 0.25rem;
 }
 
 .gif-result-item {
@@ -3003,14 +3133,16 @@ header {
   overflow: hidden;
   padding: 0;
   transition: opacity 0.2s;
+  break-inside: avoid;
+  margin-bottom: 0.25rem;
+  display: block;
+  width: 100%;
 }
 .gif-result-item:hover {
   opacity: 0.8;
 }
 .gif-result-item img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
   display: block;
 }
 
@@ -3236,6 +3368,41 @@ header {
 }
 
 .post-more-menu {
+  position: absolute;
+  z-index: 100;
+  background-color: var(--bg-main);
+  border-radius: 16px;
+  box-shadow: var(--bg-hover);
+  overflow: hidden;
+  min-width: 300px;
+  max-width: 350px;
+  width: max-content;
+  padding: 12px 0;
+}
+.post-more-menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--text-primary);
+  gap: 12px;
+}
+.post-more-menu-item svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+.post-more-menu-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.trend-more-menu {
   position: fixed;
   z-index: 20;
   background-color: var(--bg-main);
@@ -3246,7 +3413,7 @@ header {
   padding: 0.25rem 0;
 }
 
-.post-more-menu-item {
+.trend-more-menu__item {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -3259,18 +3426,15 @@ header {
   font-weight: 700;
   color: var(--text-primary);
 }
-.post-more-menu-item:hover {
+.trend-more-menu__item:hover {
   background-color: rgba(15, 20, 25, 0.03);
 }
-.post-more-menu-item svg {
+.trend-more-menu__item svg {
   width: 18.75px;
   height: 18.75px;
   margin-right: 0.75rem;
   fill: currentColor;
   flex-shrink: 0;
-}
-.post-more-menu-item[data-more-action=block], .post-more-menu-item[data-more-action=report] {
-  color: #F4212E;
 }
 
 .share-popover {
@@ -3281,7 +3445,7 @@ header {
   box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
   min-width: 260px;
   overflow: hidden;
-  padding: 0.25rem 0;
+  padding: 0.75rem 0;
 }
 
 .share-popover-item {
@@ -3294,16 +3458,16 @@ header {
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-weight: 400;
+  color: #0f1419;
+  gap: 0.75rem;
 }
 .share-popover-item:hover {
-  background-color: rgba(15, 20, 25, 0.03);
+  background-color: #f7f9f9;
 }
 .share-popover-item svg {
   width: 18.75px;
   height: 18.75px;
-  margin-right: 0.75rem;
   fill: currentColor;
   flex-shrink: 0;
 }
@@ -3363,8 +3527,10 @@ header {
 .dialog-reply-create .reply-thread-line {
   width: 2px;
   flex-grow: 1;
+  min-height: 8px;
   background-color: var(--border-secondary-color);
   margin-top: 0.25rem;
+  margin-bottom: -0.75rem;
 }
 .dialog-reply-create .reply-parent-header {
   gap: 4px;
@@ -3528,4 +3694,52 @@ header {
 .post-detail-title {
   font-size: 20px;
   font-weight: 700;
+}
+
+.user-profile-menu {
+  position: fixed;
+  z-index: 100;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+  min-width: 300px;
+}
+.user-profile-menu::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 24px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  box-shadow: 3px 3px 4px rgba(101, 119, 134, 0.1);
+}
+.user-profile-menu::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+}
+
+.user-profile-menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  color: #0f1419;
+}
+.user-profile-menu-item:hover {
+  background-color: #f7f9f9;
+  border-radius: 16px;
 }

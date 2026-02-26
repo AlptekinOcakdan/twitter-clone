@@ -8,9 +8,33 @@
     transition: background-color $transition-fast;
     align-items: flex-start;
     position: relative;
+    flex-wrap: wrap;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.035);
+    }
+}
+
+.tweet-context-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    padding-left: 52px;
+    margin-bottom: $spacing-1;
+
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: #536471;
+        flex-shrink: 0;
+    }
+
+    span {
+        font-size: 13px;
+        font-weight: 700;
+        color: #536471;
+        line-height: 16px;
     }
 }
 
@@ -136,13 +160,15 @@
 }
 
 .retweet {
-    .interaction-btn.retweeted {
+    .interaction-btn.retweeted,
+    .interaction-btn.reposted {
         svg {
             color: $color-retweet;
         }
     }
 
-    .interaction-btn.retweeted ~ .interaction-count {
+    .interaction-btn.retweeted ~ .interaction-count,
+    .interaction-btn.reposted ~ .interaction-count {
         color: $color-retweet;
     }
 
@@ -201,21 +227,27 @@
 
 .save {
     &:hover {
-        .interaction-btn {
-            background-color: var(--btn-primary-hover);
-        }
+        background-color: var(--btn-primary-hover);
 
         svg {
             color: var(--text-link);
+        }
+    }
+
+    &.bookmarked {
+        svg {
+            color: var(--text-link);
+        }
+
+        &:hover {
+            background-color: var(--btn-primary-hover);
         }
     }
 }
 
 .share {
     &:hover {
-        .interaction-btn {
-            background-color: var(--btn-primary-hover);
-        }
+        background-color: var(--btn-primary-hover);
 
         svg {
             color: var(--text-link);

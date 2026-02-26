@@ -1,4 +1,5 @@
 import { Component } from '@/core';
+import { UserProfileMenu } from './UserProfileMenu.js';
 
 export class UserProfile extends Component {
     constructor(props = {}) {
@@ -9,6 +10,31 @@ export class UserProfile extends Component {
             avatar: '/assets/images/header/users/user-avatar.jpg',
             ...props
         };
+        this.menu = null;
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (this.menu && this.menu.popoverElement) {
+            this.menu.close();
+            this.menu = null;
+            return;
+        }
+
+        this.menu = new UserProfileMenu({
+            handle: this.props.handle,
+            anchorElement: this.element
+        });
+        this.menu.open();
+    }
+
+    onMount() {
+        if (this.element) {
+            this.element.addEventListener('click', this.handleClick);
+        }
     }
 
     render() {

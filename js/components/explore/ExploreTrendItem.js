@@ -20,7 +20,7 @@ export class ExploreTrendItem extends Component {
             : '';
 
         return `
-            <div class="explore-trend-item flex justify-between" data-trend-id="${id}">
+            <div class="explore-trend-item" data-trend-id="${id}">
                 <div class="explore-trend-info">
                     <span class="explore-trend-meta">${category}</span>
                     <span class="explore-trend-name">${name}</span>
