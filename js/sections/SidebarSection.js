@@ -1,4 +1,4 @@
-import { Section, dataService } from '@/core';
+import { Section, dataService, router } from '@/core';
 import { SearchBox, PremiumCard, TrendsCard, TopicsCard, WhoToFollow, Footer } from '@/components/sidebar';
 import { TrendMoreMenu } from '@/components/common';
 
@@ -60,6 +60,16 @@ export class SidebarSection extends Section {
         `;
     }
 
+    renderSearch() {
+        const whoToFollow = new WhoToFollow(this.sidebarData.whoToFollow);
+        const footer = new Footer(this.sidebarData.footer);
+
+        return `
+            ${whoToFollow.render()}
+            ${footer.render()}
+        `;
+    }
+
     render() {
         if (!this.sidebarData) {
             return '<section id="sidebar" class="h-full">Yükleniyor...</section>';
@@ -72,6 +82,9 @@ export class SidebarSection extends Section {
                 break;
             case 'explore':
                 content = this.renderExplore();
+                break;
+            case 'search':
+                content = this.renderSearch();
                 break;
             default:
                 content = this.renderHome();
@@ -98,6 +111,21 @@ export class SidebarSection extends Section {
             }
         }
         this.initTrendMoreMenus();
+        this.initTrendClickNavigation();
+    }
+
+    initTrendClickNavigation() {
+        this.element?.addEventListener('click', (e) => {
+            if (e.target.closest('.trend-more')) return;
+
+            const trendItem = e.target.closest('.trend-item');
+            if (trendItem) {
+                const trendName = trendItem.querySelector('.trend-name')?.textContent || '';
+                if (trendName) {
+                    router.navigate(`/search?q=${encodeURIComponent(trendName)}`);
+                }
+            }
+        });
     }
 
     initTrendMoreMenus() {

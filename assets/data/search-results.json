@@ -1,0 +1,47 @@
+{
+    "tabs": [
+        { "id": "popular", "label": "Popüler", "active": true },
+        { "id": "latest", "label": "En son" },
+        { "id": "people", "label": "Kişiler" },
+        { "id": "media", "label": "Medya" },
+        { "id": "lists", "label": "Listeler" }
+    ],
+    "lists": [
+        {
+            "id": "l1",
+            "name": "Türkiye Gündem",
+            "description": "Türkiye ile ilgili en son haberler ve güncel gelişmeler",
+            "memberCount": 48,
+            "followerCount": 1200,
+            "owner": {
+                "displayName": "Hava Forum",
+                "handle": "@HavaForum",
+                "avatar": "/assets/images/header/users/user-avatar.jpg"
+            }
+        },
+        {
+            "id": "l2",
+            "name": "Teknoloji ve Yapay Zeka",
+            "description": "Teknoloji dünyasından en son gelişmeler",
+            "memberCount": 35,
+            "followerCount": 890,
+            "owner": {
+                "displayName": "Teknoloji Haberleri",
+                "handle": "@teknohaberler",
+                "avatar": "/assets/images/header/users/user-avatar.jpg"
+            }
+        },
+        {
+            "id": "l3",
+            "name": "Spor Haberleri",
+            "description": "Futbol, basketbol ve diğer spor dallarından haberler",
+            "memberCount": 62,
+            "followerCount": 3400,
+            "owner": {
+                "displayName": "CNN Turk",
+                "handle": "@cabornnturk",
+                "avatar": "/assets/images/header/users/user-avatar.jpg"
+            }
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-import { Section, dataService, postService, safeSetInnerHTML } from '@/core';
+import { Section, dataService, postService, safeSetInnerHTML, router } from '@/core';
 import { Tabs, PostList } from '@/components/feed';
 import {
     ExploreSearchBox,
@@ -165,6 +165,7 @@ export class ExploreSection extends Section {
 
         this.initScrollSync();
         this.initTrendMoreMenus();
+        this.initTrendClickNavigation();
 
         this.unsubscribe = postService.subscribe((posts) => {
             if (this.activeTab === 'for-you') {
@@ -203,6 +204,20 @@ export class ExploreSection extends Section {
                 const trendName = trendItem?.querySelector('.explore-trend-name')?.textContent || '';
                 const menu = new TrendMoreMenu({ trendId, trendName });
                 menu.open(moreBtn);
+            }
+        });
+    }
+
+    initTrendClickNavigation() {
+        this.element?.addEventListener('click', (e) => {
+            if (e.target.closest('.explore-trend-more')) return;
+
+            const trendItem = e.target.closest('.explore-trend-item, .explore-numbered-trend');
+            if (trendItem) {
+                const trendName = trendItem.querySelector('.explore-trend-name')?.textContent || '';
+                if (trendName) {
+                    router.navigate(`/search?q=${encodeURIComponent(trendName)}`);
+                }
             }
         });
     }

@@ -4,3 +4,4 @@ export { SidebarSection } from './SidebarSection.js';
 export { ExploreSection } from './ExploreSection.js';
 export { ProfileSection } from './ProfileSection.js';
 export { PostDetailSection } from './PostDetailSection.js';
+export { SearchSection } from './SearchSection.js';

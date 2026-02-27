@@ -5,6 +5,7 @@
             "displayName": "Hava Forum",
             "handle": "@HavaForum",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Türkiye'nin en güncel hava durumu bilgileri ve meteoroloji haberleri.",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -13,6 +14,7 @@
             "displayName": "Elon Musk",
             "handle": "@elonmusk",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -21,6 +23,7 @@
             "displayName": "Emre Kocadag",
             "handle": "@kocadagemre",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Yazılım geliştirici | Teknoloji meraklısı",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -29,6 +32,7 @@
             "displayName": "Merih Demiral",
             "handle": "@Merihdemiral",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Profesyonel futbolcu ⚽",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -37,6 +41,7 @@
             "displayName": "NASA Events",
             "handle": "@NASA_Events",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Your invitation to NASA events, launches, and landings.",
             "isVerified": true,
             "verifiedType": "gray"
         },
@@ -45,6 +50,7 @@
             "displayName": "Teknoloji Haberleri",
             "handle": "@teknohaberler",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Teknoloji dünyasından son dakika haberleri ve incelemeler.",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -53,6 +59,7 @@
             "displayName": "Galatasaray SK",
             "handle": "@GalatasaraySK",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Galatasaray Spor Kulübü Resmi Hesabı",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -61,6 +68,7 @@
             "displayName": "Fenerbahce SK",
             "handle": "@Fenerbahce",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Fenerbahçe Spor Kulübü Resmi Hesabı",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -69,6 +77,7 @@
             "displayName": "CNN Turk",
             "handle": "@cabornnturk",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "CNN Türk resmi hesabı. Haberler, son dakika gelişmeleri.",
             "isVerified": true,
             "verifiedType": "gray"
         },
@@ -77,6 +86,7 @@
             "displayName": "Alptekin OCAKDAN",
             "handle": "@AlptekinOc23031",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "",
             "isVerified": false,
             "verifiedType": "blue"
         },
@@ -85,6 +95,7 @@
             "displayName": "SpaceX",
             "handle": "@SpaceX",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "SpaceX designs, manufactures and launches advanced rockets and spacecraft.",
             "isVerified": true,
             "verifiedType": "blue"
         },
@@ -93,6 +104,7 @@
             "displayName": "Besiktas JK",
             "handle": "@Besiktas",
             "avatar": "/assets/images/header/users/user-avatar.jpg",
+            "bio": "Beşiktaş Jimnastik Kulübü Resmi Hesabı",
             "isVerified": true,
             "verifiedType": "blue"
         }

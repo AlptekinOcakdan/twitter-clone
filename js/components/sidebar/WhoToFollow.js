@@ -26,7 +26,7 @@ export class WhoToFollow extends Component {
                 <div class="follow-list">
                     ${usersHtml}
                 </div>
-                <a href="#" class="show-more">${showMoreText}</a>
+                <a href="/follow" class="show-more" data-link>${showMoreText}</a>
             </div>
         `;
     }

@@ -26,7 +26,7 @@ export class TrendsCard extends Component {
                 <div class="trend-list">
                     ${trendsHtml}
                 </div>
-                <a href="#" class="show-more">${showMoreText}</a>
+                <a href="/explore" class="show-more" data-link>${showMoreText}</a>
             </div>
         `;
     }

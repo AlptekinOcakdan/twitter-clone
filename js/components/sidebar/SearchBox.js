@@ -1,4 +1,4 @@
-import { Component, safeSetInnerHTML } from '@/core';
+import { Component, safeSetInnerHTML, router } from '@/core';
 
 const STORAGE_KEY = 'twitter-clone-recent-searches';
 const MAX_RECENT = 5;
@@ -177,6 +177,10 @@ export class SearchBox extends Component {
 
                     if (searchItem) {
                         this.addRecentSearch(searchItem);
+                        const searchQuery = type === 'trend' ? searchItem.name : searchItem.displayName;
+                        if (searchQuery) {
+                            router.navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+                        }
                     }
                 });
             });
@@ -211,6 +215,12 @@ export class SearchBox extends Component {
         if (input) {
             input.addEventListener('input', (e) => {
                 this.updatePopover(e.target.value);
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && input.value.trim()) {
+                    router.navigate(`/search?q=${encodeURIComponent(input.value.trim())}`);
+                }
             });
 
             input.addEventListener('focus', () => {
