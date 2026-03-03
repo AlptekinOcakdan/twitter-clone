@@ -14,7 +14,8 @@
         { "id": "posts", "label": "Gönderiler", "active": true },
         { "id": "replies", "label": "Yanıtlar", "active": false },
         { "id": "highlights", "label": "Öne Çıkanlar", "active": false },
+        { "id": "articles", "label": "Makaleler", "active": false },
         { "id": "media", "label": "Medya", "active": false },
-        { "id": "likes", "label": "Beğeniler", "active": false }
+        { "id": "likes", "label": "Beğeni", "active": false }
     ]
 }

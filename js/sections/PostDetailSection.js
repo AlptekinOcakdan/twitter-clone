@@ -1,5 +1,7 @@
 import { Section, dataService, postService, safeSetInnerHTML } from '@/core';
 import { Post, PostList } from '@/components/feed';
+import { InlineReply } from '@/components/post/InlineReply.js';
+import { ReplySortBar } from '@/components/post/ReplySortBar.js';
 
 export class PostDetailSection extends Section {
     constructor(props = {}) {
@@ -8,8 +10,11 @@ export class PostDetailSection extends Section {
         this.postsData = null;
         this.mainPost = null;
         this.replies = [];
+        this.currentSort = 'relevant';
         this.mainPostComponent = null;
         this.repliesListComponent = null;
+        this.inlineReplyComponent = null;
+        this.sortBarComponent = null;
         this.unsubscribe = null;
     }
 
@@ -25,6 +30,17 @@ export class PostDetailSection extends Section {
         this.replies = posts.filter(p => p.replyTo === this.postId);
     }
 
+    getSortedReplies() {
+        const replies = [...this.replies];
+        if (this.currentSort === 'newest') {
+            return replies.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
+        }
+        if (this.currentSort === 'likes') {
+            return replies.sort((a, b) => (b.stats?.likes || 0) - (a.stats?.likes || 0));
+        }
+        return replies;
+    }
+
     render() {
         if (!this.mainPost) {
             return '<section id="post-detail" class="w-full h-full">Gonderi bulunamadi.</section>';
@@ -37,7 +53,19 @@ export class PostDetailSection extends Section {
             postsMap
         });
 
-        this.repliesListComponent = new PostList({ posts: this.replies });
+        this.inlineReplyComponent = new InlineReply({
+            parentPost: this.mainPost
+        });
+
+        this.sortBarComponent = new ReplySortBar({
+            currentSort: this.currentSort,
+            onChange: (sortId) => {
+                this.currentSort = sortId;
+                this.refreshReplies(this.postsData?.posts || []);
+            }
+        });
+
+        this.repliesListComponent = new PostList({ posts: this.getSortedReplies() });
 
         return `
             <section id="post-detail" class="w-full h-full">
@@ -49,6 +77,12 @@ export class PostDetailSection extends Section {
                 </div>
                 <div class="post-detail-main">
                     ${this.mainPostComponent.render()}
+                </div>
+                <div class="post-detail-sort-bar">
+                    ${this.sortBarComponent.render()}
+                </div>
+                <div class="post-detail-inline-reply">
+                    ${this.inlineReplyComponent.render()}
                 </div>
                 <div class="post-detail-replies">
                     ${this.repliesListComponent.render()}
@@ -64,7 +98,7 @@ export class PostDetailSection extends Section {
         const repliesContainer = this.element?.querySelector('.post-detail-replies');
         if (!repliesContainer) return;
 
-        const postList = new PostList({ posts: this.replies });
+        const postList = new PostList({ posts: this.getSortedReplies() });
         const tempContainer = document.createElement('div');
         safeSetInnerHTML(tempContainer, postList.render());
 
@@ -84,6 +118,18 @@ export class PostDetailSection extends Section {
         if (mainPostEl && this.mainPostComponent) {
             this.mainPostComponent.element = mainPostEl;
             this.mainPostComponent.onMount();
+        }
+
+        const inlineReplyEl = this.element?.querySelector('.post-detail-inline-reply .inline-reply');
+        if (inlineReplyEl && this.inlineReplyComponent) {
+            this.inlineReplyComponent.element = inlineReplyEl;
+            this.inlineReplyComponent.onMount();
+        }
+
+        const sortBarEl = this.element?.querySelector('.post-detail-sort-bar .reply-sort-bar');
+        if (sortBarEl && this.sortBarComponent) {
+            this.sortBarComponent.element = sortBarEl;
+            this.sortBarComponent.onMount();
         }
 
         const repliesContainer = this.element?.querySelector('#posts-container');
@@ -107,6 +153,8 @@ export class PostDetailSection extends Section {
 
     destroy() {
         if (this.unsubscribe) this.unsubscribe();
+        this.inlineReplyComponent?.destroy();
+        this.sortBarComponent?.destroy();
         super.destroy();
     }
 }

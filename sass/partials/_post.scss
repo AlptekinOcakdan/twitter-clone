@@ -8,11 +8,14 @@
     transition: background-color $transition-fast;
     align-items: flex-start;
     position: relative;
-    flex-wrap: wrap;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.035);
     }
+}
+
+.post-content-col{
+    max-width: 100%;
 }
 
 .tweet-context-header {
@@ -117,6 +120,79 @@
     width: 100%;
     max-height: 512px;
     object-fit: cover;
+}
+
+.post-video {
+    width: 100%;
+    max-height: 512px;
+    object-fit: contain;
+    background-color: #000;
+}
+
+.post-media-gif-container {
+    position: relative;
+    background-color: #000;
+    min-height: 200px;
+    max-width: 512px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.gif-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.gif-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 4px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.gif-play-btn {
+    @include button-reset;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--btn-primary-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: transform $transition-fast, background-color $transition-fast;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: var(--btn-primary-hover);
+    }
+}
+
+.post-gif {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-height: 512px;
+}
+
+.post-gif.hidden {
+    display: none;
 }
 
 .post-interactions {

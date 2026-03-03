@@ -75,6 +75,19 @@ class PostService {
         return postsData?.posts || [];
     }
 
+    getLikedPostIds() {
+        try {
+            return JSON.parse(localStorage.getItem('twitter-clone-liked-posts') || '[]');
+        } catch (e) {
+            return [];
+        }
+    }
+
+    isPostLiked(postId) {
+        const likedIds = this.getLikedPostIds();
+        return likedIds.includes(postId);
+    }
+
     async toggleLike(postId) {
         try {
             const postsData = await dataService.load('posts');
@@ -111,11 +124,6 @@ class PostService {
             console.error('Error toggling like:', error);
             throw error;
         }
-    }
-
-    isPostLiked(postId) {
-        const likedPosts = JSON.parse(localStorage.getItem('twitter-clone-liked-posts') || '[]');
-        return likedPosts.includes(postId);
     }
 
     async toggleRetweet(postId) {

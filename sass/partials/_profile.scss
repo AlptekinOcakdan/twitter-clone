@@ -334,6 +334,72 @@
     margin: 0 auto;
 }
 
+.profile-premium-upsell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $spacing-8;
+    max-width: calc(400px);
+    align-self: center;
+    justify-self: center;
+}
+
+.profile-premium-upsell__title {
+    font-size: 31px;
+    font-weight: $font-weight-heavy;
+    line-height: 36px;
+    margin-bottom: $spacing-2;
+    color: var(--text-primary);
+}
+
+.profile-premium-upsell__desc {
+    font-size: $font-size-base;
+    margin-bottom: 28px;
+    max-width: 360px;
+    line-height: $line-height-base;
+    color: var(--text-secondary);
+}
+
+.profile-premium-upsell__btn {
+    @include button-base;
+    font-weight: $font-weight-bold;
+    padding: 12px 32px;
+    border-radius: $border-radius-full;
+    font-size: $font-size-mmd;
+    background-color: var(--btn-black-bg);
+    color: var(--text-white);
+    transition: opacity $transition-fast;
+    min-width: 52px;
+    width: fit-content;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.profile-likes-notice {
+    background-color: var(--bg-blue-hover);
+    color: var(--text-primary);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-regular;
+
+    svg {
+        max-width: 100%;
+        height: 1.25em;
+        margin-right: $spacing-2;
+    }
+}
+
+.profile-likes-notice__text {
+    font-size: $font-size-base;
+    color: var(--text-primary);
+    font-weight: $font-weight-regular;
+}
+
 @media (max-width: 1002px) {
     #profile {
         width: $feed-max-width;

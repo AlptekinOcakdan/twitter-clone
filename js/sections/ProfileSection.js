@@ -26,8 +26,8 @@ export class ProfileSection extends Section {
         const postCount = this.postsData?.posts?.length || 0;
         return `
             <div class="profile-back-header">
-                <button class="profile-back-header__btn" data-link href="/">
-                    <svg viewBox="0 0 24 24"><path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path></svg>
+                <button class="profile-back-header__btn" data-link data-href="/">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path></svg>
                 </button>
                 <div class="profile-back-header__info">
                     <span class="profile-back-header__name">${this.profileData.displayName}</span>
@@ -65,18 +65,91 @@ export class ProfileSection extends Section {
         `;
     }
 
+    renderPremiumUpsell(title, description, buttonText) {
+        return `
+            <div class="profile-premium-upsell">
+                <h2 class="profile-premium-upsell__title">${title}</h2>
+                <p class="profile-premium-upsell__desc">${description}</p>
+                <button class="profile-premium-upsell__btn">
+                    ${buttonText}
+                </button>
+            </div>
+        `;
+    }
+
+    renderMockList(posts) {
+        this.postListComponent = new PostList({ posts });
+        return `
+            <div class="profile-tab-content" data-tab-content="list">
+                ${this.postListComponent.render()}
+            </div>
+        `;
+    }
+
+    renderLikesTabContent() {
+        const likedIds = postService.getLikedPostIds();
+        const allPosts = this.postsData?.posts || [];
+
+        const postsMap = new Map(allPosts.map(p => [p.id, p]));
+
+        const likedPosts = likedIds
+            .slice()
+            .reverse()
+            .map(id => postsMap.get(id))
+            .filter(post => post !== undefined);
+
+        if (likedPosts.length === 0) {
+            return this.renderEmptyTabContent('likes', 'Henüz beğeni yok', 'Beğendiğin gönderiler burada görünür.');
+        }
+
+        this.postListComponent = new PostList({ posts: likedPosts });
+
+        return `
+            <div class="profile-likes-notice">
+                <svg viewBox="0 0 24 24">
+                    <use href="/assets/images/profile/lock.svg#lock"/>
+                </svg>
+                <span class="profile-likes-notice__text">
+                    Beğenilerin gizli. Onları sadece sen görebilirsin.
+                </span>
+            </div>
+            <div class="profile-tab-content" data-tab-content="likes">
+                ${this.postListComponent.render()}
+            </div>
+        `;
+    }
+
     renderTabContent(tabId) {
+        // Reset component references when switching tabs, unless reused
+        if (tabId !== 'posts' && tabId !== 'replies' && tabId !== 'media' && tabId !== 'likes') {
+            this.postListComponent = null;
+        }
+
         switch (tabId) {
             case 'posts':
                 return this.renderPostsTabContent();
             case 'replies':
-                return this.renderEmptyTabContent(tabId, 'Henüz yanıt yok', 'Yanıtladığında burada görünür.');
+                return this.renderMockList(this.postsData?.posts || []);
             case 'highlights':
-                return this.renderEmptyTabContent(tabId, 'Henüz öne çıkan içerik yok', 'Öne çıkan içeriklerin burada görünür.');
+                return this.renderPremiumUpsell(
+                    'Profilinde öne çıkar',
+                    'Profilinde gönderileri öne çıkarmak için Premium abonesi olman gerekir.',
+                    "Premium'a Abone Ol"
+                );
+            case 'articles':
+                 return this.renderPremiumUpsell(
+                    "X'te Makale yaz",
+                    "X'te Makale yazmak için Premium abonesi olman gerekir",
+                    "Premium kademesine yükselt"
+                );
             case 'media':
-                return this.renderEmptyTabContent(tabId, 'Henüz medya yok', 'Paylaştığın fotoğraf ve videolar burada görünür.');
+                const mediaPosts = (this.postsData?.posts || []).filter(p => p.content?.media);
+                if (mediaPosts.length === 0) {
+                     return this.renderEmptyTabContent(tabId, 'Henüz medya yok', 'Paylaştığın fotoğraf ve videolar burada görünür.');
+                }
+                return this.renderMockList(mediaPosts);
             case 'likes':
-                return this.renderEmptyTabContent(tabId, 'Henüz beğeni yok', 'Beğendiğin gönderiler burada görünür.');
+                return this.renderLikesTabContent();
             default:
                 return '';
         }
@@ -133,8 +206,10 @@ export class ProfileSection extends Section {
 
         safeSetInnerHTML(container, this.renderTabContent(tabId));
 
-        if (tabId === 'posts') {
+        if (['posts', 'replies', 'media', 'likes'].includes(tabId)) {
             this.mountPostList();
+        }
+        if (tabId === 'posts') {
             this.mountCarousel();
         }
     }

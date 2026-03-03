@@ -45,6 +45,8 @@ export class Post extends Component {
         this.handleCommentClick = this.handleCommentClick.bind(this);
         this.handleMoreClick = this.handleMoreClick.bind(this);
         this.handlePostClick = this.handlePostClick.bind(this);
+        this.handleGifPlay = this.handleGifPlay.bind(this);
+        this.handleImageClick = this.handleImageClick.bind(this);
     }
 
     formatNumber(num) {
@@ -257,12 +259,24 @@ export class Post extends Component {
         menu.open();
     }
 
+    handleImageClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const img = e.currentTarget;
+        import('@/components/common/ImageModal.js').then(({ ImageModal }) => {
+            const modal = new ImageModal({ src: img.src, alt: img.alt });
+            modal.open();
+        });
+    }
+
     handlePostClick(e) {
         if (e.target.closest('.interaction-btn') ||
             e.target.closest('.interaction-group') ||
             e.target.closest('.interaction-icons-right') ||
             e.target.closest('.post-more-btn') ||
             e.target.closest('.quoted-post') ||
+            e.target.closest('.post-image') ||
             e.target.closest('a')) {
             return;
         }
@@ -270,9 +284,63 @@ export class Post extends Component {
         router.navigate(`/post/${this.props.id}`);
     }
 
+    handleGifPlay(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const container = e.currentTarget.closest('.post-media-gif-container');
+        if (!container) return;
+
+        const img = container.querySelector('img.post-gif');
+        const overlay = container.querySelector('.gif-overlay');
+
+        if (img && overlay) {
+            // Load the gif by setting src from data-src
+            img.src = img.getAttribute('data-src');
+            img.classList.remove('hidden');
+            overlay.remove();
+        }
+    }
+
     renderMedia() {
         const { media } = this.props.content;
         if (!media) return '';
+
+        const isGif = media.type === 'gif' || (media.url && media.url.toLowerCase().endsWith('.gif'));
+
+        if (media.type === 'video') {
+            return `
+                <div class="post-media">
+                    <video src="${media.url}" controls preload="metadata" class="post-video"></video>
+                </div>
+            `;
+        }
+
+        if (isGif) {
+             // If it is a video pretending to be a gif (mp4 url)
+             if (media.url && !media.url.toLowerCase().endsWith('.gif')) {
+                 return `
+                    <div class="post-media">
+                        <video src="${media.url}" loop controls playsinline class="post-video post-gif"></video>
+                        <div class="gif-label">GIF</div>
+                    </div>
+                `;
+             }
+
+             // If it is a real .gif image, we use an overlay to prevent auto-start (load on click)
+             // We can use a simple placeholder if we don't have a static thumb.
+             return `
+                <div class="post-media post-media-gif-container">
+                    <div class="gif-overlay">
+                        <span class="gif-badge">GIF</span>
+                        <button class="gif-play-btn">
+                            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M8 5v14l11-7z"></path></svg>
+                        </button>
+                    </div>
+                    <img data-src="${media.url}" alt="${media.alt || ''}" class="post-image post-gif hidden">
+                </div>
+            `;
+        }
 
         if (media.type === 'image') {
             return `
@@ -367,6 +435,17 @@ export class Post extends Component {
         const moreButton = this.element.querySelector('.post-more-btn button:last-child');
         if (moreButton) {
             moreButton.addEventListener('click', this.handleMoreClick);
+        }
+
+        const gifContainer = this.element.querySelector('.post-media-gif-container');
+        if (gifContainer) {
+            gifContainer.addEventListener('click', this.handleGifPlay.bind(this));
+        }
+
+        const postImage = this.element.querySelector('.post-image:not(.post-gif)');
+        if (postImage) {
+            postImage.style.cursor = 'zoom-in';
+            postImage.addEventListener('click', this.handleImageClick);
         }
 
         this.element.addEventListener('click', this.handlePostClick);

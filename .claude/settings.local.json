@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); p=d[''posts''][0]; print\\(json.dumps\\(p, indent=2, ensure_ascii=False\\)\\)\")"
+    ]
+  }
+}
