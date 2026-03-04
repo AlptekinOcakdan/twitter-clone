@@ -73,6 +73,8 @@
         border-radius: $border-radius-full;
         transition: background-color $transition-fast;
         margin-bottom: $spacing-3;
+        border: none;
+        background: transparent;
 
         &:hover {
             background-color: var(--bg-blue-hover);

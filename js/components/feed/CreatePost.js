@@ -2,6 +2,7 @@ import { Component, postService, safeSetInnerHTML } from '@/core';
 import { GifPicker } from '@/components/common/GifPicker.js';
 import { EmojiPicker } from '@/components/common/EmojiPicker.js';
 import { ScheduleModal } from '@/components/common/ScheduleModal.js';
+import { ReplyPermissionPicker } from '@/components/common/ReplyPermissionPicker.js';
 
 export class CreatePost extends Component {
     constructor(props = {}) {
@@ -20,6 +21,8 @@ export class CreatePost extends Component {
         this.mediaPreviewUrl = null;
         this.selectedGif = null;
         this.scheduledDate = null;
+        this.selectedPermission = 'everyone';
+        this.permissionPicker = null;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -58,6 +61,8 @@ export class CreatePost extends Component {
             this.scheduledDate = null;
             submitButton.textContent = originalText;
             this.updateCharCounter();
+            document.getElementById('post-content-area')?.classList.remove('is-active');
+            textarea.blur();
         } catch (error) {
             console.error('Failed to create post:', error);
             alert('Gönderi oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.');
@@ -226,11 +231,44 @@ export class CreatePost extends Component {
         modal.open();
     }
 
+    openPermissionPicker() {
+        const btn = document.getElementById('reply-permission');
+        if (!btn) return;
+
+        if (!this.permissionPicker) {
+            this.permissionPicker = new ReplyPermissionPicker({
+                selected: this.selectedPermission,
+                onSelect: (id) => {
+                    this.selectedPermission = id;
+                    this.permissionPicker.props.selected = id;
+                    this.updatePermissionDisplay();
+                }
+            });
+        }
+
+        this.permissionPicker.open(btn);
+    }
+
+    updatePermissionDisplay() {
+        const btn = document.getElementById('reply-permission');
+        if (!btn) return;
+
+        const span = btn.querySelector('span');
+        if (span) span.textContent = ReplyPermissionPicker.getButtonLabelById(this.selectedPermission);
+
+        const svg = btn.querySelector('svg');
+        if (svg) svg.innerHTML = ReplyPermissionPicker.getIconPathById(this.selectedPermission);
+    }
+
     onMount() {
         const textarea = document.getElementById('post-input');
         const fileInput = this.element?.querySelector('.media-file-input');
 
         if (textarea) {
+            textarea.addEventListener('focus', () => {
+                document.getElementById('post-content-area')?.classList.add('is-active');
+            });
+
             textarea.addEventListener('input', () => {
                 textarea.style.height = 'auto';
                 textarea.style.height = `${textarea.scrollHeight}px`;
@@ -272,6 +310,15 @@ export class CreatePost extends Component {
                 }
             });
         });
+
+        const permissionBtn = document.getElementById('reply-permission');
+        if (permissionBtn) {
+            permissionBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.openPermissionPicker();
+            });
+        }
     }
 
     renderCharCounter() {
@@ -321,12 +368,12 @@ export class CreatePost extends Component {
                         </div>
                     </div>
 
-                    <div id="reply-permission" class="flex items-center">
+                    <button type="button" id="reply-permission" class="flex items-center">
                         <svg viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+                            ${ReplyPermissionPicker.getIconPathById(this.selectedPermission)}
                         </svg>
-                        <span>${replyPermission}</span>
-                    </div>
+                        <span>${ReplyPermissionPicker.getButtonLabelById(this.selectedPermission)}</span>
+                    </button>
 
                     <div id="post-actions" class="flex items-center justify-between">
                         <div class="action-icons flex items-center">

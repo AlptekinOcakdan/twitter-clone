@@ -833,6 +833,8 @@ header {
   border-radius: 9999px;
   transition: background-color 0.2s;
   margin-bottom: 0.75rem;
+  border: none;
+  background: transparent;
 }
 #reply-permission:hover {
   background-color: var(--bg-blue-hover);
@@ -843,7 +845,7 @@ header {
   margin-right: 0.5rem;
   fill: var(--text-link);
 }
-#post-content-area:focus-within #reply-permission {
+#post-content-area.is-active #reply-permission {
   display: flex;
 }
 
@@ -851,7 +853,7 @@ header {
   margin-bottom: 0.5rem;
   padding-top: 0.75rem;
 }
-#post-content-area:focus-within #post-actions {
+#post-content-area.is-active #post-actions {
   border-top: 1px solid var(--border-color);
 }
 
@@ -2653,6 +2655,8 @@ header {
   border-radius: 9999px;
   transition: background-color 0.2s;
   margin-bottom: 0.75rem;
+  border: none;
+  background: transparent;
 }
 .dialog-post-create .dialog-reply-permission:hover {
   background-color: var(--bg-blue-hover);
@@ -4486,4 +4490,85 @@ header {
   max-height: 90vh;
   object-fit: contain;
   border-radius: 16px;
+}
+
+.reply-permission-picker {
+  position: fixed;
+  z-index: 9999;
+  background-color: var(--bg-main);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
+  min-width: 300px;
+  max-width: 360px;
+  overflow: hidden;
+}
+
+.reply-permission-picker-header {
+  padding: 16px 16px 12px;
+}
+
+.reply-permission-picker-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.reply-permission-picker-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 20px;
+}
+
+.reply-permission-picker-options {
+  padding-bottom: 0.5rem;
+}
+
+.reply-permission-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+.reply-permission-option:hover {
+  background-color: var(--bg-hover);
+}
+
+.reply-permission-option-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--text-link);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+.reply-permission-option-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.reply-permission-option-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex-grow: 1;
+  text-align: left;
+}
+
+.reply-permission-check {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-link);
+  flex-shrink: 0;
+  margin-left: 0.5rem;
 }
