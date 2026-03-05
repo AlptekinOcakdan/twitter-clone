@@ -19,6 +19,7 @@ class App {
         router.route('/follow', async () => new HomeView());
         router.route('/notifications', async () => new HomeView());
         router.route('/profile', async () => new ProfileView());
+        router.route('/profile/:handle', async (params) => new ProfileView(params));
         router.route('/post/:id', async (params) => new PostDetailView(params));
         router.notFound(async () => new HomeView());
     }

@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.share-popover {
+    position: fixed;
+    z-index: $z-index-dropdown;
+    background-color: var(--bg-main);
+    border-radius: $border-radius-xl;
+    box-shadow: 0 0 15px rgba(101, 119, 134, 0.2), 0 0 3px 1px rgba(101, 119, 134, 0.15);
+    min-width: 260px;
+    overflow: hidden;
+    padding: $spacing-3 0;
+}
+
+.share-popover-item {
+    @include button-reset;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: $spacing-3 $spacing-4;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    color: #0f1419;
+    gap: $spacing-3;
+
+    &:hover {
+        background-color: #f7f9f9;
+    }
+
+    svg {
+        width: 18.75px;
+        height: 18.75px;
+        fill: currentColor;
+        flex-shrink: 0;
+    }
+}

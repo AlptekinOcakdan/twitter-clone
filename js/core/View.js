@@ -2,6 +2,13 @@ export class View {
     constructor() {
         this.sections = new Map();
         this.container = null;
+        this._listeners = [];
+    }
+
+    _on(target, type, handler, options) {
+        if (!target) return;
+        target.addEventListener(type, handler, options);
+        this._listeners.push({ target, type, handler, options });
     }
 
     addSection(name, section) {
@@ -41,5 +48,22 @@ export class View {
             }
         }
     }
-}
 
+    destroy() {
+        this._listeners.forEach(({ target, type, handler, options }) => {
+            target.removeEventListener(type, handler, options);
+        });
+        this._listeners = [];
+
+        for (const [, section] of this.sections) {
+            if (typeof section.destroy === 'function') {
+                section.destroy();
+            }
+        }
+
+        if (this.container) {
+            this.container.innerHTML = '';
+        }
+        this.container = null;
+    }
+}

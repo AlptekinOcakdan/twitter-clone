@@ -37,20 +37,23 @@ export class SearchFollowItem extends Component {
 
     render() {
         const { id, displayName, handle, avatar } = this.props;
+        const handleSlug = handle.replace('@', '');
 
         return `
             <div class="search-follow-item" data-user-id="${id}">
-                <div class="search-follow-item__left">
-                    <img src="${avatar}" alt="${displayName}" class="search-follow-avatar">
-                </div>
-                <div class="search-follow-item__center">
-                    <div class="search-follow-name-row flex items-center">
-                        <span class="display-name">${displayName}</span>
-                        ${this.renderVerifiedIcon()}
+                <a href="/profile/${handleSlug}" class="search-follow-item__link" data-link>
+                    <div class="search-follow-item__left">
+                        <img src="${avatar}" alt="${displayName}" class="search-follow-avatar">
                     </div>
-                    <span class="handle">${handle}</span>
-                    ${this.renderBio()}
-                </div>
+                    <div class="search-follow-item__center">
+                        <div class="search-follow-name-row flex items-center">
+                            <span class="display-name">${displayName}</span>
+                            ${this.renderVerifiedIcon()}
+                        </div>
+                        <span class="handle">${handle}</span>
+                        ${this.renderBio()}
+                    </div>
+                </a>
                 <div class="search-follow-item__right">
                     <button class="search-follow-btn">Takip et</button>
                 </div>

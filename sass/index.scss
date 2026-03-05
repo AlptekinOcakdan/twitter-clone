@@ -1,31 +1,43 @@
-@use 'partials/variables' as *;
-@use 'mixins/mixins' as *;
-@use 'partials/base';
-@use 'partials/utilities';
-@use 'partials/layout';
-@use 'partials/header';
-@use 'partials/tabs';
-@use 'partials/feed';
-@use 'partials/post';
-@use 'partials/sidebar';
-@use 'partials/explore';
-@use 'partials/search-results';
-@use 'partials/dropdown';
-@use 'partials/dialog';
-@use 'partials/post-modal';
-@use 'partials/profile';
-@use 'partials/char-counter';
-@use 'partials/media-preview';
-@use 'partials/gif-picker';
-@use 'partials/emoji-picker';
-@use 'partials/schedule-modal';
-@use 'partials/post-more-menu';
-@use 'partials/trend-more-menu';
-@use 'partials/share-popover';
-@use 'partials/retweet-popover';
-@use 'partials/reply-dialog';
-@use 'partials/post-detail';
-@use 'partials/user-profile-menu';
-@use 'partials/image-modal';
-@use 'partials/reply-permission-picker';
+// ─── Abstracts ────────────────────────────────────────────────────────────────
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
 
+// ─── Base ─────────────────────────────────────────────────────────────────────
+@use 'base/base';
+@use 'base/utilities';
+@use 'base/layout';
+
+// ─── Sections ─────────────────────────────────────────────────────────────────
+@use 'sections/header';
+@use 'sections/feed';
+@use 'sections/sidebar';
+@use 'sections/explore';
+@use 'sections/search-results';
+@use 'sections/profile';
+@use 'sections/post-detail';
+
+// ─── Components ───────────────────────────────────────────────────────────────
+@use 'components/post';
+@use 'components/tabs';
+
+// ─── Popovers ─────────────────────────────────────────────────────────────────
+@use 'popovers/dropdown';
+@use 'popovers/post-more-menu';
+@use 'popovers/trend-more-menu';
+@use 'popovers/share-popover';
+@use 'popovers/retweet-popover';
+@use 'popovers/user-profile-menu';
+
+// ─── Modals ───────────────────────────────────────────────────────────────────
+@use 'modals/dialog';
+@use 'modals/post-modal';
+@use 'modals/reply-dialog';
+@use 'modals/image-modal';
+@use 'modals/schedule-modal';
+
+// ─── Post UI ──────────────────────────────────────────────────────────────────
+@use 'post-ui/char-counter';
+@use 'post-ui/media-preview';
+@use 'post-ui/gif-picker';
+@use 'post-ui/emoji-picker';
+@use 'post-ui/reply-permission-picker';

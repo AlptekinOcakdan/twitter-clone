@@ -140,7 +140,7 @@ export class PostDetailSection extends Section {
 
         const backBtn = this.element?.querySelector('.back-btn');
         if (backBtn) {
-            backBtn.addEventListener('click', (e) => {
+            this._on(backBtn, 'click', (e) => {
                 e.preventDefault();
                 window.history.back();
             });

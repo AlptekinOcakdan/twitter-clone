@@ -29,10 +29,11 @@ export class FollowItem extends Component {
 
     render() {
         const { id, displayName, handle, avatar } = this.props;
+        const handleSlug = handle.replace('@', '');
 
         return `
             <div class="follow-item flex items-center justify-between" data-user-id="${id}">
-                <div class="flex items-center follow-item__main">
+                <a href="/profile/${handleSlug}" class="flex items-center follow-item__main" data-link>
                     <img src="${avatar}" alt="${displayName}" class="follow-avatar">
                     <div class="follow-user-info">
                         <div class="flex items-center">
@@ -41,7 +42,7 @@ export class FollowItem extends Component {
                         </div>
                         <span class="handle">${handle}</span>
                     </div>
-                </div>
+                </a>
                 <button class="follow-btn">Takip et</button>
             </div>
         `;

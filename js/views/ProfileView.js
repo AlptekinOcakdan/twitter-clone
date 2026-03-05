@@ -2,10 +2,10 @@ import { View, safeSetInnerHTML, safeSetOuterHTML } from '@/core';
 import { HeaderSection, SidebarSection, ProfileSection } from '@/sections';
 
 export class ProfileView extends View {
-    constructor() {
+    constructor(params = {}) {
         super();
         this.headerSection = new HeaderSection();
-        this.profileSection = new ProfileSection();
+        this.profileSection = new ProfileSection({ handle: params.handle || null });
         this.sidebarSection = new SidebarSection({ variant: 'profile' });
     }
 
@@ -55,20 +55,5 @@ export class ProfileView extends View {
         this.headerSection.onMount();
         this.profileSection.onMount();
         this.sidebarSection.onMount();
-        this.initLinkHandlers();
-    }
-
-    initLinkHandlers() {
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('[data-link]');
-            if (link) {
-                e.preventDefault();
-                const href = link.getAttribute('href');
-                if (href && href !== '#') {
-                    window.history.pushState({}, '', href);
-                    window.dispatchEvent(new PopStateEvent('popstate'));
-                }
-            }
-        });
     }
 }

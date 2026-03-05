@@ -14,10 +14,16 @@ export class ProfileSection extends Section {
     }
 
     async loadData() {
-        const [profileData, postsData] = await Promise.all([
-            dataService.load('profile'),
-            dataService.load('posts')
-        ]);
+        let profileData = null;
+
+        if (this.props.handle) {
+            profileData = await dataService.load(`profile-${this.props.handle}`);
+        }
+        if (!profileData) {
+            profileData = await dataService.load('profile');
+        }
+
+        const postsData = await dataService.load('posts');
         this.profileData = profileData;
         this.postsData = postsData;
     }
@@ -240,7 +246,7 @@ export class ProfileSection extends Section {
         this.mountPostList();
         this.mountCarousel();
 
-        this.element.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             const tabButton = e.target.closest('.tab');
             if (tabButton && tabButton.dataset.tabId) {
                 this.switchTab(tabButton.dataset.tabId);
@@ -268,7 +274,7 @@ export class ProfileSection extends Section {
         const sidebar = document.getElementById('sidebar');
 
         if (main && profile && sidebar) {
-            main.addEventListener('wheel', (e) => {
+            this._on(main, 'wheel', (e) => {
                 e.preventDefault();
                 profile.scrollTop += e.deltaY;
                 sidebar.scrollTop += e.deltaY;

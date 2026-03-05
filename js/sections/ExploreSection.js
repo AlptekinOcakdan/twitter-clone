@@ -156,7 +156,7 @@ export class ExploreSection extends Section {
 
         this.mountPostList();
 
-        this.element.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             const tabButton = e.target.closest('.tab');
             if (tabButton && tabButton.dataset.tabId) {
                 this.switchTab(tabButton.dataset.tabId);
@@ -185,7 +185,7 @@ export class ExploreSection extends Section {
         const sidebar = document.getElementById('sidebar');
 
         if (main && explore && sidebar) {
-            main.addEventListener('wheel', (e) => {
+            this._on(main, 'wheel', (e) => {
                 e.preventDefault();
                 explore.scrollTop += e.deltaY;
                 sidebar.scrollTop += e.deltaY;
@@ -194,7 +194,7 @@ export class ExploreSection extends Section {
     }
 
     initTrendMoreMenus() {
-        this.element?.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             const moreBtn = e.target.closest('.explore-trend-more');
             if (moreBtn) {
                 e.preventDefault();
@@ -209,7 +209,7 @@ export class ExploreSection extends Section {
     }
 
     initTrendClickNavigation() {
-        this.element?.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             if (e.target.closest('.explore-trend-more')) return;
 
             const trendItem = e.target.closest('.explore-trend-item, .explore-numbered-trend');

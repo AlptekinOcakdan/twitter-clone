@@ -1,0 +1,82 @@
+@use '../abstracts/variables' as *;
+
+.block          { display: block; }
+.inline-block   { display: inline-block; }
+.hidden         { display: none; }
+.flex           { display: flex; }
+.grid           { display: grid; }
+.relative       { position: relative; }
+.absolute       { position: absolute; }
+.fixed          { position: fixed; }
+
+.flex-row       { flex-direction: row; }
+.flex-col       { flex-direction: column; }
+.flex-wrap      { flex-wrap: wrap; }
+.grow           { flex-grow: 1; }
+.shrink         { flex-shrink: 1; }
+
+.items-start    { align-items: flex-start; }
+.items-center   { align-items: center; }
+.items-end      { align-items: flex-end; }
+.items-stretch  { align-items: stretch; }
+
+.justify-start  { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end    { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+.m-0    { margin: 0; }
+.m-1    { margin: $spacing-1; }
+.m-2    { margin: $spacing-2; }
+.m-3    { margin: $spacing-3; }
+.m-4    { margin: $spacing-4; }
+.m-8    { margin: $spacing-8; }
+.m-auto { margin: auto; }
+
+.p-0    { padding: 0; }
+.p-1    { padding: $spacing-1; }
+.p-2    { padding: $spacing-2; }
+.p-3    { padding: $spacing-3; }
+.p-4    { padding: $spacing-4; }
+.p-8    { padding: $spacing-8; }
+
+.gap-1  { gap: $spacing-1; }
+.gap-2  { gap: $spacing-2; }
+.gap-4  { gap: $spacing-4; }
+
+.w-full     { width: 100%; }
+.w-screen   { width: 100vw; }
+.h-full     { height: 100%; }
+.h-screen   { height: 100vh; }
+.min-h-screen { min-height: 100vh; }
+.max-w-full { max-width: 100%; }
+
+.overflow-hidden { overflow: hidden; }
+.overflow-y-auto { overflow-y: auto; }
+
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+.font-bold   { font-weight: $font-weight-bold; }
+.font-normal { font-weight: $font-weight-regular; }
+.italic      { font-style: italic; }
+.uppercase   { text-transform: uppercase; }
+
+.text-sm    { font-size: 0.875rem; }
+.text-base  { font-size: 1rem; }
+.text-lg    { font-size: 1.125rem; }
+.text-xl    { font-size: 1.25rem; }
+.text-2xl   { font-size: 1.5rem; }
+
+.rounded      { border-radius: $border-radius-sm; }
+.rounded-md   { border-radius: $border-radius-md; }
+.rounded-lg   { border-radius: $border-radius-lg; }
+.rounded-full { border-radius: $border-radius-full; }
+.border       { border-width: 1px; border-style: solid; }
+
+.cursor-pointer     { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+

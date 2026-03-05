@@ -76,7 +76,7 @@ export class HeaderSection extends Section {
 
         const publishButton = this.element.querySelector('#publish');
         if (publishButton) {
-            publishButton.addEventListener('click', (e) => {
+            this._on(publishButton, 'click', (e) => {
                 e.preventDefault();
                 this.openPostDialog();
             });

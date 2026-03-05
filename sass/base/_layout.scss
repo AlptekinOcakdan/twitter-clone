@@ -1,0 +1,51 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    width: $main-width;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include hide-scrollbar;
+}
+
+svg {
+    color: var(--text-primary);
+}
+
+@media (max-width: 1384px) {
+    main{
+        width: 990px;
+    }
+}
+
+@media (max-width: 1077px) {
+    main{
+        width: 920px;
+    }
+}
+
+@media (max-width: 1002px) {
+    main {
+        width: auto;
+        flex-grow: 0;
+    }
+
+    #feed {
+        width: $feed-max-width;
+        flex-grow: 0;
+    }
+}
+
+

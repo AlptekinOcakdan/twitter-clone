@@ -115,7 +115,7 @@ export class SidebarSection extends Section {
     }
 
     initTrendClickNavigation() {
-        this.element?.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             if (e.target.closest('.trend-more')) return;
 
             const trendItem = e.target.closest('.trend-item');
@@ -129,7 +129,7 @@ export class SidebarSection extends Section {
     }
 
     initTrendMoreMenus() {
-        this.element?.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             const moreBtn = e.target.closest('.trend-more');
             if (moreBtn) {
                 e.preventDefault();

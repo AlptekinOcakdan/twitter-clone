@@ -219,7 +219,7 @@ export class SearchSection extends Section {
 
         this.mountPostList();
 
-        this.element.addEventListener('click', (e) => {
+        this._on(this.element, 'click', (e) => {
             const tabButton = e.target.closest('.tab');
             if (tabButton && tabButton.dataset.tabId) {
                 this.switchTab(tabButton.dataset.tabId);
@@ -253,7 +253,7 @@ export class SearchSection extends Section {
         const sidebar = document.getElementById('sidebar');
 
         if (main && searchResults && sidebar) {
-            main.addEventListener('wheel', (e) => {
+            this._on(main, 'wheel', (e) => {
                 e.preventDefault();
                 searchResults.scrollTop += e.deltaY;
                 sidebar.scrollTop += e.deltaY;

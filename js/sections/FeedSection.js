@@ -96,7 +96,7 @@ export class FeedSection extends Section {
         const tabsContainer = document.getElementById('tabs');
         if (!tabsContainer) return;
 
-        tabsContainer.addEventListener('click', (e) => {
+        this._on(tabsContainer, 'click', (e) => {
             const tab = e.target.closest('.tab');
             if (!tab || !tab.dataset.tabId) return;
 
@@ -119,7 +119,7 @@ export class FeedSection extends Section {
         const sidebar = document.getElementById('sidebar');
 
         if (main && feed && sidebar) {
-            main.addEventListener('wheel', (e) => {
+            this._on(main, 'wheel', (e) => {
                 e.preventDefault();
                 feed.scrollTop += e.deltaY;
                 sidebar.scrollTop += e.deltaY;
@@ -131,7 +131,7 @@ export class FeedSection extends Section {
         const submitBtn = document.getElementById('btn-submit-post');
 
         if (submitBtn) {
-            submitBtn.addEventListener('click', () => {
+            this._on(submitBtn, 'click', () => {
                 if (this.createPostComponent) {
                     this.createPostComponent.handleSubmit();
                 }

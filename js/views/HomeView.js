@@ -54,20 +54,5 @@ export class HomeView extends View {
         this.headerSection.onMount();
         this.feedSection.onMount();
         this.sidebarSection.onMount();
-        this.initLinkHandlers();
-    }
-
-    initLinkHandlers() {
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('[data-link]');
-            if (link) {
-                e.preventDefault();
-                const href = link.getAttribute('href');
-                if (href && href !== '#') {
-                    window.history.pushState({}, '', href);
-                    window.dispatchEvent(new PopStateEvent('popstate'));
-                }
-            }
-        });
     }
 }

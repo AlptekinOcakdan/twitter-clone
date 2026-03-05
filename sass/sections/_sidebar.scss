@@ -1,0 +1,440 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#sidebar {
+    width: $sidebar-width;
+    margin-right: 70px;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    scroll-behavior: smooth;
+    @include hide-scrollbar;
+}
+
+.sidebar-search {
+    @include sticky-header(0, var(--bg-main));
+    padding: 6px 0 $spacing-3 0;
+    z-index: $z-index-dropdown;
+}
+
+.search-container {
+    background-color: transparent;
+    border-radius: $border-radius-full;
+    padding: $spacing-2 $spacing-4;
+    border: 1px solid var(--border-secondary-color);
+
+    &:focus-within {
+        background-color: var(--bg-main);
+        border-color: var(--text-link);
+
+        .search-icon {
+            fill: var(--text-link);
+        }
+    }
+
+    svg {
+        width: 18.75px;
+        height: 18.75px;
+        fill: var(--text-secondary);
+        margin-right: $spacing-3;
+    }
+}
+
+#search-input {
+    @include input-reset;
+    font-size: $font-size-base;
+    width: 100%;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-popover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-main);
+    border-radius: $border-radius-lg;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    min-height: 100px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: $z-index-dropdown;
+    flex-direction: column;
+
+    .search-wrapper:focus-within & {
+        display: flex;
+    }
+}
+
+.search-popover-text {
+    color: var(--text-secondary);
+    font-size: $font-size-base;
+    line-height: 20px;
+    padding: $spacing-5;
+    text-align: center;
+    align-self: center;
+    margin: auto;
+}
+
+.search-popover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-3 $spacing-4;
+}
+
+.search-popover-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-heavy;
+}
+
+.search-popover-clear {
+    @include button-reset;
+    color: var(--text-link);
+    font-size: $font-size-sm;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.search-popover-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    gap: $spacing-3;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.search-result-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.search-result-name {
+    gap: 2px;
+
+    .verified-icon {
+        width: 18px;
+        height: 18px;
+        fill: var(--verified-blue);
+        flex-shrink: 0;
+    }
+}
+
+.search-result-displayname {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.search-result-handle {
+    font-size: $font-size-xs;
+    color: var(--text-secondary);
+}
+
+.search-result-trend {
+    gap: $spacing-3;
+}
+
+.search-result-trend-icon {
+    width: 18.75px;
+    height: 18.75px;
+    fill: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.search-result-trend-name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+}
+
+.sidebar-card {
+    @include flex-column;
+    @include card-base;
+    gap: 10px;
+    padding: $spacing-4 $spacing-5;
+    align-items: flex-start;
+    margin-bottom: $spacing-4;
+
+    h2 {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+        line-height: 24px;
+    }
+
+    p {
+        font-size: $font-size-base;
+        line-height: 20px;
+    }
+}
+
+.subscribe-btn {
+    @include button-pill(var(--btn-primary-bg), var(--text-white));
+
+    &:hover {
+        background-color: var(--btn-primary-hover);
+    }
+}
+
+.sidebar-card.trends-card {
+    padding: $spacing-3 0 0 0;
+    gap: 0;
+
+    a {
+        padding: $spacing-4;
+    }
+
+    h2 {
+        font-weight: $font-weight-heavy;
+        padding: 0 $spacing-4;
+        margin-bottom: 10px;
+    }
+}
+
+.sidebar-card.who-to-follow {
+    padding: $spacing-3 0 0 0;
+    gap: 0;
+
+    a {
+        padding: $spacing-4;
+    }
+
+    h2 {
+        font-weight: $font-weight-heavy;
+        padding: 0 $spacing-4;
+        margin-bottom: 10px;
+    }
+}
+
+.trend-list {
+    width: 100%;
+}
+
+.trend-item {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    @include flex-between;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.trend-meta {
+    display: block;
+    font-size: $font-size-xs;
+    line-height: 16px;
+    font-weight: $font-weight-regular;
+    color: var(--text-secondary);
+}
+
+.trend-name {
+    display: block;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-top: 2px;
+}
+
+.trend-more {
+    @include button-reset;
+    @include flex-center;
+    padding: $spacing-2;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: background-color $transition-fast;
+    height: 34px;
+    width: 34px;
+
+    &:hover {
+        background-color: rgba(29, 155, 240, 0.1);
+
+        svg {
+            fill: var(--text-link);
+        }
+    }
+
+    svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--text-secondary);
+        transition: fill $transition-fast;
+    }
+}
+
+.show-more {
+    width: 100%;
+    display: block;
+    padding: $spacing-4 0;
+    color: var(--text-link);
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    line-height: 20px;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.follow-item {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    @include hover-bg(rgba(0, 0, 0, 0.03));
+}
+
+.follow-item__main {
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.follow-list{
+    width: 100%;
+}
+
+.follow-avatar {
+    @include avatar(40px);
+    margin-right: $spacing-3;
+}
+
+.follow-user-info {
+    min-width: 0;
+
+    .display-name {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-base;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .handle {
+        font-size: $font-size-sm;
+        color: var(--text-secondary);
+        display: block;
+    }
+}
+
+.follow-btn {
+    @include button-pill(var(--btn-black-bg), var(--text-white));
+    padding: 6px $spacing-4;
+    font-size: $font-size-sm;
+    min-width: 32px;
+    flex-shrink: 0;
+}
+
+.sidebar-card.topics-card {
+    padding: $spacing-3 0 0 0;
+    gap: 0;
+
+    h2 {
+        font-weight: $font-weight-heavy;
+        padding: 0 $spacing-4;
+        margin-bottom: 10px;
+    }
+
+    .topics-list {
+        gap: $spacing-3;
+        padding: 0 $spacing-4 $spacing-3 $spacing-4;
+    }
+
+    a.show-more {
+        padding: $spacing-4;
+    }
+}
+
+.topic-pill {
+    display: inline-block;
+    padding: 6px $spacing-4;
+    border: 1px solid var(--border-secondary-color);
+    border-radius: $border-radius-full;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    background-color: transparent;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+
+.sidebar-footer {
+    padding: 0 $spacing-4;
+
+    nav a {
+        margin: 2px 0;
+        white-space: nowrap;
+        padding-right: 12px;
+
+        .main-text{
+            font-size: $font-size-xxs;
+            line-height: $line-height-xxs;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .separator{
+            font-size: $font-size-base;
+            line-height: $line-height-base;
+            padding-left: $spacing-1;
+            font-weight: 400;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .copyright {
+        font-size: $font-size-xxs;
+        color: var(--text-secondary);
+    }
+}
+
+#sidebar-separator {
+    display: none;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: $spacing-3 0 $spacing-4 0;
+}
+
+.sidebar--explore {
+    #sidebar-separator {
+        display: block;
+    }
+}
+
+@media (max-width: 1384px) {
+    #sidebar {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 1078px) {
+    #sidebar {
+        width: 290px;
+    }
+}
+
+@media (max-width: 1002px) {
+    #sidebar {
+        display: none;
+    }
+}

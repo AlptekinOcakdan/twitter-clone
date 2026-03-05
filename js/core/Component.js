@@ -4,6 +4,13 @@ export class Component {
     constructor(props = {}) {
         this.props = props;
         this.element = null;
+        this._listeners = [];
+    }
+
+    _on(target, type, handler, options) {
+        if (!target) return;
+        target.addEventListener(type, handler, options);
+        this._listeners.push({ target, type, handler, options });
     }
 
     render() {
@@ -28,6 +35,10 @@ export class Component {
     }
 
     destroy() {
+        this._listeners.forEach(({ target, type, handler, options }) => {
+            target.removeEventListener(type, handler, options);
+        });
+        this._listeners = [];
         if (this.element && this.element.parentElement) {
             this.element.parentElement.removeChild(this.element);
         }

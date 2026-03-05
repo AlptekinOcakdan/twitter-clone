@@ -1,0 +1,253 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.dialog-overlay:has(.dialog-post-modal) {
+    align-items: flex-start;
+    padding-top: 5vh;
+}
+
+.dialog-post-modal {
+    .dialog-header {
+        justify-content: space-between;
+    }
+
+    .dialog-drafts-btn {
+        @include button-base;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        color: var(--text-link);
+        padding: 6px 16px;
+        margin-right: $spacing-2;
+        margin-left: auto;
+
+        &:hover {
+            background-color: var(--bg-blue-hover);
+        }
+    }
+}
+
+.dialog-post-create {
+    position: relative;
+
+    .dialog-post-input-row {
+        gap: $spacing-3;
+    }
+
+    .post-avatar-container {
+        padding-top: $spacing-1;
+        flex-shrink: 0;
+    }
+
+    .user-avatar {
+        @include avatar(40px);
+    }
+
+    .dialog-post-textarea-container {
+        padding: $spacing-3 0 0 0;
+        min-height: 130px;
+    }
+
+    #dialog-post-input {
+        @include input-reset;
+        width: 100%;
+        resize: none;
+        font-size: $font-size-lg;
+        color: var(--text-primary);
+        line-height: 24px;
+        min-height: 130px;
+        max-height: calc(90vh - 250px);
+        overflow-y: auto;
+
+        &::placeholder {
+            color: var(--text-secondary);
+        }
+    }
+
+    .dialog-reply-permission {
+        padding: 4px $spacing-3;
+        width: fit-content;
+        color: var(--text-link);
+        font-weight: $font-weight-bold;
+        font-size: $font-size-sm;
+        cursor: pointer;
+        border-radius: $border-radius-full;
+        transition: background-color $transition-fast;
+        margin-bottom: $spacing-3;
+        border: none;
+        background: transparent;
+
+        &:hover {
+            background-color: var(--bg-blue-hover);
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-right: $spacing-1;
+            fill: var(--text-link);
+        }
+    }
+
+    .dialog-post-actions {
+        padding-top: $spacing-3;
+        padding-bottom: $spacing-2;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .action-icons {
+        margin-left: -8px;
+    }
+
+    .action-btn {
+        @include button-icon(34px);
+        padding: 0;
+
+        &:hover {
+            background-color: var(--bg-blue-hover);
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--btn-primary-bg);
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            cursor: default;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    #btn-submit-dialog-post {
+        background-color: var(--btn-black-bg);
+        color: var(--text-white);
+        border: none;
+        padding: $spacing-2 $spacing-4;
+        border-radius: $border-radius-full;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-base;
+        line-height: 20px;
+        min-height: 36px;
+        transition: background-color $transition-fast;
+
+        &.btn-disabled-opacity {
+            opacity: 0.5;
+        }
+
+        &:not(:disabled) {
+            background-color: var(--btn-primary-bg);
+            cursor: pointer;
+
+            &:hover {
+                background-color: #1a8cd8;
+            }
+        }
+    }
+}
+
+.dialog-quote-create {
+    position: relative;
+
+    .dialog-quote-input-row {
+        gap: $spacing-3;
+    }
+
+    .post-avatar-container {
+        padding-top: $spacing-1;
+        flex-shrink: 0;
+    }
+
+    .user-avatar {
+        @include avatar(40px);
+    }
+
+    .dialog-quote-textarea-container {
+        padding: $spacing-3 0 0 0;
+        min-height: 80px;
+    }
+
+    #dialog-quote-input {
+        @include input-reset;
+        width: 100%;
+        resize: none;
+        font-size: $font-size-lg;
+        color: var(--text-primary);
+        line-height: 24px;
+        min-height: 56px;
+        max-height: calc(90vh - 350px);
+        overflow-y: auto;
+
+        &::placeholder {
+            color: var(--text-secondary);
+        }
+    }
+
+    .quoted-post {
+        margin-top: $spacing-3;
+        margin-bottom: $spacing-2;
+    }
+
+    .dialog-post-actions {
+        padding-top: $spacing-3;
+        padding-bottom: $spacing-2;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .action-icons {
+        margin-left: -8px;
+    }
+
+    .action-btn {
+        @include button-icon(34px);
+        padding: 0;
+
+        &:hover {
+            background-color: var(--bg-blue-hover);
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--btn-primary-bg);
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            cursor: default;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    #btn-submit-quote {
+        background-color: var(--btn-black-bg);
+        color: var(--text-white);
+        border: none;
+        padding: $spacing-2 $spacing-4;
+        border-radius: $border-radius-full;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-base;
+        line-height: 20px;
+        min-height: 36px;
+        transition: background-color $transition-fast;
+
+        &.btn-disabled-opacity {
+            opacity: 0.5;
+        }
+
+        &:not(:disabled) {
+            background-color: var(--btn-primary-bg);
+            cursor: pointer;
+
+            &:hover {
+                background-color: #1a8cd8;
+            }
+        }
+    }
+}

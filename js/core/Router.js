@@ -9,7 +9,21 @@ class Router {
 
     init(container) {
         this.container = container;
+        this._initLinkHandler();
         void this.handleRoute();
+    }
+
+    _initLinkHandler() {
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('[data-link]');
+            if (link) {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                if (href && href !== '#') {
+                    this.navigate(href);
+                }
+            }
+        });
     }
 
     route(path, handler) {
@@ -28,6 +42,11 @@ class Router {
     }
 
     async handleRoute() {
+        if (this.currentView) {
+            this.currentView.destroy();
+            this.currentView = null;
+        }
+
         const path = window.location.pathname;
         let handler = this.routes.get(path);
 
