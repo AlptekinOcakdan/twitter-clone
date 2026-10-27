@@ -18,7 +18,7 @@
   "dependencies": {
     "gulp": "^5.0.1",
     "gulp-sass": "^6.0.1",
-    "sass": "^1.97.3"
+    "sass": "^1.106.1"
   },
   "devDependencies": {
     "live-server": "^1.2.2"
